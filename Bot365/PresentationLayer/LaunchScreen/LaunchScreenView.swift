@@ -1,29 +1,25 @@
 //
 //  LaunchScreenView.swift
-//  Nacional
+//  Bot365
 //
-//  Created by Дмитрий Терехин on 29.11.2022.
+//  Created by Alex Misko on 16.03.23.
 //
 
 import UIKit
+import SnapKit
 
 class LaunchScreenView: UIView {
     
-    private let circleImageView: UIImageView = {
+    
+    private let botImageView: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named: "Ellipse")
+        iv.image = UIImage(named: "appLogo")
         return iv
     }()
     
-    private let nacionaleImageView: UIImageView = {
-        let iv = UIImageView()
-        iv.image = UIImage(named: "nacional")
-        return iv
-    }()
-
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .AppCollors.backgroundBlue
+        backgroundColor = .AppCollors.backgroundGreen
         setupView()
     }
     
@@ -32,17 +28,11 @@ class LaunchScreenView: UIView {
     }
     
     private func setupView() {
-        addSubview(nacionaleImageView)
-        addSubview(circleImageView)
+        addSubview(botImageView)
         
-        nacionaleImageView.topAnchor.constraint(equalTo: nacionaleImageView.superview!.safeTopAnchor, constant: 412).isActive = true
-        nacionaleImageView.centerXAnchor.constraint(equalTo: nacionaleImageView.superview!.centerXAnchor).isActive = true
-        nacionaleImageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        circleImageView.widthAnchor.constraint(equalToConstant: 88).isActive = true
-        circleImageView.heightAnchor.constraint(equalToConstant: 88).isActive = true
-        circleImageView.leftAnchor.constraint(equalTo: nacionaleImageView.leftAnchor).isActive = true
-        circleImageView.bottomAnchor.constraint(equalTo: nacionaleImageView.topAnchor).isActive = true
-        circleImageView.translatesAutoresizingMaskIntoConstraints = false
+        botImageView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+
     }
 }

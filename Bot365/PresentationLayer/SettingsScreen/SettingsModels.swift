@@ -1,8 +1,8 @@
 //
 //  SettingsModels.swift
-//  Nacional
+//  Bot365
 //
-//  Created by Дмитрий Терехин on 23.11.2022.
+//  Created by Alex Misko on 16.03.23.
 //
 
 import Foundation
@@ -20,13 +20,13 @@ enum SettingType: CaseIterable {
     var title: String {
         switch self {
         case .myTrains:
-            return "My trains"
+            return "Your reservations"
         case .turnOffAdds:
-            return "Turn-off ads"
+            return "Buy Premium"
         case .rateUs:
             return "Rate us"
         case .feedback:
-            return "Send feedback"
+            return "Support"
         case .privacy:
             return "Privacy policy"
         case .terms:
@@ -34,7 +34,28 @@ enum SettingType: CaseIterable {
         case .restorePurchases:
             return "Restore purchase"
         case .deleteAccount:
-            return "Delete account"
+            return "Delete"
+        }
+    }
+    
+    var image: UIImage {
+        switch self {
+        case .myTrains:
+            return UIImage(named: "premium")!
+        case .turnOffAdds:
+            return UIImage(named: "premium")!
+        case .rateUs:
+            return UIImage(named: "rate")!
+        case .feedback:
+            return UIImage(named: "support")!
+        case .privacy:
+            return UIImage(named: "privacy")!
+        case .terms:
+            return UIImage(named: "terms")!
+        case .restorePurchases:
+            return UIImage(named: "premium")!
+        case .deleteAccount:
+            return UIImage(named: "delete")!
         }
     }
 }

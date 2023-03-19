@@ -1,8 +1,8 @@
 //
 //  CustomTabBarController.swift
-//  SuperBest
+//  Bot365
 //
-//  Created by Дмитрий Терехин on 04.10.2022.
+//  Created by Alex Misko on 16.03.23.
 //
 
 import UIKit

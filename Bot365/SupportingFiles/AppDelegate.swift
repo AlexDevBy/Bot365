@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  Nacional
+//  Bot365
 //
-//  Created by Дмитрий Терехин on 21.11.2022.
+//  Created by Alex Misko on 16.03.23.
 //
 
 import UIKit
@@ -12,7 +12,7 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate, ISInitializationDelegate {
     
     private enum Constants {
-        static let IronAppKey = "17d2dfd45"
+        static let IronAppKey = "1852f50bd"
     }
 
     var window: UIWindow?

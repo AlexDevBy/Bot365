@@ -1,8 +1,8 @@
 //
 //  AskLocationViewController.swift
-//  Nacional
+//  Bot365
 //
-//  Created by Дмитрий Терехин on 22.11.2022.
+//  Created by Alex Misko on 16.03.23.
 //
 
 import UIKit
@@ -25,6 +25,9 @@ class AskPermissionsViewController: UIViewController, DeviceLocationServiceDeleg
     ) {
         self.presentationAssembly = presentationAssembly
         self.contentView.causeLabel.text = type.title
+        self.contentView.pushIconView.image = type.image
+        self.contentView.skipButton.setTitle(type.skip, for: .normal)
+        self.contentView.secondCauseLabel.text = type.secondTitle
         self.permissionsType = type
         self.locationService = locationService
         self.userInfoService = userInfoService

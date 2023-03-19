@@ -1,8 +1,8 @@
 //
 //  SettingsPresenter.swift
-//  Nacional
+//  Bot365
 //
-//  Created by Дмитрий Терехин on 29.11.2022.
+//  Created by Alex Misko on 16.03.23.
 //
 
 import UIKit
@@ -72,15 +72,15 @@ class SettingsPresenter: ISettingsPresenter {
     func getDataSource() -> [SettingType] {
         var source: [SettingType] = [
             SettingType.myTrains,
-            SettingType.rateUs,
-            SettingType.feedback,
-            SettingType.privacy,
             SettingType.terms,
+            SettingType.privacy,
+            SettingType.feedback,
+            SettingType.rateUs,
             SettingType.restorePurchases,
             SettingType.deleteAccount
         ]
         if !userInfoService.isPremiumActive() {
-            source.insert(SettingType.turnOffAdds, at: 1)
+            source.insert(SettingType.turnOffAdds, at: 0)
         }
         return source
     }

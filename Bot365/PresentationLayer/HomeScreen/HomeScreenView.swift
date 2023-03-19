@@ -1,11 +1,12 @@
 //
 //  HomeScreenView.swift
-//  Nacional
+//  Bot365
 //
-//  Created by Дмитрий Терехин on 23.11.2022.
+//  Created by Alex Misko on 16.03.23.
 //
 
 import UIKit
+import SnapKit
 
 class HomeScreenView: UIView {
     
@@ -120,7 +121,6 @@ class HomeScreenView: UIView {
     
     private func setupView() {
         backgroundColor = .white
-        addSubview(goImageView)
         addSubview(suggestionCollectionView)
         addSubview(pageControl)
         addSubview(suggestionTitleLabel)
@@ -128,19 +128,19 @@ class HomeScreenView: UIView {
         addSubview(categoriesCollectionView)
         addSubview(categoriesMiddleView)
         
-        goImageView.topAnchor.constraint(equalTo: goImageView.superview!.topAnchor, constant: 40).isActive = true
-        goImageView.leftAnchor.constraint(equalTo: goImageView.superview!.leftAnchor, constant: 16).isActive = true
-        goImageView.translatesAutoresizingMaskIntoConstraints = false
+        suggestionTitleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(68)
+            make.left.equalToSuperview().offset(16)
+        }
         
-        suggestionTitleLabel.topAnchor.constraint(equalTo: goImageView.bottomAnchor, constant: 13).isActive = true
-        suggestionTitleLabel.leftAnchor.constraint(equalTo: suggestionTitleLabel.superview!.leftAnchor, constant: 16).isActive = true
-        suggestionTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        suggestionCollectionView.topAnchor.constraint(equalTo: suggestionTitleLabel.bottomAnchor, constant: 11).isActive = true
-        suggestionCollectionView.heightAnchor.constraint(equalToConstant: CGFloat(140).dp).isActive = true
-        suggestionCollectionView.leftAnchor.constraint(equalTo: suggestionCollectionView.superview!.leftAnchor, constant: 0).isActive = true
-        suggestionCollectionView.rightAnchor.constraint(equalTo: suggestionCollectionView.superview!.rightAnchor, constant: 0).isActive = true
-        suggestionCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        suggestionCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(suggestionTitleLabel.snp.bottom).offset(16)
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().inset(16)
+            make.height.equalTo(112)
+        }
+
+
         
         pageControl.centerXAnchor.constraint(equalTo: suggestionCollectionView.centerXAnchor).isActive = true
         pageControl.heightAnchor.constraint(equalToConstant: 10).isActive = true

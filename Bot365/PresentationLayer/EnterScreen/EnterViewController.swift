@@ -1,8 +1,8 @@
 //
 //  EnterViewController.swift
-//  Nacional
+//  Bot365
 //
-//  Created by Дмитрий Терехин on 22.11.2022.
+//  Created by Alex Misko on 16.03.23.
 //
 
 import UIKit
@@ -41,14 +41,17 @@ class EnterViewController: UIViewController {
     
     private func setupView() {
         contentView.signInHandler = {
-            let provider = ASAuthorizationAppleIDProvider()
-            let request = provider.createRequest()
-            request.requestedScopes = [.email]
-
-            let controller = ASAuthorizationController(authorizationRequests: [request])
-            controller.delegate = self
-            controller.presentationContextProvider = self
-            controller.performRequests()
+            let pushPermission = self.presentationAssembly.askPermissionsScreen(permissionType: .location)
+            self.navigationController?.pushViewController(pushPermission, animated: true)
+            
+//            let provider = ASAuthorizationAppleIDProvider()
+//            let request = provider.createRequest()
+//            request.requestedScopes = [.email]
+//
+//            let controller = ASAuthorizationController(authorizationRequests: [request])
+//            controller.delegate = self
+//            controller.presentationContextProvider = self
+//            controller.performRequests()
         }
     }
     

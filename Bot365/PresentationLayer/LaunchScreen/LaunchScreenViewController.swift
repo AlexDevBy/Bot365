@@ -1,8 +1,8 @@
 //
 //  LaunchScreenViewController.swift
-//  Nacional
+//  Bot365
 //
-//  Created by Дмитрий Терехин on 29.11.2022.
+//  Created by Alex Misko on 16.03.23.
 //
 
 import UIKit
@@ -67,17 +67,18 @@ class LaunchScreenViewController: UIViewController {
     }
     
     private func getCountry(ip: String?) {
-        networkService.getCountry(ip: ip) { [ weak self ] result in
-            guard let strongSelf = self else { return }
+//        networkService.getCountry(ip: ip) { [ weak self ] result in
+//            guard let strongSelf = self else { return }
             DispatchQueue.main.async {
-                switch result {
-                case .success(let tab):
-                    strongSelf.routeToNextScreen(appWay: tab)
-                case .failure(let error):
-                    strongSelf.displayMsg(title: nil, msg: error.textToDisplay)
+//                switch result {
+//                case .success(let tab):
+//                    strongSelf.
+                self.routeToNextScreen(appWay: .toApp)
+//                case .failure(let error):
+//                    strongSelf.displayMsg(title: nil, msg: error.textToDisplay)
                 }
-            }
-        }
+//            }
+//        }
     }
     
     private func routeToNextScreen(appWay: AppWayByCountry) {

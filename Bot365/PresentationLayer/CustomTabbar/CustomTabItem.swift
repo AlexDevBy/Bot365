@@ -1,8 +1,8 @@
 //
 //  CustomTabItem.swift
-//  SuperBest
+//  Bot365
 //
-//  Created by Дмитрий Терехин on 04.10.2022.
+//  Created by Alex Misko on 16.03.23.
 //
 
 import UIKit
@@ -49,13 +49,13 @@ extension CustomTabItemType {
     var selectedIcon: UIImage? {
         switch self {
         case .home:
-            return UIImage(named: "SelectedHome")
+            return UIImage(named: "Home2")
         case .location:
             return UIImage(named: "SelectedMyLocation")
         case .calendar:
-            return UIImage(named: "SelectedCalendar")
+            return UIImage(named: "Calendar2")
         case .settings:
-            return UIImage(named: "SelectedUser")
+            return UIImage(named: "User2")
         }
     }
 }

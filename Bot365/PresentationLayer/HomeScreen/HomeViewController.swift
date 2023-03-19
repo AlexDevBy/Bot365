@@ -1,8 +1,8 @@
 //
 //  HomeViewController.swift
-//  Nacional
+//  Bot365
 //
-//  Created by Дмитрий Терехин on 22.11.2022.
+//  Created by Alex Misko on 16.03.23.
 //
 
 import UIKit

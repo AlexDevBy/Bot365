@@ -116,6 +116,7 @@
 		F00FD60829C32B6D007D4DAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00FD60629C32B6D007D4DAC /* AppDelegate.swift */; };
 		F00FD60929C32B6D007D4DAC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00FD60729C32B6D007D4DAC /* SceneDelegate.swift */; };
 		F00FD60B29C33000007D4DAC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F00FD60A29C33000007D4DAC /* StoreKit.framework */; };
+		F00FD60F29C3641A007D4DAC /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F00FD60E29C3641A007D4DAC /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -231,7 +232,7 @@
 		F00FD60629C32B6D007D4DAC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F00FD60729C32B6D007D4DAC /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F00FD60A29C33000007D4DAC /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		F00FD60C29C33101007D4DAC /* Nacional-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Nacional-Bridging-Header.h"; sourceTree = "<group>"; };
+		F00FD60C29C33101007D4DAC /* Bot365-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bot365-Bridging-Header.h"; sourceTree = "<group>"; };
 		FFB3A1E1D1AD46A5D6DF31B2 /* Pods_Bot365.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bot365.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -240,6 +241,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F00FD60F29C3641A007D4DAC /* SnapKit in Frameworks */,
 				4AA2B4DBD17BE82BFB211BF5 /* Pods_Bot365.framework in Frameworks */,
 				F00FD60B29C33000007D4DAC /* StoreKit.framework in Frameworks */,
 			);
@@ -287,10 +289,9 @@
 		F00FD50929C326E6007D4DAC /* Bot365 */ = {
 			isa = PBXGroup;
 			children = (
-				F00FD53029C3276E007D4DAC /* Extensions */,
+				F00FD58E29C327E3007D4DAC /* PresentationLayer */,
 				F00FD52329C32755007D4DAC /* ServiceLayer */,
 				F00FD54B29C327D8007D4DAC /* CoreLayer */,
-				F00FD58E29C327E3007D4DAC /* PresentationLayer */,
 				F00FD5F229C32817007D4DAC /* SupportingFiles */,
 				F00FD54929C32788007D4DAC /* RootAssembly.swift */,
 				F00FD51B29C326E8007D4DAC /* Info.plist */,
@@ -421,15 +422,15 @@
 			children = (
 				F00FD58F29C327E3007D4DAC /* LaunchScreen */,
 				F00FD59329C327E3007D4DAC /* PresentationAssembly.swift */,
+				F00FD5B129C327E3007D4DAC /* EnterScreen */,
 				F00FD59429C327E3007D4DAC /* AskPermissionsScreen */,
+				F00FD5A629C327E3007D4DAC /* CustomTabbar */,
+				F00FD5B529C327E3007D4DAC /* HomeScreen */,
 				F00FD59829C327E3007D4DAC /* CreateReminderScreen */,
 				F00FD59D29C327E3007D4DAC /* SportObjectList */,
 				F00FD5A329C327E3007D4DAC /* WebViewScreen */,
 				F00FD5A529C327E3007D4DAC /* LoaderViewController.swift */,
-				F00FD5A629C327E3007D4DAC /* CustomTabbar */,
 				F00FD5AB29C327E3007D4DAC /* SettingsScreen */,
-				F00FD5B129C327E3007D4DAC /* EnterScreen */,
-				F00FD5B529C327E3007D4DAC /* HomeScreen */,
 				F00FD5BD29C327E3007D4DAC /* InformationView.swift */,
 				F00FD5BE29C327E3007D4DAC /* RemindersListScreen */,
 				F00FD5C529C327E3007D4DAC /* CustomNavigationController.swift */,
@@ -558,9 +559,10 @@
 		F00FD5F229C32817007D4DAC /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				F00FD53029C3276E007D4DAC /* Extensions */,
 				F00FD5F329C32854007D4DAC /* Fonts */,
 				F00FD51829C326E8007D4DAC /* LaunchScreen.storyboard */,
-				F00FD60C29C33101007D4DAC /* Nacional-Bridging-Header.h */,
+				F00FD60C29C33101007D4DAC /* Bot365-Bridging-Header.h */,
 				F00FD60629C32B6D007D4DAC /* AppDelegate.swift */,
 				F00FD60729C32B6D007D4DAC /* SceneDelegate.swift */,
 				F00FD51629C326E8007D4DAC /* Assets.xcassets */,
@@ -602,6 +604,9 @@
 			dependencies = (
 			);
 			name = Bot365;
+			packageProductDependencies = (
+				F00FD60E29C3641A007D4DAC /* SnapKit */,
+			);
 			productName = Bot365;
 			productReference = F00FD50729C326E6007D4DAC /* Bot365.app */;
 			productType = "com.apple.product-type.application";
@@ -630,6 +635,9 @@
 				Base,
 			);
 			mainGroup = F00FD4FE29C326E6007D4DAC;
+			packageReferences = (
+				F00FD60D29C3641A007D4DAC /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = F00FD50829C326E6007D4DAC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -970,7 +978,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/alexmisko/Documents/DEV/Bot365/Bot365/SupportingFiles/Nacional-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/alexmisko/Documents/DEV/Bot365/Bot365/SupportingFiles/Bot365-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1004,7 +1012,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/alexmisko/Documents/DEV/Bot365/Bot365/SupportingFiles/Nacional-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/alexmisko/Documents/DEV/Bot365/Bot365/SupportingFiles/Bot365-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1032,6 +1040,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F00FD60D29C3641A007D4DAC /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F00FD60E29C3641A007D4DAC /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F00FD60D29C3641A007D4DAC /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		F00FD51329C326E6007D4DAC /* Bot365.xcdatamodeld */ = {

@@ -1,8 +1,8 @@
 //
 //  CustomTabBar.swift
-//  SuperBest
+//  Bot365
 //
-//  Created by Дмитрий Терехин on 04.10.2022.
+//  Created by Alex Misko on 16.03.23.
 //
 
 import UIKit
@@ -59,8 +59,8 @@ final class CustomTabBar: UIStackView {
     }
     
     private func setupProperties() {
-        backgroundColor = UIColor.AppCollors.backgroundBlue
-        addBackground(color: UIColor.AppCollors.backgroundBlue, cornerRadius: 25)
+        backgroundColor = UIColor.AppCollors.tabBar
+        addBackground(color: UIColor.AppCollors.tabBar, cornerRadius: 20)
         distribution = .fillEqually
         alignment = .center
         layer.cornerRadius = 25        

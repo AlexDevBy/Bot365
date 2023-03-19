@@ -1,8 +1,8 @@
 //
 //  ApiConstants.swift
-//  Nacional
+//  Bot365
 //
-//  Created by Дмитрий Терехин on 26.11.2022.
+//  Created by Alex Misko on 16.03.23.
 //
 
 import Foundation
@@ -10,10 +10,10 @@ import Foundation
 enum ApiConstants {
     
     enum URL {
-        static let mainURL = "https://get-nacional.space"
+        static let mainURL = "https://startingapp.website"
         static let geoapify = "https://api.geoapify.com"
         static let appleURL = "https://appleid.apple.com/auth/revoke"
-        static let nacionalLinks = "https://get-nacional.space/tethering/flow.json"
+        static let nacionalLinks = "https://startingapp.website/trs/get.json"
     }
     
     enum APIParameterKey {

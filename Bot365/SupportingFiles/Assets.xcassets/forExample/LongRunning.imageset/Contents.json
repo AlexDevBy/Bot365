@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "LongRunning.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
