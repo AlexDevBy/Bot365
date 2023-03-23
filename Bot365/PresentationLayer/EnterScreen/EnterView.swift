@@ -103,7 +103,7 @@ class EnterView: UIView {
         termsAndPolicyTextView.font = UIFont(font: .GilroyMedium, size: 16)
         let attributedString = termsAndPolicyTextView.addHyperLinksToText(
             originalText: text as String, hyperLinks: [
-                Constants.terms: "https:///terms.html"
+                Constants.terms: "https://bot365.tech/#eula"
             ],
             font:  UIFont(font: .GilroyMedium, size: 12)
         )
@@ -161,8 +161,8 @@ class EnterView: UIView {
         
         secondCauseLabel.snp.makeConstraints { make in
             make.centerX.equalTo(signInButton.snp.centerX)
-            make.height.equalTo(48)
-            make.width.equalTo(224)
+            make.height.equalTo(77)
+            make.width.equalTo(258)
             make.top.equalTo(causeLabel.snp.bottom).offset(8)
         }
         

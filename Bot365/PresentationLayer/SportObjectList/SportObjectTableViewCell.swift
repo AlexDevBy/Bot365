@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class SportObjectTableViewCell: UITableViewCell, ReusableView {
 
@@ -29,7 +30,7 @@ class SportObjectTableViewCell: UITableViewCell, ReusableView {
     
     private let contentBackgroundView: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = 20
+        view.layer.cornerRadius = 16
         return view
     }()
     
@@ -39,11 +40,34 @@ class SportObjectTableViewCell: UITableViewCell, ReusableView {
         return iv
     }()
     
+    let mapView: UIView = {
+        let btn = UIView()
+        btn.layer.cornerRadius = 16
+        return btn
+    }()
+    
+    let mapButton: UIButton = {
+        let btn = UIButton()
+        btn.layer.cornerRadius = 16
+        btn.setImage(UIImage(named: "toMap"), for: .normal)
+        return btn
+    }()
+    
+    let reserveButton: UIButton = {
+        let btn = UIButton()
+        btn.layer.cornerRadius = 12
+        btn.setTitle("Reserve", for: .normal)
+        btn.titleLabel?.textColor = .white
+        return btn
+    }()
+    
     var object: SportObject? {
         didSet {
             guard let model = object else { return }
             titleLabel.text = model.name
             subtitleLabel.text = model.address
+            reserveButton.backgroundColor = model.type.backgroundColor2
+            mapView.backgroundColor = model.type.backgroundColor2
             sportObjectImageView.image = UIImage(named: model.type.sportObjectListImage)
             contentBackgroundView.backgroundColor = model.type.backgroundColor
         }
@@ -64,28 +88,65 @@ class SportObjectTableViewCell: UITableViewCell, ReusableView {
         contentBackgroundView.addSubview(sportObjectImageView)
         contentBackgroundView.addSubview(titleLabel)
         contentBackgroundView.addSubview(subtitleLabel)
+        contentBackgroundView.addSubview(mapView)
+        mapView.addSubview(mapButton)
+        contentBackgroundView.addSubview(reserveButton)
         
-        contentBackgroundView.topAnchor.constraint(equalTo: contentBackgroundView.superview!.topAnchor, constant: 5).isActive = true
-        contentBackgroundView.heightAnchor.constraint(equalToConstant: CGFloat(100).dp).isActive = true
-        contentBackgroundView.leftAnchor.constraint(equalTo: contentBackgroundView.superview!.leftAnchor).isActive = true
-        contentBackgroundView.rightAnchor.constraint(equalTo: contentBackgroundView.superview!.rightAnchor).isActive = true
-        contentBackgroundView.bottomAnchor.constraint(equalTo: contentBackgroundView.superview!.bottomAnchor, constant: -5).isActive = true
-        contentBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        contentBackgroundView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(8)
+            make.bottom.equalToSuperview().offset(-8)
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().offset(-16)
+            make.height.equalTo(72)
+        }
         
-        titleLabel.topAnchor.constraint(equalTo: titleLabel.superview!.topAnchor, constant: 16).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: titleLabel.superview!.leftAnchor, constant: 21).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: sportObjectImageView.leftAnchor, constant: -25).isActive = true
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        sportObjectImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(16)
+            make.bottom.equalToSuperview().offset(-16)
+            make.left.equalToSuperview().offset(12)
+            make.width.equalTo(40)
+        }
         
-        subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4).isActive = true
-        subtitleLabel.leftAnchor.constraint(equalTo: titleLabel.leftAnchor, constant: 0).isActive = true
-        subtitleLabel.rightAnchor.constraint(equalTo: sportObjectImageView.leftAnchor, constant: -25).isActive = true
-        subtitleLabel.bottomAnchor.constraint(equalTo: subtitleLabel.superview!.bottomAnchor, constant: -16).isActive = true
-        subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        sportObjectImageView.centerYAnchor.constraint(equalTo: sportObjectImageView.superview!.centerYAnchor).isActive = true
-        sportObjectImageView.rightAnchor.constraint(equalTo: sportObjectImageView.superview!.rightAnchor).isActive = true
-        sportObjectImageView.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(sportObjectImageView.snp.top)
+            make.left.equalTo(sportObjectImageView.snp.right).offset(8)
+            make.height.equalTo(24)
+            make.width.equalTo(134)
+        }
+
+        subtitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom)
+            make.left.equalTo(sportObjectImageView.snp.right).offset(8)
+            make.height.equalTo(16)
+            make.width.equalTo(134)
+        }
+        
+        reserveButton.snp.makeConstraints { make in
+            make.top.equalTo(contentBackgroundView.snp.top).offset(20)
+            make.bottom.equalTo(contentBackgroundView.snp.bottom).offset(-20)
+            make.right.equalTo(contentBackgroundView.snp.right).offset(-8)
+            make.height.equalTo(32)
+            make.width.equalTo(86)
+        }
+
+        mapView.snp.makeConstraints { make in
+            make.top.equalTo(contentBackgroundView.snp.top).offset(20)
+            make.bottom.equalTo(contentBackgroundView.snp.bottom).offset(-20)
+            make.right.equalTo(reserveButton.snp.left).offset(-12)
+            make.height.equalTo(32)
+            make.width.equalTo(32)
+        }
+        
+        mapButton.snp.makeConstraints { make in
+            make.top.equalTo(mapView.snp.top).offset(8)
+            make.bottom.equalTo(mapView.snp.bottom).offset(-8)
+            make.right.equalTo(mapView.snp.right).offset(-8)
+            make.left.equalTo(mapView.snp.left).offset(8)
+        }
+        
+  
+
     }
     
 }

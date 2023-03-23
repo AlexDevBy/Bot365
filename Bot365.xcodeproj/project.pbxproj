@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4AA2B4DBD17BE82BFB211BF5 /* Pods_Bot365.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB3A1E1D1AD46A5D6DF31B2 /* Pods_Bot365.framework */; };
 		F00FD50F29C326E6007D4DAC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00FD50E29C326E6007D4DAC /* ViewController.swift */; };
-		F00FD51229C326E6007D4DAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F00FD51029C326E6007D4DAC /* Main.storyboard */; };
 		F00FD51529C326E6007D4DAC /* Bot365.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F00FD51329C326E6007D4DAC /* Bot365.xcdatamodeld */; };
 		F00FD51729C326E8007D4DAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F00FD51629C326E8007D4DAC /* Assets.xcassets */; };
 		F00FD51A29C326E8007D4DAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F00FD51829C326E8007D4DAC /* LaunchScreen.storyboard */; };
@@ -117,6 +116,8 @@
 		F00FD60929C32B6D007D4DAC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00FD60729C32B6D007D4DAC /* SceneDelegate.swift */; };
 		F00FD60B29C33000007D4DAC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F00FD60A29C33000007D4DAC /* StoreKit.framework */; };
 		F00FD60F29C3641A007D4DAC /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F00FD60E29C3641A007D4DAC /* SnapKit */; };
+		F0329EAE29CC6B1600C758B5 /* TableViewSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0329EAD29CC6B1600C758B5 /* TableViewSheetView.swift */; };
+		F0329EB029CCB86C00C758B5 /* TableViewSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0329EAF29CCB86C00C758B5 /* TableViewSheetController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,7 +125,6 @@
 		EB04E2ACF201EB6A5278E428 /* Pods-Bot365.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bot365.release.xcconfig"; path = "Target Support Files/Pods-Bot365/Pods-Bot365.release.xcconfig"; sourceTree = "<group>"; };
 		F00FD50729C326E6007D4DAC /* Bot365.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bot365.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F00FD50E29C326E6007D4DAC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F00FD51129C326E6007D4DAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F00FD51429C326E6007D4DAC /* Bot365.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bot365.xcdatamodel; sourceTree = "<group>"; };
 		F00FD51629C326E8007D4DAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F00FD51929C326E8007D4DAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -233,6 +233,9 @@
 		F00FD60729C32B6D007D4DAC /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F00FD60A29C33000007D4DAC /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		F00FD60C29C33101007D4DAC /* Bot365-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bot365-Bridging-Header.h"; sourceTree = "<group>"; };
+		F0329EAD29CC6B1600C758B5 /* TableViewSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSheetView.swift; sourceTree = "<group>"; };
+		F0329EAF29CCB86C00C758B5 /* TableViewSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSheetController.swift; sourceTree = "<group>"; };
+		F05761C629CB045A0007BC46 /* Bot365.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bot365.entitlements; sourceTree = "<group>"; };
 		FFB3A1E1D1AD46A5D6DF31B2 /* Pods_Bot365.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bot365.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -289,6 +292,7 @@
 		F00FD50929C326E6007D4DAC /* Bot365 */ = {
 			isa = PBXGroup;
 			children = (
+				F05761C629CB045A0007BC46 /* Bot365.entitlements */,
 				F00FD58E29C327E3007D4DAC /* PresentationLayer */,
 				F00FD52329C32755007D4DAC /* ServiceLayer */,
 				F00FD54B29C327D8007D4DAC /* CoreLayer */,
@@ -297,7 +301,6 @@
 				F00FD51B29C326E8007D4DAC /* Info.plist */,
 				F00FD51329C326E6007D4DAC /* Bot365.xcdatamodeld */,
 				F00FD50E29C326E6007D4DAC /* ViewController.swift */,
-				F00FD51029C326E6007D4DAC /* Main.storyboard */,
 			);
 			path = Bot365;
 			sourceTree = "<group>";
@@ -426,14 +429,12 @@
 				F00FD59429C327E3007D4DAC /* AskPermissionsScreen */,
 				F00FD5A629C327E3007D4DAC /* CustomTabbar */,
 				F00FD5B529C327E3007D4DAC /* HomeScreen */,
-				F00FD59829C327E3007D4DAC /* CreateReminderScreen */,
 				F00FD59D29C327E3007D4DAC /* SportObjectList */,
+				F00FD59829C327E3007D4DAC /* CreateReminderScreen */,
 				F00FD5A329C327E3007D4DAC /* WebViewScreen */,
-				F00FD5A529C327E3007D4DAC /* LoaderViewController.swift */,
 				F00FD5AB29C327E3007D4DAC /* SettingsScreen */,
-				F00FD5BD29C327E3007D4DAC /* InformationView.swift */,
 				F00FD5BE29C327E3007D4DAC /* RemindersListScreen */,
-				F00FD5C529C327E3007D4DAC /* CustomNavigationController.swift */,
+				F05761C729CBA7310007BC46 /* other */,
 			);
 			path = PresentationLayer;
 			sourceTree = "<group>";
@@ -477,6 +478,8 @@
 				F00FD5A029C327E3007D4DAC /* SportObjectTableViewCell.swift */,
 				F00FD5A129C327E3007D4DAC /* SportObjectListPresenter.swift */,
 				F00FD5A229C327E3007D4DAC /* SportObjectListViewController.swift */,
+				F0329EAD29CC6B1600C758B5 /* TableViewSheetView.swift */,
+				F0329EAF29CCB86C00C758B5 /* TableViewSheetController.swift */,
 			);
 			path = SportObjectList;
 			sourceTree = "<group>";
@@ -544,16 +547,8 @@
 				F00FD5C129C327E3007D4DAC /* RemindersListView.swift */,
 				F00FD5C229C327E3007D4DAC /* RemindersListModels.swift */,
 				F00FD5C329C327E3007D4DAC /* RemindersListViewController.swift */,
-				F00FD5C429C327E3007D4DAC /* fs */,
 			);
 			path = RemindersListScreen;
-			sourceTree = "<group>";
-		};
-		F00FD5C429C327E3007D4DAC /* fs */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = fs;
 			sourceTree = "<group>";
 		};
 		F00FD5F229C32817007D4DAC /* SupportingFiles */ = {
@@ -584,6 +579,16 @@
 				F00FD5FC29C32854007D4DAC /* Montserrat-regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		F05761C729CBA7310007BC46 /* other */ = {
+			isa = PBXGroup;
+			children = (
+				F00FD5C529C327E3007D4DAC /* CustomNavigationController.swift */,
+				F00FD5A529C327E3007D4DAC /* LoaderViewController.swift */,
+				F00FD5BD29C327E3007D4DAC /* InformationView.swift */,
+			);
+			path = other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -657,7 +662,6 @@
 				F00FD5FD29C32854007D4DAC /* Gilroy-Medium.ttf in Resources */,
 				F00FD60229C32854007D4DAC /* Gilroy-Bold.ttf in Resources */,
 				F00FD51729C326E8007D4DAC /* Assets.xcassets in Resources */,
-				F00FD51229C326E6007D4DAC /* Main.storyboard in Resources */,
 				F00FD60329C32854007D4DAC /* MuseoModerno-Bold.ttf in Resources */,
 				F00FD60429C32854007D4DAC /* Montserrat-Black.ttf in Resources */,
 				F00FD60529C32854007D4DAC /* Montserrat-regular.ttf in Resources */,
@@ -775,6 +779,7 @@
 				F00FD5D629C327E3007D4DAC /* WebViewController.swift in Sources */,
 				F00FD5EE29C327E3007D4DAC /* RemindersListView.swift in Sources */,
 				F00FD58329C327D8007D4DAC /* NacionalApiEndPoint.swift in Sources */,
+				F0329EB029CCB86C00C758B5 /* TableViewSheetController.swift in Sources */,
 				F00FD58D29C327D8007D4DAC /* DatabaseManager.swift in Sources */,
 				F00FD5DB29C327E3007D4DAC /* CustomTabBarController.swift in Sources */,
 				F00FD5C829C327E3007D4DAC /* LaunchScreenView.swift in Sources */,
@@ -790,6 +795,7 @@
 				F00FD58629C327D8007D4DAC /* RequestSender.swift in Sources */,
 				F00FD5DF29C327E3007D4DAC /* SettingsPresenter.swift in Sources */,
 				F00FD54429C3276F007D4DAC /* NotificationExt.swift in Sources */,
+				F0329EAE29CC6B1600C758B5 /* TableViewSheetView.swift in Sources */,
 				F00FD5D429C327E3007D4DAC /* SportObjectListPresenter.swift in Sources */,
 				F00FD5CB29C327E3007D4DAC /* PermissionsModel.swift in Sources */,
 				F00FD5D129C327E3007D4DAC /* SportObjectListModel.swift in Sources */,
@@ -817,14 +823,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		F00FD51029C326E6007D4DAC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F00FD51129C326E6007D4DAC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F00FD51829C326E8007D4DAC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -956,14 +954,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Bot365/Bot365.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M35P5LHAHW;
+				DEVELOPMENT_TEAM = 2S5D9XH746;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Bot365/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please, allow us to track your location to find the most relevant sports facilities. ";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
@@ -972,7 +971,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bot.365.Bot365;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bot365.bot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -990,14 +989,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Bot365/Bot365.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M35P5LHAHW;
+				DEVELOPMENT_TEAM = 2S5D9XH746;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Bot365/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please, allow us to track your location to find the most relevant sports facilities. ";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
@@ -1006,7 +1006,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bot.365.Bot365;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bot365.bot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

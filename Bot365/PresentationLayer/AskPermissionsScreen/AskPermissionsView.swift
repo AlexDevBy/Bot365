@@ -118,14 +118,14 @@ class AskPermissionsView: UIView {
         causeLabel.snp.makeConstraints { make in
             make.centerX.equalTo(allowButton.snp.centerX)
             make.height.equalTo(64)
-            make.width.equalTo(192)
+            make.width.equalTo(200)
             make.top.equalTo(ellipseView.snp.bottom).offset(24)
         }
         
         secondCauseLabel.snp.makeConstraints { make in
             make.centerX.equalTo(allowButton.snp.centerX)
             make.height.equalTo(48)
-            make.width.equalTo(224)
+            make.width.equalTo(226)
             make.top.equalTo(causeLabel.snp.bottom).offset(8)
         }
         
@@ -139,7 +139,7 @@ class AskPermissionsView: UIView {
         skipButton.snp.makeConstraints { make in
             make.centerX.equalTo(allowButton.snp.centerX)
             make.height.equalTo(24)
-            make.width.equalTo(109)
+            make.width.equalTo(130)
             make.bottom.equalTo(allowButton.snp.top).offset(-24)
         }
         

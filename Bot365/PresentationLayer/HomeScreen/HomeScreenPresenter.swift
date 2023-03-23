@@ -71,8 +71,7 @@ class HomeScreenPresenter: IHomeScreenPresenter {
     func getSuggestions() -> [ICellShowable] {
         var dataSource = [
             SuggestionsModels(type: .football),
-            SuggestionsModels(type: .martialsArt),
-            SuggestionsModels(type: .swimming)
+            SuggestionsModels(type: .basketball)
         ]
         
         if !userInfoService.isPremiumActive() {

@@ -15,6 +15,7 @@ target 'Bot365' do
   pod 'IronSourceSDK','7.2.6.0'
   pod 'NVActivityIndicatorView'
   pod 'FSCalendar'
+  pod 'AnchoredBottomSheet', '~> 1.6.2'
   
  
 end

@@ -2,16 +2,7 @@
   "images" : [
     {
       "filename" : "location_on_FILL1_wght400_GRAD0_opsz48 1.png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "3x"
+      "idiom" : "universal"
     }
   ],
   "info" : {

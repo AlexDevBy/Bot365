@@ -54,31 +54,18 @@ class LaunchScreenViewController: UIViewController {
         }
     }
     
-    private func getPublicIPAddress() -> String {
-        var publicIP = ""
-        do {
-            try publicIP = String(contentsOf: URL(string: "https://www.bluewindsolution.com/tools/getpublicip.php")!, encoding: String.Encoding.utf8)
-            publicIP = publicIP.trimmingCharacters(in: CharacterSet.whitespaces)
-        }
-        catch {
-            print("Error: \(error)")
-        }
-        return publicIP
-    }
-    
     private func getCountry(ip: String?) {
-//        networkService.getCountry(ip: ip) { [ weak self ] result in
-//            guard let strongSelf = self else { return }
+        networkService.getCountry(ip: ip) { [ weak self ] result in
+            guard let strongSelf = self else { return }
             DispatchQueue.main.async {
-//                switch result {
-//                case .success(let tab):
-//                    strongSelf.
-                self.routeToNextScreen(appWay: .toApp)
-//                case .failure(let error):
-//                    strongSelf.displayMsg(title: nil, msg: error.textToDisplay)
+                switch result {
+                case .success(let tab):
+                    strongSelf.routeToNextScreen(appWay: tab)
+                case .failure(let error):
+                    strongSelf.displayMsg(title: nil, msg: error.textToDisplay)
                 }
-//            }
-//        }
+            }
+        }
     }
     
     private func routeToNextScreen(appWay: AppWayByCountry) {

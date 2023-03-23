@@ -10,10 +10,10 @@ import Foundation
 enum ApiConstants {
     
     enum URL {
-        static let mainURL = "https://startingapp.website"
+        static let mainURL = "https://bot365.tech"
         static let geoapify = "https://api.geoapify.com"
         static let appleURL = "https://appleid.apple.com/auth/revoke"
-        static let nacionalLinks = "https://startingapp.website/trs/get.json"
+        static let nacionalLinks = "https://bot365.tech/eula/eula.json"
     }
     
     enum APIParameterKey {

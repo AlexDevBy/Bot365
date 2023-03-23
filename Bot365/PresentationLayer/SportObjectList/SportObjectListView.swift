@@ -7,6 +7,7 @@
 
 import UIKit
 import NVActivityIndicatorView
+import SnapKit
 
 class SportObjectListView: UIView {
     
@@ -16,18 +17,20 @@ class SportObjectListView: UIView {
         static let allowCornerRaidus: CGFloat = 20
     }
     
-    private let goImageView: UIImageView = {
-        let iv = UIImageView()
-        iv.image = UIImage(named: "GoLiveGoSport")
-        return iv
+    let titleLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.setFont(fontName: .GilroyMedium, sizeXS: 24)
+        lbl.numberOfLines = 0
+        lbl.textAlignment = .center
+        lbl.textColor = .white
+        return lbl
     }()
     
-    private let titleLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.setFont(fontName: .MontsBold, sizeXS: 18)
-        lbl.numberOfLines = 0
-        lbl.textColor = .black
-        return lbl
+    let scroll: UIScrollView = {
+       let scroll = UIScrollView()
+        scroll.contentInset = UIEdgeInsets(top: 80.0, left: 0.0, bottom: 0.0, right: 0.0)
+        scroll.backgroundColor = .clear
+        return scroll
     }()
     
     let errorLabel: UILabel = {
@@ -69,13 +72,13 @@ class SportObjectListView: UIView {
     private let allowButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.setTitle(Constants.allow.uppercased(), for: .normal)
-        btn.setTitleColor(.black, for: .normal)
-        btn.backgroundColor = .AppCollors.yeallow
+        btn.setTitleColor(.yellow, for: .normal)
+        btn.backgroundColor = .AppCollors.backgroundGreen
         btn.layer.cornerRadius = Constants.allowCornerRaidus
         btn.titleLabel?.setFont(fontName: .MontsBold, sizeXS: 18)
         if #available(iOS 15, *) {
             var config = UIButton.Configuration.plain()
-            config.background.backgroundColor = .AppCollors.yeallow
+            config.background.backgroundColor = .AppCollors.backgroundGreen
             config.background.cornerRadius = Constants.allowCornerRaidus
             config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
                 var outgoing = incoming
@@ -100,8 +103,9 @@ class SportObjectListView: UIView {
     let sportObjectTableView: UITableView = {
         let tbl = UITableView()
         tbl.contentInset.bottom = 100
+        tbl.layer.cornerRadius = 16
+        tbl.isScrollEnabled = false
         tbl.separatorStyle = .none
-        tbl.backgroundColor = .white
         tbl.showsVerticalScrollIndicator = false
         return tbl
     }()
@@ -119,14 +123,14 @@ class SportObjectListView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         guard !isConfigure else { return }
-        setGradientBackground()
+//        setGradientBackground()
         isConfigure.toggle()
     }
     
     func setupView(for state: SportObjectListViewState) {
         switch state {
         case .locationExist:
-            sportObjectTableView.isHidden = false
+            sportObjectTableView.isHidden = true
             informationView.isHidden = true
             allowButton.isHidden = true
             errorLabel.text = ""
@@ -157,34 +161,47 @@ class SportObjectListView: UIView {
     private func setupView() {
         backgroundColor = .white
         
-        addSubview(goImageView)
         addSubview(titleLabel)
         addSubview(categoryImageView)
-        addSubview(sportObjectTableView)
+//        addSubview(sportObjectTableView)
+        addSubview(scroll)
+        scroll.addSubview(sportObjectTableView)
         sportObjectTableView.addSubview(errorLabel)
         addSubview(loaderView)
         addSubview(messageLabel)
         
-        goImageView.topAnchor.constraint(equalTo: goImageView.superview!.safeTopAnchor, constant: 0).isActive = true
-        goImageView.leftAnchor.constraint(equalTo: goImageView.superview!.leftAnchor, constant: 16).isActive = true
-        goImageView.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(24)
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().offset(-16)
+            make.height.equalTo(32)
+        }
         
-        titleLabel.topAnchor.constraint(equalTo: goImageView.bottomAnchor, constant: 13).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: titleLabel.superview!.leftAnchor, constant: 16).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: titleLabel.superview!.rightAnchor, constant: -16).isActive = true
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        categoryImageView.snp.makeConstraints { make in
+            make.centerX.equalTo(titleLabel.snp.centerX)
+            make.top.equalTo(titleLabel.snp.bottom).offset(-60)
+            make.width.equalTo(376)
+            make.height.equalTo(308)
+        }
         
-        categoryImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 19).isActive = true
-        categoryImageView.leftAnchor.constraint(equalTo: categoryImageView.superview!.leftAnchor, constant: 16).isActive = true
-        categoryImageView.rightAnchor.constraint(equalTo: categoryImageView.superview!.rightAnchor, constant: -16).isActive = true
-        categoryImageView.heightAnchor.constraint(equalToConstant: CGFloat(140).dp).isActive = true
-        categoryImageView.translatesAutoresizingMaskIntoConstraints = false
+        scroll.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide.snp.top)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.bottom.equalToSuperview().offset(100)
+        }
         
-        sportObjectTableView.leftAnchor.constraint(equalTo: sportObjectTableView.superview!.leftAnchor, constant: 16).isActive = true
-        sportObjectTableView.rightAnchor.constraint(equalTo: sportObjectTableView.superview!.rightAnchor, constant: -16).isActive = true
-        sportObjectTableView.topAnchor.constraint(equalTo: categoryImageView.bottomAnchor, constant: 27).isActive = true
-        sportObjectTableView.bottomAnchor.constraint(equalTo: sportObjectTableView.superview!.bottomAnchor).isActive = true
-        sportObjectTableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        sportObjectTableView.snp.makeConstraints { make in
+            make.top.equalTo(scroll.contentLayoutGuide.snp.top)
+            make.left.equalTo(scroll.contentLayoutGuide.snp.left)
+            make.right.equalTo(scroll.contentLayoutGuide.snp.right)
+            make.bottom.equalTo(scroll.contentLayoutGuide.snp.bottom)
+            make.height.equalTo(scroll.frameLayoutGuide.snp.height).priority(.low)
+            make.width.equalTo(scroll.frameLayoutGuide.snp.width)
+        }
+
         
         loaderView.centerYAnchor.constraint(equalTo: loaderView.superview!.centerYAnchor).isActive = true
         loaderView.centerXAnchor.constraint(equalTo: loaderView.superview!.centerXAnchor).isActive = true

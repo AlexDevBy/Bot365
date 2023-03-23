@@ -71,7 +71,7 @@ class SettingsPresenter: ISettingsPresenter {
     
     func getDataSource() -> [SettingType] {
         var source: [SettingType] = [
-            SettingType.myTrains,
+//            SettingType.myTrains,
             SettingType.terms,
             SettingType.privacy,
             SettingType.feedback,
@@ -96,13 +96,13 @@ class SettingsPresenter: ISettingsPresenter {
             let urlStr = "https://itunes.apple.com/app/id\(appID)?action=write-review"
             view?.routeToWebSite(urlStr)
         case .feedback:
-            view?.routeToWebSite("https://get-nacional.space/#three")
+            view?.routeToWebSite("https://bot365.tech/#contact")
         case .privacy:
-            view?.routeToWebSite("https://get-nacional.space/privacy.html")
+            view?.routeToWebSite("https://bot365.tech/#privacy")
         case .terms:
-            view?.routeToWebSite("https://get-nacional.space/terms.html")
+            view?.routeToWebSite("https://bot365.tech/#eula ")
         case .restorePurchases:
-            view?.routeToWebSite("https://get-nacional.space/#three")
+            view?.routeToWebSite("https://bot365.tech/#contact ")
         case .deleteAccount:
             deleteAccount()
         }

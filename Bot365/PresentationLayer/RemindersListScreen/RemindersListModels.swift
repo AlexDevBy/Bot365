@@ -37,29 +37,29 @@ enum SportType: String {
     var smallImage: String {
         switch self {
         case .football:
-            return "CFutsal"
+            return "footballCard"
         case .basketball:
-            return "CBasket"
+            return "basketballCard"
         case .volley:
-            return "Cvolei"
+            return "volleyCard"
         case .running:
-            return "CCorrida"
+            return "runningCard"
         case .yoga:
-            return "CYoga"
+            return "yogaCard"
         case .gymnastics:
-            return "CGinastica"
+            return "gymnasticsCard"
         case .fitDance:
-            return "CFitDance"
+            return "fitDanceCard"
         case .swimming:
-            return "CSwimming"
+            return "swimmingCard"
         case .pingPong:
-            return "CPingPong"
+            return "pingpongCard"
         case .martialsArt:
-            return "CArtesMarciais"
+            return "martialCard"
         case .athletics:
-            return "CCalistenia"
+            return "athleticsCard"
         case .ski:
-            return "CSki"
+            return "skiCard"
         case .adds:
             return ""
         }
@@ -68,29 +68,29 @@ enum SportType: String {
     var bigImage: String {
         switch self {
         case .football:
-            return "BigStadium"
+            return "footballBig"
         case .basketball:
-            return "BigStadium"
+            return "basketBig"
         case .volley:
-            return "BigStadium"
+            return "volleyBig"
         case .running:
-            return "BigRunning"
+            return "runningBig"
         case .yoga:
-            return "BigYoga"
+            return "yogaBig"
         case .gymnastics:
-            return "BigYoga"
+            return "gymnasticsBig"
         case .fitDance:
-            return "BigYoga"
+            return "yogaBig"
         case .swimming:
-            return "BigSwimming"
+            return "swimmingBig"
         case .pingPong:
-            return "BigTennis"
+            return "pingpongBig"
         case .martialsArt:
-            return "BigTennis"
+            return "martialBig"
         case .athletics:
-            return "BigTennis"
+            return "athleticsBig"
         case .ski:
-            return "BigSki"
+            return "skiBig"
         case .adds:
             return ""
         }
@@ -99,9 +99,9 @@ enum SportType: String {
     var longImage: String {
         switch self {
         case .football:
-            return "LongFootball"
+            return "footballLong"
         case .basketball:
-            return "LongBasketball"
+            return "basketLong"
         case .volley:
             return "LongVolei"
         case .running:
@@ -123,24 +123,67 @@ enum SportType: String {
         case .ski:
             return "LongSki"
         case .adds:
-            return "AddLong"
+            return "addMain"
         }
     }
     
     var backgroundColor: UIColor {
         switch self {
-        case .football, .basketball, .volley:
-            return UIColor(netHex: 0x5B9B5D)
+        case .football:
+            return UIColor(netHex: 0x214929)
+        case .basketball:
+            return UIColor(netHex: 0x944E1C)
+        case .volley:
+            return UIColor(netHex: 0xD0AD31)
         case .running:
-            return UIColor(netHex: 0x9B5B5B)
-        case .yoga, .fitDance, .gymnastics:
-            return UIColor(netHex: 0x9B5B8D)
+            return UIColor(netHex: 0xD7423A)
+        case .yoga:
+            return UIColor(netHex: 0xFF7CA6)
+        case .gymnastics:
+            return UIColor(netHex: 0x638673)
+        case .fitDance:
+            return UIColor(netHex: 0xD93F77)
         case .swimming:
             return UIColor(netHex: 0x5B689B)
-        case .pingPong, .martialsArt, .athletics:
-            return UIColor(netHex: 0x5B9B97)
+        case .pingPong:
+            return UIColor(netHex: 0x0D276A)
+        case .martialsArt:
+            return UIColor(netHex: 0x6C2424)
+        case .athletics:
+            return UIColor(netHex: 0x77672D)
         case .ski:
-            return UIColor(netHex: 0x929292)
+            return UIColor(netHex: 0x2E2E2E)
+        case .adds:
+            return .white
+        }
+    }
+    
+    var backgroundColor2: UIColor {
+        switch self {
+        case .football:
+            return UIColor(netHex: 0x091F07)
+        case .basketball:
+            return UIColor(netHex: 0xC36725)
+        case .volley:
+            return UIColor(netHex: 0xEAC234)
+        case .running:
+            return UIColor(netHex: 0x932722)
+        case .yoga:
+            return UIColor(netHex: 0xEC8FC7)
+        case .gymnastics:
+            return UIColor(netHex: 0x1F1F1F)
+        case .fitDance:
+            return UIColor(netHex: 0xD85E91)
+        case .swimming:
+            return UIColor(netHex: 0x45757C)
+        case .pingPong:
+            return UIColor(netHex: 0x425781)
+        case .martialsArt:
+            return UIColor(netHex: 0x8F3030)
+        case .athletics:
+            return UIColor(netHex: 0x1F1F1F)
+        case .ski:
+            return UIColor(netHex: 0x767676)
         case .adds:
             return .white
         }
@@ -148,15 +191,27 @@ enum SportType: String {
     
     var sportObjectListImage: String {
         switch self {
-        case .football, .basketball, .volley:
+        case .football:
+            return "Stadium"
+        case .basketball:
+            return "Stadium"
+        case .volley:
             return "Stadium"
         case .running:
             return "RunGirl"
-        case .yoga, .fitDance, .gymnastics:
+        case .yoga:
+            return "SitGirl"
+        case .gymnastics:
+            return "SitGirl"
+        case .fitDance:
             return "SitGirl"
         case .swimming:
             return "SwimMan"
-        case .pingPong, .martialsArt, .athletics:
+        case .pingPong:
+            return "Table"
+        case .athletics:
+            return "Table"
+        case .martialsArt:
             return "Table"
         case .ski:
             return "SkiObject"
@@ -181,6 +236,37 @@ enum SportType: String {
             return [.ski]
         case .adds:
             return []
+        }
+    }
+    
+    var title: String {
+        switch self {
+        case .football:
+            return "Football"
+        case .basketball:
+            return "Basketball"
+        case .volley:
+            return "Volley"
+        case .running:
+            return "Running"
+        case .yoga:
+            return "Yoga"
+        case .gymnastics:
+            return "Gymnastics"
+        case .fitDance:
+            return "Fit Dance"
+        case .swimming:
+            return "Swimming"
+        case .pingPong:
+            return "Ping Pong"
+        case .martialsArt:
+            return "Martial Art"
+        case .athletics:
+            return "Athletics"
+        case .ski:
+            return "Ski"
+        case .adds:
+            return ""
         }
     }
     

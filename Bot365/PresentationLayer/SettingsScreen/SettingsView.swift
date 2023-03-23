@@ -37,7 +37,7 @@ class Settingsview: UIView {
         addSubview(tableView)
         
         tableView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(52)
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(24)
             make.left.equalToSuperview().offset(16)
             make.right.equalToSuperview().offset(-16)
             make.bottom.equalToSuperview()

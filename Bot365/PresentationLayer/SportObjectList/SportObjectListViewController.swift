@@ -6,20 +6,29 @@
 //
 
 import UIKit
+import AnchoredBottomSheet
 
-class SportObjectListViewController: UIViewController {
+class SportObjectListViewController: UIViewController, BottomSheetViewControllerDelegate, UIScrollViewDelegate  {
+    func didDismiss() {
+        print("click")
+    }
+    
     
     private let contentView = SportObjectListView()
+    private let tableViewSheet = TableViewSheetView()
     private let presenter: ISportObjectListPresenter
     private var sportObjectSource: [SportObject] = []
     private let presentationAssembly: IPresentationAssembly
     private var afterSeeingVideoCompletion: (() -> Void)?
     private let sportType: SportType
+    
     private var viewState: SportObjectListViewState = .initial {
         didSet {
             contentView.setupView(for: viewState)
         }
     }
+    let bottomView = TableViewSheetView()
+    
     
     init(
         presenter: ISportObjectListPresenter,
@@ -53,14 +62,35 @@ class SportObjectListViewController: UIViewController {
         addGoBackButton()
     }
     
+    func showTableView() {
+        
+        let detailViewController = TableViewSheetController()
+        let nav = UINavigationController(rootViewController: detailViewController)
+        
+        nav.modalPresentationStyle = .pageSheet
+        nav.isModalInPresentation = true // add
+        
+        if let sheet = nav.sheetPresentationController {
+            sheet.detents = [.medium(), .large()]
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.largestUndimmedDetentIdentifier = .medium
+        }
+        present(nav, animated: true, completion: nil)
+    }
+    
     private func setupView() {
-        contentView.categoryImageView.image = UIImage(named: sportType.longImage)
+        contentView.categoryImageView.image = UIImage(named: sportType.bigImage)
+        contentView.titleLabel.text = sportType.title
+        contentView.backgroundColor = sportType.backgroundColor
+        contentView.sportObjectTableView.backgroundColor = sportType.backgroundColor2
         contentView.sportObjectTableView.register(SportObjectTableViewCell.self, forCellReuseIdentifier: SportObjectTableViewCell.reuseID)
         contentView.sportObjectTableView.delegate = self
         contentView.sportObjectTableView.dataSource = self
         presenter.checkLocation()
         IronSource.setRewardedVideoDelegate(self)
     }
+    
+
     
     @objc
     func allowLocationButtonTapped() {
@@ -128,13 +158,22 @@ extension SportObjectListViewController: ISportObjectListView {
     
     func routeToCreateReminder(sportObject: SportObject) {
         let vc = presentationAssembly.createReminderScreen(sportObject: sportObject)
+//
+//        if let sheet = vc.sheetPresentationController {
+//            sheet.preferredCornerRadius = 16.0
+//            sheet.detents = [.large(), .medium()]
+//            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+//            sheet.prefersGrabberVisible = true
+//        }
+//        navigationController?.present(vc, animated: true)
         navigationController?.pushViewController(vc, animated: true)
     }
  
     func showObjects(sportsObjects: [SportObject]) {
         contentView.showLoader(toggle: false)
+        contentView.sportObjectTableView.isHidden = false
         sportObjectSource = sportsObjects
-        contentView.sportObjectTableView.reloadSections(IndexSet([0]), with: .automatic)
+        contentView.sportObjectTableView.reloadData()
         guard sportsObjects.isEmpty else { return }
         contentView.errorLabel.text = "Sorry, there are no such places near you"
     }
@@ -159,6 +198,7 @@ extension SportObjectListViewController: UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let sportObject = sportObjectSource[safe: indexPath.row] else { return }
         presenter.sportObjectWasSelect(sportObject: sportObject)
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -170,6 +210,10 @@ extension SportObjectListViewController: UITableViewDataSource, UITableViewDeleg
         cell.object = sportObjectSource[safe: indexPath.row]
         cell.selectionStyle = .none
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+       return "Available arenas"
     }
     
 }

@@ -34,7 +34,7 @@ enum SettingType: CaseIterable {
         case .restorePurchases:
             return "Restore purchase"
         case .deleteAccount:
-            return "Delete"
+            return "Delete account"
         }
     }
     
@@ -53,9 +53,30 @@ enum SettingType: CaseIterable {
         case .terms:
             return UIImage(named: "terms")!
         case .restorePurchases:
-            return UIImage(named: "premium")!
+            return UIImage(named: "restore")!
         case .deleteAccount:
             return UIImage(named: "delete")!
+        }
+    }
+    
+    var imageArrow: UIImage {
+        switch self {
+        case .myTrains:
+            return UIImage(named: "arrow")!
+        case .turnOffAdds:
+            return UIImage(named: "arrow")!
+        case .rateUs:
+            return UIImage(named: "arrow")!
+        case .feedback:
+            return UIImage(named: "arrow")!
+        case .privacy:
+            return UIImage(named: "arrow")!
+        case .terms:
+            return UIImage(named: "arrow")!
+        case .restorePurchases:
+            return UIImage(named: "arrow")!
+        case .deleteAccount:
+            return UIImage(named: "arrow")!
         }
     }
 }

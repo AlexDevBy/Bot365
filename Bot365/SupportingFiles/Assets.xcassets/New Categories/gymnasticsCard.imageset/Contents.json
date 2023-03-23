@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "gymnasticsCard.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

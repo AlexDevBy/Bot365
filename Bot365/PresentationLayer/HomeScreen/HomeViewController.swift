@@ -147,6 +147,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         case contentView.categoriesCollectionView:
             guard let sportType = categoriesSource[safe: indexPath.row]?.type else { return }
             let vc = presentationAssembly.sportObjectList(sportType: sportType)
+            
             navigationController?.pushViewController(vc, animated: true)
         case contentView.suggestionCollectionView:
             guard let type = (suggestionsSource[safe: indexPath.row] as? SuggestionsModels)?.type else { return }
@@ -168,7 +169,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         case contentView.suggestionCollectionView:
             return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
         case contentView.categoriesCollectionView:
-            return CGSize(width: collectionView.frame.width/2 - HomeScreenView.Constants.interItemSpacing, height: 100)
+            return CGSize(width: collectionView.frame.width/2 - HomeScreenView.Constants.interItemSpacing, height: collectionView.frame.width/2 - HomeScreenView.Constants.interItemSpacing)
         default:
             return CGSize.zero
         }

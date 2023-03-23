@@ -11,22 +11,17 @@ import SnapKit
 class HomeScreenView: UIView {
     
     enum Constants {
-        static let interItemSpacing: CGFloat = 15
+        static let interItemSpacing: CGFloat = 8
     }
     
     private let suggestionTitleLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "Suggestions"
         lbl.textColor = .black
-        lbl.setFont(fontName: .MontsBold, sizeXS: 18)
+        lbl.setFont(fontName: .GilroyMedium, sizeXS: 16)
         return lbl
     }()
     
-    private let goImageView: UIImageView = {
-        let iv = UIImageView()
-        iv.image = UIImage(named: "GoLiveGoSport")
-        return iv
-    }()
     
     let pageControl: UIPageControl = {
         let pageControl = UIPageControl()
@@ -40,7 +35,7 @@ class HomeScreenView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: CGFloat(140).dp)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: CGFloat(164).dp)
         return layout
     }()
     
@@ -60,7 +55,7 @@ class HomeScreenView: UIView {
     private let categoriesTitleLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "Find in categories"
-        lbl.setFont(fontName: .MontsBold, sizeXS: 18)
+        lbl.setFont(fontName: .GilroyMedium , sizeXS: 16)
         lbl.textColor = .black
         return lbl
     }()
@@ -74,8 +69,8 @@ class HomeScreenView: UIView {
     let categoriesCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = Constants.interItemSpacing
-        layout.minimumInteritemSpacing = 10
+        layout.minimumLineSpacing = 16
+        layout.minimumInteritemSpacing = 0
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.showsVerticalScrollIndicator = false
         cv.showsHorizontalScrollIndicator = false
@@ -135,8 +130,8 @@ class HomeScreenView: UIView {
         
         suggestionCollectionView.snp.makeConstraints { make in
             make.top.equalTo(suggestionTitleLabel.snp.bottom).offset(16)
-            make.left.equalToSuperview().offset(16)
-            make.right.equalToSuperview().inset(16)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
             make.height.equalTo(112)
         }
 
@@ -147,15 +142,18 @@ class HomeScreenView: UIView {
         pageControl.topAnchor.constraint(equalTo: suggestionCollectionView.bottomAnchor, constant: 5).isActive = true
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         
-        categoriesTitleLabel.topAnchor.constraint(equalTo: pageControl.bottomAnchor, constant: 20).isActive = true
-        categoriesTitleLabel.leftAnchor.constraint(equalTo: categoriesTitleLabel.superview!.leftAnchor, constant: 16).isActive = true
-        categoriesTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        categoriesTitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(pageControl.snp.bottom).offset(20)
+            make.left.equalToSuperview().offset(16)
+        }
         
-        categoriesCollectionView.topAnchor.constraint(equalTo: categoriesTitleLabel.bottomAnchor, constant: 0).isActive = true
-        categoriesCollectionView.leftAnchor.constraint(equalTo: categoriesCollectionView.superview!.leftAnchor, constant: 16).isActive = true
-        categoriesCollectionView.rightAnchor.constraint(equalTo: categoriesCollectionView.superview!.rightAnchor, constant: -16).isActive = true
-        categoriesCollectionView.bottomAnchor.constraint(equalTo: categoriesCollectionView.superview!.bottomAnchor).isActive = true
-        categoriesCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        categoriesCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(categoriesTitleLabel.snp.bottom)
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().offset(-16)
+            make.bottom.equalToSuperview()
+        }
+
         
         categoriesMiddleView.topAnchor.constraint(equalTo: categoriesTitleLabel.bottomAnchor).isActive = true
         categoriesMiddleView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true

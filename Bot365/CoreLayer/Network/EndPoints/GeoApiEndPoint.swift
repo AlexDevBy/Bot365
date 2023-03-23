@@ -18,7 +18,7 @@ protocol ApiConfiguration: URLRequestConvertible {
 enum GeoApiEndPoint: ApiConfiguration {
     
     private enum Constants {
-        static let GeoApifyKey = "b0ab2cf89ec34c9fb4c841ccd9ba3df6"
+        static let GeoApifyKey = "67f0ebfa5ad1461ca196f3ecec3c1a2b"
     }
     case search(lat: Double, long: Double, categories: String)
     

@@ -6,14 +6,10 @@
 //
 
 import UIKit
+import SnapKit
 
 class RemindersListView: UIView {
     
-    private let goImageView: UIImageView = {
-        let iv = UIImageView()
-        iv.image = UIImage(named: "GoLiveGoSport")
-        return iv
-    }()
     
     private let informationView: InformationView = {
         let view = InformationView()
@@ -48,25 +44,21 @@ class RemindersListView: UIView {
     
     private func setupView() {
         backgroundColor = .white
-        addSubview(goImageView)
         addSubview(tableView)
         addSubview(informationView)
         
-        goImageView.topAnchor.constraint(equalTo: goImageView.superview!.safeTopAnchor, constant: 40).isActive = true
-        goImageView.leftAnchor.constraint(equalTo: goImageView.superview!.leftAnchor, constant: 16).isActive = true
-        goImageView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(64)
+            make.left.equalTo(safeAreaLayoutGuide.snp.left).offset(16)
+            make.right.equalTo(safeAreaLayoutGuide.snp.right).offset(-16)
+            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
+        }
         
-        // TableView
-        tableView.topAnchor.constraint(equalTo: goImageView.bottomAnchor, constant: 13).isActive = true
-        tableView.leftAnchor.constraint(equalTo: tableView.superview!.leftAnchor, constant: 16).isActive = true
-        tableView.rightAnchor.constraint(equalTo: tableView.superview!.rightAnchor, constant: -16).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: tableView.superview!.bottomAnchor, constant: 0).isActive = true
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        
-        informationView.topAnchor.constraint(equalTo: goImageView.bottomAnchor, constant: 24).isActive = true
-        informationView.leftAnchor.constraint(equalTo: informationView.superview!.leftAnchor, constant: 13).isActive = true
-        informationView.rightAnchor.constraint(equalTo: informationView.superview!.rightAnchor, constant: -13).isActive = true
-        informationView.heightAnchor.constraint(equalToConstant: CGFloat(75)).isActive = true
-        informationView.translatesAutoresizingMaskIntoConstraints = false
+        informationView.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(24)
+            make.left.equalTo(safeAreaLayoutGuide.snp.left).offset(16)
+            make.right.equalTo(safeAreaLayoutGuide.snp.right).offset(-16)
+            make.height.equalTo(75)
+        }
     }
 }

@@ -29,11 +29,17 @@ class SettingsTableViewCell: UITableViewCell, ReusableView {
         return lbl
     }()
     
+    let arrowImage: UIImageView = {
+        let img = UIImageView()
+        return img
+    }()
+    
     var settingsModel: SettingType? {
         didSet {
             guard let model = settingsModel else { return }
             titleLabel.text = model.title
             titleImage.image = model.image
+            arrowImage.image = model.imageArrow
         }
     }
 
@@ -51,6 +57,7 @@ class SettingsTableViewCell: UITableViewCell, ReusableView {
         contentView.addSubview(settingsBackgroundView)
         settingsBackgroundView.addSubview(titleImage)
         settingsBackgroundView.addSubview(titleLabel)
+        settingsBackgroundView.addSubview(arrowImage)
         
         settingsBackgroundView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
@@ -69,6 +76,13 @@ class SettingsTableViewCell: UITableViewCell, ReusableView {
             make.top.equalTo(settingsBackgroundView.snp.top).offset(12)
             make.left.equalTo(settingsBackgroundView.snp.left).offset(40)
             make.bottom.equalTo(settingsBackgroundView.snp.bottom).offset(-12)
+        }
+        
+        arrowImage.snp.makeConstraints { make in
+            make.top.equalTo(settingsBackgroundView.snp.top).offset(12)
+            make.right.equalTo(settingsBackgroundView.snp.right).offset(-16)
+            make.bottom.equalTo(settingsBackgroundView.snp.bottom).offset(-12)
+            make.width.equalTo(24)
         }
     }
     
