@@ -192,29 +192,29 @@ enum SportType: String {
     var sportObjectListImage: String {
         switch self {
         case .football:
-            return "Stadium"
+            return "footballArena"
         case .basketball:
-            return "Stadium"
+            return "basketArena"
         case .volley:
-            return "Stadium"
+            return "volleyArena"
         case .running:
-            return "RunGirl"
+            return "runningArena"
         case .yoga:
-            return "SitGirl"
+            return "yogaArena"
         case .gymnastics:
-            return "SitGirl"
+            return "gymnasticsArena"
         case .fitDance:
             return "SitGirl"
         case .swimming:
-            return "SwimMan"
+            return "swimmingArena"
         case .pingPong:
-            return "Table"
+            return "pingpongArena"
         case .athletics:
-            return "Table"
+            return "athleticsArena"
         case .martialsArt:
-            return "Table"
+            return "martialArena"
         case .ski:
-            return "SkiObject"
+            return "skiArena"
         case .adds:
             return ""
         }

@@ -12,7 +12,7 @@ class SportObjectTableViewCell: UITableViewCell, ReusableView {
 
     private let titleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.setFont(fontName: .MontsBold, sizeXS: 14)
+        lbl.setFont(fontName: .GilroyMedium, sizeXS: 16)
         lbl.textColor = .white
         lbl.numberOfLines = 0
         lbl.lineBreakMode = .byWordWrapping
@@ -21,7 +21,7 @@ class SportObjectTableViewCell: UITableViewCell, ReusableView {
     
     private let subtitleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.setFont(fontName: .MontsRegular, sizeXS: 10)
+        lbl.setFont(fontName: .MontsRegular, sizeXS: 12)
         lbl.textColor = .white
         lbl.lineBreakMode = .byWordWrapping
         lbl.numberOfLines = 0

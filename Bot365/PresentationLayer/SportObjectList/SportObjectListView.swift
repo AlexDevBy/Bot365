@@ -28,8 +28,9 @@ class SportObjectListView: UIView {
     
     let scroll: UIScrollView = {
        let scroll = UIScrollView()
-        scroll.contentInset = UIEdgeInsets(top: 80.0, left: 0.0, bottom: 0.0, right: 0.0)
+        scroll.contentInset = UIEdgeInsets(top: 200.0, left: 0.0, bottom: 0.0, right: 0.0)
         scroll.backgroundColor = .clear
+        scroll.showsVerticalScrollIndicator = false
         return scroll
     }()
     
@@ -102,9 +103,8 @@ class SportObjectListView: UIView {
     
     let sportObjectTableView: UITableView = {
         let tbl = UITableView()
-        tbl.contentInset.bottom = 100
+        tbl.contentInset.bottom = 600
         tbl.layer.cornerRadius = 16
-        tbl.isScrollEnabled = false
         tbl.separatorStyle = .none
         tbl.showsVerticalScrollIndicator = false
         return tbl
@@ -188,7 +188,7 @@ class SportObjectListView: UIView {
             make.top.equalTo(safeAreaLayoutGuide.snp.top)
             make.left.equalToSuperview()
             make.right.equalToSuperview()
-            make.bottom.equalToSuperview().offset(100)
+            make.bottom.equalToSuperview().offset(400)
         }
         
         
@@ -235,20 +235,5 @@ class SportObjectListView: UIView {
         allowButton.centerXAnchor.constraint(equalTo: allowButton.superview!.centerXAnchor).isActive = true
         allowButton.translatesAutoresizingMaskIntoConstraints = false
     }
-    
-    func setGradientBackground() {
-        let colorTop: CGColor = UIColor.white.withAlphaComponent(0).cgColor
-        let colorBottom: CGColor = UIColor.white.cgColor
-        let newLayer = CAGradientLayer()
-        let fradientHeight: CGFloat = CGFloat(182).dp
-        newLayer.colors = [colorTop, colorBottom]
-        newLayer.locations = [0.5, 1.0]
-        newLayer.frame = CGRect(x: 0,
-                                y: UIScreen.main.bounds.height - fradientHeight,
-                                width: UIScreen.main.bounds.width,
-                                height: fradientHeight)
-        gradientLayer = newLayer
-        layer.addSublayer(gradientLayer)
-    }
-    
+
 }

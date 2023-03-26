@@ -100,9 +100,9 @@ class SettingsPresenter: ISettingsPresenter {
         case .privacy:
             view?.routeToWebSite("https://bot365.tech/#privacy")
         case .terms:
-            view?.routeToWebSite("https://bot365.tech/#eula ")
+            view?.routeToWebSite("https://bot365.tech/#eula")
         case .restorePurchases:
-            view?.routeToWebSite("https://bot365.tech/#contact ")
+            view?.routeToWebSite("https://bot365.tech/#contact")
         case .deleteAccount:
             deleteAccount()
         }

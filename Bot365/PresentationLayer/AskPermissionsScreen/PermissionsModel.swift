@@ -20,6 +20,15 @@ enum PermissionsType {
         }
     }
     
+    var progress: Float {
+        switch self {
+        case .push:
+            return 0.33
+        case .location:
+            return 1.0
+        }
+    }
+    
     var skip: String {
         switch self {
         case .push:
@@ -43,7 +52,7 @@ enum PermissionsType {
         case .push:
             return "Don’t miss out exclusive deals and new updates"
         case .location:
-            return "We need your location access\nto find arenas close to you"
+            return "We need your location access to find arenas close to you"
         }
     }
 }

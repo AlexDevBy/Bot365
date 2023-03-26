@@ -10,25 +10,25 @@ import UIKit
 class InformationView: UIView {
     private let titleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.setFont(fontName: .MontsBlack, sizeXS: 14)
-        lbl.textColor = .AppCollors.darkBlue
+        lbl.setFont(fontName: .MontsRegular, sizeXS: 24)
+        lbl.textColor = .AppCollors.backgroundGreen
+        lbl.textAlignment = .center
         lbl.numberOfLines = 0
         return lbl
     }()
     
     private let subtitleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.setFont(fontName: .MontsRegular, sizeXS: 10)
-        lbl.textColor = .AppCollors.darkBlue
+        lbl.setFont(fontName: .MontsRegular, sizeXS: 14)
+        lbl.textColor = .AppCollors.backgroundGreen
+        lbl.textAlignment = .center
         lbl.numberOfLines = 0
         return lbl
     }()
     
     init() {
         super.init(frame: CGRect.zero)
-        layer.cornerRadius = 20
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.AppCollors.yeallow.cgColor
+
         setupView()
     }
     

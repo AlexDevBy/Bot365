@@ -8,7 +8,7 @@
 import UIKit
 import AnchoredBottomSheet
 
-class SportObjectListViewController: UIViewController, BottomSheetViewControllerDelegate, UIScrollViewDelegate  {
+class SportObjectListViewController: UIViewController, BottomSheetViewControllerDelegate  {
     func didDismiss() {
         print("click")
     }
@@ -21,6 +21,9 @@ class SportObjectListViewController: UIViewController, BottomSheetViewController
     private let presentationAssembly: IPresentationAssembly
     private var afterSeeingVideoCompletion: (() -> Void)?
     private let sportType: SportType
+    
+//    weak var tableHeight: NSLayoutConstraint!
+    
     
     private var viewState: SportObjectListViewState = .initial {
         didSet {
@@ -54,6 +57,13 @@ class SportObjectListViewController: UIViewController, BottomSheetViewController
         super.viewDidLoad()
         contentView.showLoader(toggle: true)
         setupView()
+        
+//        tableHeight.constant = self.contentView.frame.height-64
+//        contentView.sportObjectTableView.isScrollEnabled = false
+//         //no need to write following if checked in storyboard
+//        contentView.scroll.bounces = false
+//        contentView.sportObjectTableView.bounces = true
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,9 +96,12 @@ class SportObjectListViewController: UIViewController, BottomSheetViewController
         contentView.sportObjectTableView.register(SportObjectTableViewCell.self, forCellReuseIdentifier: SportObjectTableViewCell.reuseID)
         contentView.sportObjectTableView.delegate = self
         contentView.sportObjectTableView.dataSource = self
+        contentView.scroll.delegate = self
         presenter.checkLocation()
         IronSource.setRewardedVideoDelegate(self)
     }
+    
+    
     
 
     
@@ -159,14 +172,14 @@ extension SportObjectListViewController: ISportObjectListView {
     func routeToCreateReminder(sportObject: SportObject) {
         let vc = presentationAssembly.createReminderScreen(sportObject: sportObject)
 //
-//        if let sheet = vc.sheetPresentationController {
-//            sheet.preferredCornerRadius = 16.0
-//            sheet.detents = [.large(), .medium()]
-//            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-//            sheet.prefersGrabberVisible = true
-//        }
-//        navigationController?.present(vc, animated: true)
-        navigationController?.pushViewController(vc, animated: true)
+        if let sheet = vc.sheetPresentationController {
+            sheet.preferredCornerRadius = 16.0
+            sheet.detents = [.large(), .medium()]
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.prefersGrabberVisible = true
+        }
+        navigationController?.present(vc, animated: true)
+//        navigationController?.pushViewController(vc, animated: true)
     }
  
     func showObjects(sportsObjects: [SportObject]) {
@@ -190,10 +203,14 @@ extension SportObjectListViewController: ISportObjectListView {
             viewState = .noLocation
         }
     }
+    
+    func connected(sender: UIButton!) {
+        
+    }
 }
 
 // MARK: - UITableView methods
-extension SportObjectListViewController: UITableViewDataSource, UITableViewDelegate {
+extension SportObjectListViewController: UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let sportObject = sportObjectSource[safe: indexPath.row] else { return }
@@ -208,12 +225,77 @@ extension SportObjectListViewController: UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SportObjectTableViewCell.reuseID) as! SportObjectTableViewCell
         cell.object = sportObjectSource[safe: indexPath.row]
+        
+        guard let sportObject = sportObjectSource[safe: indexPath.row] else { return cell }
+        cell.reserveButton.target(forAction: "connected", withSender: self)
+        
         cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-       return "Available arenas"
+        return "Available arenas"
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        if scrollView == self.contentView.scroll {
+//            contentView.sportObjectTableView.isScrollEnabled = (self.contentView.scroll.contentOffset.y >= 200)
+//        }
+//
+//        if scrollView == self.contentView.sportObjectTableView {
+//            contentView.sportObjectTableView.isScrollEnabled = (contentView.sportObjectTableView.contentOffset.y > 0)
+//        }
+        
+        if self.contentView.scroll.bounds.intersects(self.view.frame) == true {
+            print("contentView.scroll.bounds.intersects(self.view.frame) == true")
+         //the UIView is within frame, use the UIScrollView's scrolling.
+
+            print(self.contentView.sportObjectTableView.contentOffset.y)
+            if self.contentView.sportObjectTableView.contentOffset.y == 65.0 {
+                //tableViews content is at the top of the tableView.
+
+                self.contentView.sportObjectTableView.isUserInteractionEnabled = false
+                self.contentView.sportObjectTableView.resignFirstResponder()
+            print("using scrollView scroll")
+
+            } else {
+
+                //UIView is in frame, but the tableView still has more content to scroll before resigning its scrolling over to ScrollView.
+
+                self.contentView.sportObjectTableView .isUserInteractionEnabled = true
+                self.contentView.scroll.resignFirstResponder()
+                print("using tableView scroll")
+            }
+
+        } else {
+            print("contentView.scroll.bounds.intersects(self.view.frame) == false")
+
+            //UIView is not in frame. Use tableViews scroll.
+
+            self.contentView.sportObjectTableView.isUserInteractionEnabled = true
+            self.contentView.scroll.resignFirstResponder()
+            print("using tableView scroll")
+
+        }
+        
+//        print(self.contentView.sportObjectTableView.contentOffset.y)
+//
+//        if self.contentView.sportObjectTableView.contentOffset.y > 65.0 {
+//            self.contentView.scroll.resignFirstResponder()
+//            self.contentView.sportObjectTableView.isScrollEnabled = false
+//            self.contentView.scroll.isScrollEnabled = true
+//        } else {
+//            self.contentView.sportObjectTableView.isScrollEnabled = true
+//            self.contentView.scroll.isScrollEnabled = false
+//        }
+        
+//        if scrollView.bounds.contains(contentView.sportObjectTableView.tableHeaderView!.frame) {
+//            self.contentView.sportObjectTableView.isScrollEnabled = true
+//              }
+//
+//              if scrollView == self.contentView.sportObjectTableView {
+//                  self.contentView.sportObjectTableView.isScrollEnabled = (self.contentView.sportObjectTableView.contentOffset.y > 0)
+//              }
+        
+    }
 }

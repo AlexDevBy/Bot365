@@ -13,7 +13,7 @@ class RemindersListView: UIView {
     
     private let informationView: InformationView = {
         let view = InformationView()
-        view.setupView(title: "You don’t have reminders yet", subtitle: "Please, add them first")
+        view.setupView(title: "No reservations", subtitle: "You don’t have reservations yet")
         view.alpha = 0
         return view
     }()

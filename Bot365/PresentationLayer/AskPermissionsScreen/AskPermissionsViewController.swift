@@ -26,6 +26,7 @@ class AskPermissionsViewController: UIViewController, DeviceLocationServiceDeleg
         self.presentationAssembly = presentationAssembly
         self.contentView.causeLabel.text = type.title
         self.contentView.pushIconView.image = type.image
+        self.contentView.progressView.progress = type.progress
         self.contentView.skipButton.setTitle(type.skip, for: .normal)
         self.contentView.secondCauseLabel.text = type.secondTitle
         self.permissionsType = type

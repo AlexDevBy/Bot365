@@ -17,13 +17,13 @@ class WebViewViewController: UIViewController {
     
     private let bottomView: UIView = {
         let view = UIView()
-        view.backgroundColor = .AppCollors.backgroundBlue
+        view.backgroundColor = .AppCollors.backgroundGreen
         return view
     }()
     private let loaderBackgroundView: UIView = {
         let view = UIView()
         view.isHidden = true
-        view.backgroundColor = .white
+        view.backgroundColor = .AppCollors.backgroundGreen
         view.layer.cornerRadius = 10
         view.dropShadow()
         return view
@@ -35,7 +35,7 @@ class WebViewViewController: UIViewController {
                                                       width: CGFloat(40).dp,
                                                       height: CGFloat(40).dp),
                                         type: NVActivityIndicatorType.circleStrokeSpin)
-        v.color = UIColor.AppCollors.backgroundBlue
+        v.color = UIColor.AppCollors.backgroundGreen
         v.layer.zPosition = 100
         return v
     }()
@@ -70,8 +70,8 @@ class WebViewViewController: UIViewController {
     }
     
     private func setupView() {
-        view.backgroundColor = .white
-        navigationController?.navigationBar.barTintColor = UIColor.AppCollors.backgroundBlue
+        view.backgroundColor = .AppCollors.backgroundGreen
+        navigationController?.navigationBar.barTintColor = UIColor.AppCollors.backgroundGreen
         webView.navigationDelegate = self
         view.addSubview(webView)
         view.addSubview(bottomView)
@@ -91,7 +91,7 @@ class WebViewViewController: UIViewController {
             button.setImage(UIImage(named: "ArrowLeft")?.withRenderingMode(.alwaysOriginal), for: .normal)
             button.setTitle("Back", for: .normal)
             button.sizeToFit()
-            button.tintColor = .AppCollors.backgroundBlue
+            button.tintColor = .AppCollors.backgroundGreen
             navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
             button.addTarget(self, action: #selector(goBack), for: .touchUpInside)
         } else {

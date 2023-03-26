@@ -12,8 +12,8 @@ class EnterView: UIView {
 
     private enum Constants {
         static let appleSignIn: String = "Sign in with Apple"
-        static let termsAndConditions: String = "Agree on\(Constants.terms)"
-        static let cornerRadius: CGFloat = 20
+        static let termsAndConditions: String = "Agree on \(Constants.terms)"
+        static let cornerRadius: CGFloat = 16
         static let allowCornerRaidus: CGFloat = 20
         static let terms: String = "Terms & Conditions"
         static let privacy: String = "Privacy Policy"
@@ -22,6 +22,14 @@ class EnterView: UIView {
     }
     
     var signInHandler: (() -> Void)?
+    
+    let progressView: UIProgressView = {
+        let view = UIProgressView(progressViewStyle: .default)
+        view.progress = 0.66
+        view.progressTintColor = .AppCollors.backgroundGreen
+        view.sizeToFit()
+        return view
+    }()
     
     let ellipseView: UIImageView = {
         let view = UIImageView()
@@ -47,7 +55,7 @@ class EnterView: UIView {
     
     let secondCauseLabel: UILabel = {
         let lbl = UILabel()
-        lbl.textColor = .black
+        lbl.textColor = .systemGray
         lbl.text = "Easily connect with one tap via your Apple account for quick, secure access to our app."
         lbl.textAlignment = .center
         lbl.numberOfLines = 0
@@ -58,17 +66,18 @@ class EnterView: UIView {
     
     private let signInButton: UIButton = {
         let btn = UIButton(type: .system)
+        btn.addTarget(self, action: #selector(signInTapped), for: .touchUpInside)
         btn.setTitle(Constants.appleSignIn, for: .normal)
         btn.tintColor = .AppCollors.backgroundGreen
-        btn.titleLabel!.setFont(fontName: .MontsBold, sizeXS: 18)
+        btn.titleLabel!.setFont(fontName: .GilroyMedium, sizeXS: 16)
         if #available(iOS 15, *) {
             var config = UIButton.Configuration.plain()
             config.imagePadding = 10
             config.background.backgroundColor = .AppCollors.backgroundGreen
-            config.background.cornerRadius = 25
+            config.background.cornerRadius = 16
             config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
                 var outgoing = incoming
-                outgoing.font = UIFont(font: .MontsBold, size: 18)
+                outgoing.font = UIFont(font: .GilroyMedium, size: 16)
                 return outgoing
             }
             btn.configuration = config
@@ -92,6 +101,7 @@ class EnterView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -99,27 +109,37 @@ class EnterView: UIView {
     }
     
     func prepareAttributesForTextView() {
-        let text = (termsAndPolicyTextView.text ?? "") as NSString
+//        let text = (termsAndPolicyTextView.text ?? "Agree on Terms & Conditions") as NSString
+        let text = "Agree on Terms Conditions" as NSString
         termsAndPolicyTextView.font = UIFont(font: .GilroyMedium, size: 16)
         let attributedString = termsAndPolicyTextView.addHyperLinksToText(
-            originalText: text as String, hyperLinks: [
-                Constants.terms: "https://bot365.tech/#eula"
-            ],
-            font:  UIFont(font: .GilroyMedium, size: 12)
+            originalText: text as String,
+            hyperLinks: ["Terms Conditions": "https://bot365.tech/#eula"],
+            font:  UIFont(font: .GilroyMedium, size: 16)
         )
         let linkAttributes: [NSAttributedString.Key : Any] = [
             NSAttributedString.Key.foregroundColor: UIColor.AppCollors.backgroundGreen ,
         ]
+        
         termsAndPolicyTextView.linkTextAttributes = linkAttributes
-        termsAndPolicyTextView.textColor = .black
-        termsAndPolicyTextView.textAlignment = .center
+        termsAndPolicyTextView.textAlignment = .left
         termsAndPolicyTextView.isUserInteractionEnabled = true
         termsAndPolicyTextView.isEditable = false
         termsAndPolicyTextView.attributedText = attributedString
+        termsAndPolicyTextView.textColor = .black
+    }
+    
+    
+    
+    @objc
+    private func signInTapped() {
+        signInHandler?()
     }
     
     private func setupView() {
         backgroundColor = .white
+        
+        addSubview(progressView)
         addSubview(ellipseView)
         ellipseView.addSubview(pushIconView)
         addSubview(causeLabel)
@@ -128,21 +148,23 @@ class EnterView: UIView {
         addSubview(signInButton)
         addConstraints()
         prepareAttributesForTextView()
-        signInButton.addTarget(self, action: #selector(signInTapped), for: .touchUpInside)
-    }
-    
-    @objc
-    private func signInTapped() {
-        signInHandler?()
+        
     }
     
     private func addConstraints() {
+        
+        progressView.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(32)
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().offset(-16)
+            make.height.equalTo(4)
+        }
         
         ellipseView.snp.makeConstraints { make in
             make.centerX.equalTo(signInButton.snp.centerX)
             make.height.equalTo(148)
             make.width.equalTo(148)
-            make.top.equalTo(self.snp.top).offset(160)
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(141)
         }
         
         pushIconView.snp.makeConstraints { make in
@@ -168,7 +190,7 @@ class EnterView: UIView {
         
         termsAndPolicyTextView.snp.makeConstraints { make in
             make.centerX.equalTo(signInButton.snp.centerX)
-            make.height.equalTo(24)
+            make.height.equalTo(25)
             make.width.equalTo(220)
             make.bottom.equalTo(signInButton.snp.top).offset(-24)
         }

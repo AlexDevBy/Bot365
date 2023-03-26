@@ -14,9 +14,16 @@ class AskPermissionsView: UIView {
         static let attention: String = "Attention!"
         static let allow: String = "Allow"
         static let skip: String = "No, Thank you"
-        static let cornerRaidus: CGFloat = 15
-        static let allowCornerRaidus: CGFloat = 20
+        static let cornerRaidus: CGFloat = 16
+        static let allowCornerRaidus: CGFloat = 16
     }
+    
+    let progressView: UIProgressView = {
+        let view = UIProgressView(progressViewStyle: .default)
+        view.progressTintColor = .AppCollors.backgroundGreen
+        view.sizeToFit()
+        return view
+    }()
     
     let ellipseView: UIImageView = {
         let view = UIImageView()
@@ -40,10 +47,11 @@ class AskPermissionsView: UIView {
     
     let secondCauseLabel: UILabel = {
         let lbl = UILabel()
-        lbl.textColor = .black
+        lbl.textColor = .systemGray
+        lbl.lineBreakMode = .byWordWrapping
         lbl.textAlignment = .center
         lbl.numberOfLines = 0
-        lbl.setFont(fontName: .GilroyMedium, sizeXS: 16)
+        lbl.setFont(fontName: .MontsRegular, sizeXS: 16)
         return lbl
     }()
     
@@ -53,7 +61,7 @@ class AskPermissionsView: UIView {
         btn.setTitleColor(.yellow, for: .normal)
         btn.backgroundColor = .AppCollors.backgroundGreen
         btn.layer.cornerRadius = Constants.allowCornerRaidus
-        btn.titleLabel?.setFont(fontName: .MontsBold, sizeXS: 18)
+        btn.titleLabel?.setFont(fontName: .GilroyMedium, sizeXS: 16)
         
         if #available(iOS 15, *) {
             var config = UIButton.Configuration.plain()
@@ -61,7 +69,7 @@ class AskPermissionsView: UIView {
             config.background.cornerRadius = Constants.allowCornerRaidus
             config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
                 var outgoing = incoming
-                outgoing.font = UIFont(font: .MontsBold, size: 18)
+                outgoing.font = UIFont(font: .GilroyMedium, size: 16)
                 return outgoing
             }
             btn.configuration = config
@@ -90,6 +98,7 @@ class AskPermissionsView: UIView {
     private func setupView() {
         backgroundColor = .white
         
+        addSubview(progressView)
         addSubview(ellipseView)
         ellipseView.addSubview(pushIconView)
         addSubview(causeLabel)
@@ -101,11 +110,18 @@ class AskPermissionsView: UIView {
     
     private func setupConstraints() {
         
+        progressView.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(32)
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().offset(-16)
+            make.height.equalTo(4) 
+        }
+        
         ellipseView.snp.makeConstraints { make in
             make.centerX.equalTo(allowButton.snp.centerX)
             make.height.equalTo(148)
             make.width.equalTo(148)
-            make.top.equalTo(self.snp.top).offset(160)
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(141)
         }
         
         pushIconView.snp.makeConstraints { make in

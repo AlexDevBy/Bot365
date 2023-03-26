@@ -7,79 +7,82 @@
 
 import UIKit
 import FSCalendar
+import SnapKit
 
 class CreateReminderView: UIView {
     
     enum Constants {
         static let interItemSpacing: CGFloat = 15
     }
+    private var isConfigure = false
     
-    let imageView: UIImageView = {
-        let iv = UIImageView()
-        iv.alpha = 0
-        iv.contentMode = .scaleAspectFill
-        iv.clipsToBounds = true
-        return iv
+    let sportObjImage: UIImageView = {
+        let img = UIImageView()
+        img.image = UIImage(named: "stadium")
+        return img
     }()
     
-    private var gradientLayer = CAGradientLayer()
-    private var isConfigure = false
+    let locationImage: UIImageView = {
+        let img = UIImageView()
+        img.image = UIImage(named: "reminderLocation")
+        return img
+    }()
+    
+    let clockImage: UIImageView = {
+        let img = UIImageView()
+        img.image = UIImage(named: "clock")
+        return img
+    }()
     
     let sportObjectNameLabel: UILabel = {
         let lbl = UILabel()
         lbl.numberOfLines = 0
-        lbl.textAlignment = .center
+        lbl.textAlignment = .left
         lbl.textColor = .black
-        let size: CGFloat = UIScreen.current.rawValue > 2 ? 24: 17
-        lbl.setFont(fontName: .MontsBlack, sizeXS: size)
+        lbl.setFont(fontName: .GilroyMedium, sizeXS: 16)
         return lbl
     }()
     
     let addressNameLabel: UILabel = {
         let lbl = UILabel()
-        lbl.setFont(fontName: .MontsBold, sizeXS: 14)
-        lbl.textAlignment = .center
+        lbl.setFont(fontName: .GilroyMedium, sizeXS: 16)
+        lbl.textAlignment = .left
         lbl.numberOfLines = 0
         lbl.textColor = .black
         return lbl
     }()
     
-    private let availableTitlleLabel: UILabel = {
+    let hourLabel: UILabel = {
         let lbl = UILabel()
-        let size: CGFloat = UIScreen.current.rawValue > 2 ? 14 : 12
-        lbl.setFont(fontName: .MontsBold, sizeXS: size)
-        lbl.text = "Available for"
-        lbl.textAlignment = .center
+        lbl.setFont(fontName: .GilroyMedium, sizeXS: 16)
+        lbl.textAlignment = .left
+        lbl.numberOfLines = 0
+        lbl.text = "1 hour"
         lbl.textColor = .black
         return lbl
     }()
     
-    let categoriesCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = Constants.interItemSpacing
-        layout.minimumInteritemSpacing = 10
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = .white
-        cv.showsVerticalScrollIndicator = false
-        cv.showsHorizontalScrollIndicator = false
-        return cv
+    let lineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        return view
     }()
+    
     
     let sheduleButton: UIButton = {
         let btn = UIButton(type: .system)
-        btn.setTitle("Schedule".uppercased(), for: .normal)
-        btn.setTitleColor(.AppCollors.darkBlue, for: .normal)
-        btn.titleLabel?.setFont(fontName: .MontsBlack, sizeXS: 18)
-        btn.backgroundColor = .AppCollors.yeallow
-        btn.layer.cornerRadius = 15
+        btn.setTitle("Schedule", for: .normal)
+        btn.setTitleColor(UIColor(netHex: 0xF4DA4A), for: .normal)
+        btn.titleLabel?.setFont(fontName: .GilroyMedium, sizeXS: 16)
+        btn.backgroundColor = .AppCollors.backgroundGreen
+        btn.layer.cornerRadius = 16
         if #available(iOS 15, *) {
             var config = UIButton.Configuration.plain()
-            config.background.backgroundColor = UIColor.AppCollors.yeallow
-            config.background.cornerRadius = 15
+            config.background.backgroundColor = UIColor.AppCollors.backgroundGreen
+            config.background.cornerRadius = 16
             config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
                 var outgoing = incoming
-                outgoing.font = UIFont(font: .MontsBlack, size: 18)
+                outgoing.font = UIFont(font: .GilroyMedium, size: 16)
                 return outgoing
             }
             btn.configuration = config
@@ -91,20 +94,20 @@ class CreateReminderView: UIView {
     let chooseDateButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.setTitle("Choose date", for: .normal)
-        btn.setTitleColor(.AppCollors.darkBlue, for: .normal)
-        btn.titleLabel?.setFont(fontName: .MontsBold, sizeXS: 14)
-        btn.backgroundColor = .AppCollors.yeallow
-        btn.layer.cornerRadius = 15
+        btn.setTitleColor(.AppCollors.yeallow, for: .normal)
+        btn.titleLabel?.setFont(fontName: .GilroyMedium, sizeXS: 16)
+        btn.backgroundColor = .AppCollors.backgroundGreen
+        btn.layer.cornerRadius = 16
         btn.setImage(UIImage(named: "CalendarIcon"), for: .normal)
         btn.alpha = 0
         if #available(iOS 15, *) {
             var config = UIButton.Configuration.plain()
-            config.background.backgroundColor = UIColor.AppCollors.yeallow
-            config.background.cornerRadius = 15
+            config.background.backgroundColor = UIColor.AppCollors.backgroundGreen
+            config.background.cornerRadius = 16
             config.imagePadding = 40
             config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
                 var outgoing = incoming
-                outgoing.font = UIFont(font: .MontsBold, size: 14)
+                outgoing.font = UIFont(font: .GilroyMedium, size: 16)
                 return outgoing
             }
             btn.configuration = config
@@ -118,56 +121,44 @@ class CreateReminderView: UIView {
     let chooseTimeButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.setTitle("Choose time", for: .normal)
-        btn.setTitleColor(.AppCollors.darkBlue, for: .normal)
-        btn.titleLabel?.setFont(fontName: .MontsBold, sizeXS: 14)
-        btn.backgroundColor = .AppCollors.yeallow
-        btn.layer.cornerRadius = 15
-        btn.setImage(UIImage(named: "AlarmIcon"), for: .normal)
+        btn.setTitleColor(.AppCollors.yeallow, for: .normal)
+        btn.titleLabel?.setFont(fontName: .GilroyMedium, sizeXS: 16)
+        btn.backgroundColor = .AppCollors.backgroundGreen
+        btn.layer.cornerRadius = 16
         btn.alpha = 0
         if #available(iOS 15, *) {
             var config = UIButton.Configuration.plain()
             config.imagePadding = 40
-            config.background.backgroundColor = UIColor.AppCollors.yeallow
-            config.background.cornerRadius = 15
+            config.background.backgroundColor = UIColor.AppCollors.backgroundGreen
+            config.background.cornerRadius = 16
             config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
                 var outgoing = incoming
-                outgoing.font = UIFont(font: .MontsBold, size: 14)
+                outgoing.font = UIFont(font: .GilroyMedium, size: 16)
                 return outgoing
             }
             btn.configuration = config
-        } else {
-            btn.imageEdgeInsets.right = 40
         }
         btn.addTarget(nil, action: #selector(CreateReminderViewController.timeButtonTapped), for: .touchUpInside)
         return btn
     }()
     
-    private let pleaseLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.text = "Please make sure the facility has a booking available for this time"
-        lbl.numberOfLines = 0
-        lbl.textAlignment = .center
-        lbl.textColor = .black
-        lbl.setFont(fontName: .GilroyMedium, sizeXS: 14)
-        lbl.alpha = 0
-        return lbl
-    }()
-    
-    private let goImageView: UIImageView = {
-        let iv = UIImageView()
-        iv.image = UIImage(named: "GoLiveGoSport")
-        return iv
-    }()
-    
-    private let categoriesImageView: UIImageView = {
-        let iv = UIImageView()
-        iv.image = UIImage(named: "FootbolSuggestions")
-        iv.alpha = 0
-        return iv
-    }()
     
     private let informationView: InformationView = {
         let view = InformationView()
+        view.alpha = 0
+        return view
+    }()
+    
+    let reservedView: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "reserved")
+        view.alpha = 0
+        return view
+    }()
+    
+    let reservedqView: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "reservedq")
         view.alpha = 0
         return view
     }()
@@ -199,10 +190,6 @@ class CreateReminderView: UIView {
     
     var sportLongImage: UIImage?
     
-    private var addressLabelBottomSheduleStateConstaint = NSLayoutConstraint()
-    private var addressLabelTopSavedStateConstaint = NSLayoutConstraint()
-    private var bottomButtonTopConstraint = NSLayoutConstraint()
-    private var bottomButtonBottomConstraint = NSLayoutConstraint()
     private var calendarHeightConstraint = NSLayoutConstraint()
     private var chooseTimeTopConstraint = NSLayoutConstraint()
     private var timePickerHeightConstraint = NSLayoutConstraint()
@@ -220,37 +207,18 @@ class CreateReminderView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         guard !isConfigure else { return }
-        setGradientBackground()
         isConfigure.toggle()
     }
     
-    func setGradientBackground() {
-        let colorTop: CGColor = UIColor.white.withAlphaComponent(0).cgColor
-        let colorBottom: CGColor = UIColor.white.cgColor
-        let newLayer = CAGradientLayer()
-        newLayer.colors = [colorTop, colorBottom]
-        newLayer.locations = [0.5, 1.0]
-        newLayer.frame = imageView.frame
-        gradientLayer = newLayer
-        imageView.layer.addSublayer(gradientLayer)
-    }
     
     func changeView(for state: LocationScreenViewState) {
         switch state {
         case .initial:
-            bottomButtonTopConstraint.isActive = false
-            bottomButtonBottomConstraint.isActive = true
-            addressLabelTopSavedStateConstaint.isActive = false
-            addressLabelBottomSheduleStateConstaint.isActive = true
-            categoriesCollectionView.alpha = 1
-            availableTitlleLabel.alpha = 1
             sportObjectNameLabel.alpha = 1
-            imageView.alpha = 1
-            pleaseLabel.alpha = 0
             informationView.alpha = 0
-            categoriesImageView.alpha = 0
-            goImageView.alpha = 0
-            sheduleButton.setTitle("Schedule".uppercased(), for: .normal)
+            self.reservedView.alpha = 0
+            self.reservedqView.alpha = 0
+            sheduleButton.setTitle("Schedule", for: .normal)
         case .shedule:
             if !isCalendarSetup {
                 addSubview(calendarView)
@@ -261,42 +229,31 @@ class CreateReminderView: UIView {
             }
             UIView.animate(withDuration: 0.2,
                            animations: {
-                self.categoriesCollectionView.alpha = 0
-                self.availableTitlleLabel.alpha = 0
                 self.sheduleButton.alpha = 0
             }) { _ in
-                self.sheduleButton.setTitle("SAVE", for: .normal)
+                self.sheduleButton.setTitle("Confirm", for: .normal)
                 UIView.animate(withDuration: 0.2) {
-                    self.pleaseLabel.alpha = 1
                     self.chooseDateButton.alpha = 1
                     self.chooseTimeButton.alpha = 1
                     self.sheduleButton.alpha = 0.5
                 }
             }
         case .sheduleSaved:
-            informationView.setupView(title: "Time is saved",
-                                      subtitle: "We also add reminder for this time to you")
+            informationView.setupView(title: "You reserved an arena!",
+                                      subtitle: "")
             UIView.animate(withDuration: 0.2,
                            animations: {
-                self.sportObjectNameLabel.alpha = 0
                 self.chooseTimeButton.alpha = 0
                 self.chooseDateButton.alpha = 0
-                self.imageView.alpha = 0
-                self.pleaseLabel.alpha = 0
                 self.sheduleButton.alpha = 0
                 self.timePicker.alpha = 0
             }, completion: { _ in
-                self.addressLabelBottomSheduleStateConstaint.isActive = false
-                self.addressLabelTopSavedStateConstaint.isActive = true
-                self.bottomButtonBottomConstraint.isActive = false
-                self.bottomButtonTopConstraint.isActive = true
-                self.categoriesImageView.image = self.sportLongImage
-                self.sheduleButton.setTitle("CLOSE", for: .normal)
+                self.sheduleButton.setTitle("Manage reservations", for: .normal)
                 UIView.animate(withDuration: 0.2) {
                     self.sheduleButton.alpha = 1
-                    self.goImageView.alpha = 1
-                    self.categoriesImageView.alpha = 1
                     self.informationView.alpha = 1
+                    self.reservedView.alpha = 1
+                    self.reservedqView.alpha = 1
                 }
             })
         }
@@ -311,7 +268,6 @@ class CreateReminderView: UIView {
         UIView.animate(withDuration: 0.2) {
             self.calendarView.alpha = alpha
             self.sheduleButton.alpha = bottomButtonAlpha
-            self.pleaseLabel.alpha = bottomButtonAlpha
             self.layoutIfNeeded()
         }
     }
@@ -323,124 +279,154 @@ class CreateReminderView: UIView {
         timePickerHeightConstraint.constant = height
         UIView.animate(withDuration: 0.2) {
             self.timePicker.alpha = alpha
-            self.pleaseLabel.alpha = oppositAlpha
             self.layoutIfNeeded()
         }
     }
     
     private func setupView() {
         backgroundColor = .white
-        addSubview(imageView)
-        addSubview(addressNameLabel)
+        addSubview(sportObjImage)
         addSubview(sportObjectNameLabel)
-        addSubview(availableTitlleLabel)
-        addSubview(categoriesCollectionView)
+        addSubview(locationImage)
+        addSubview(addressNameLabel)
+        addSubview(clockImage)
+        addSubview(hourLabel)
+        addSubview(lineView)
+        
+        
         addSubview(sheduleButton)
         addSubview(chooseTimeButton)
         addSubview(chooseDateButton)
-        addSubview(pleaseLabel)
         
-        imageView.topAnchor.constraint(equalTo: imageView.superview!.topAnchor).isActive = true
-        imageView.leftAnchor.constraint(equalTo: imageView.superview!.leftAnchor).isActive = true
-        imageView.rightAnchor.constraint(equalTo: imageView.superview!.rightAnchor).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: CGFloat(298).dp).isActive = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        sportObjImage.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(40)
+            make.left.equalToSuperview().offset(16)
+            make.height.width.equalTo(32)
+        }
         
-        addressLabelBottomSheduleStateConstaint = addressNameLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -10)
-        addressLabelBottomSheduleStateConstaint.isActive = true
-        addressLabelTopSavedStateConstaint = addressNameLabel.topAnchor.constraint(equalTo: goImageView.bottomAnchor, constant: 20)
-        addressNameLabel.leftAnchor.constraint(equalTo: addressNameLabel.superview!.leftAnchor, constant: 16).isActive = true
-        addressNameLabel.rightAnchor.constraint(equalTo: addressNameLabel.superview!.rightAnchor, constant: -16).isActive = true
-        addressNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        sportObjectNameLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(sportObjImage.snp.centerY)
+            make.left.equalTo(sportObjImage.snp.right).offset(8)
+            make.height.equalTo(24)
+        }
         
-        sportObjectNameLabel.bottomAnchor.constraint(equalTo: addressNameLabel.topAnchor, constant: -15).isActive = true
-        sportObjectNameLabel.leftAnchor.constraint(equalTo: sportObjectNameLabel.superview!.leftAnchor, constant: 16).isActive = true
-        sportObjectNameLabel.rightAnchor.constraint(equalTo: sportObjectNameLabel.superview!.rightAnchor, constant: -16).isActive = true
-        sportObjectNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        locationImage.snp.makeConstraints { make in
+            make.top.equalTo(sportObjImage.snp.bottom).offset(24)
+            make.left.equalToSuperview().offset(24)
+            make.height.width.equalTo(16)
+        }
         
-        availableTitlleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20).isActive = true
-        availableTitlleLabel.leftAnchor.constraint(equalTo: availableTitlleLabel.superview!.leftAnchor).isActive = true
-        availableTitlleLabel.rightAnchor.constraint(equalTo: availableTitlleLabel.superview!.rightAnchor).isActive = true
-        availableTitlleLabel.translatesAutoresizingMaskIntoConstraints = false
+        addressNameLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(locationImage.snp.centerY)
+            make.left.equalTo(locationImage.snp.right).offset(16)
+            make.height.equalTo(24)
+        }
         
-        categoriesCollectionView.topAnchor.constraint(equalTo: availableTitlleLabel.bottomAnchor, constant: 16).isActive = true
-        categoriesCollectionView.leftAnchor.constraint(equalTo: categoriesCollectionView.superview!.leftAnchor, constant: 14).isActive = true
-        categoriesCollectionView.rightAnchor.constraint(equalTo: categoriesCollectionView.superview!.rightAnchor, constant: -14).isActive = true
-        categoriesCollectionView.bottomAnchor.constraint(equalTo: categoriesCollectionView.superview!.bottomAnchor, constant: 200).isActive = true
-        categoriesCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        clockImage.snp.makeConstraints { make in
+            make.top.equalTo(locationImage.snp.bottom).offset(33)
+            make.left.equalToSuperview().offset(24)
+            make.height.width.equalTo(16)
+        }
         
-        sheduleButton.widthAnchor.constraint(equalToConstant: CGFloat(271).dp).isActive = true
-        sheduleButton.heightAnchor.constraint(equalToConstant: CGFloat(48).dp).isActive = true
-        sheduleButton.centerXAnchor.constraint(equalTo: sheduleButton.superview!.centerXAnchor).isActive = true
-        let bottomDistance = UIScreen.current.rawValue > 2 ? -CGFloat(163).dp : -(CustomTabBarController.tabbarBottomDistance + CustomTabBarController.tabbarHeight + 21).dp
-        bottomButtonBottomConstraint = sheduleButton.bottomAnchor.constraint(equalTo: sheduleButton.superview!.bottomAnchor, constant: bottomDistance)
-        bottomButtonBottomConstraint.isActive = true
-        bottomButtonTopConstraint = sheduleButton.topAnchor.constraint(equalTo: informationView.bottomAnchor, constant: 38)
-        sheduleButton.translatesAutoresizingMaskIntoConstraints = false
+        hourLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(clockImage.snp.centerY)
+            make.left.equalTo(clockImage.snp.right).offset(16)
+            make.height.equalTo(24)
+        }
+        
+        
+        
+        lineView.snp.makeConstraints { make in
+            make.top.equalTo(hourLabel.snp.bottom).offset(40)
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().offset(-16)
+            make.height.equalTo(1)
+        }
+        
+        sheduleButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.height.equalTo(48)
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().offset(-16)
+            make.bottom.equalToSuperview().offset(-50)
+        }
         
         setupSavedState()
     }
     
     private func sheduleStateConstraints() {
-        chooseDateButton.topAnchor.constraint(equalTo: sportObjectNameLabel.bottomAnchor, constant: CGFloat(64).dp).isActive = true
-        chooseDateButton.centerXAnchor.constraint(equalTo: chooseDateButton.superview!.centerXAnchor).isActive = true
-        chooseDateButton.heightAnchor.constraint(equalToConstant: CGFloat(50).dp).isActive = true
-        chooseDateButton.widthAnchor.constraint(equalToConstant: CGFloat(271).dp).isActive = true
-        chooseDateButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        chooseDateButton.snp.makeConstraints { make in
+            make.top.equalTo(lineView.snp.bottom).offset(32)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(50)
+            make.width.equalTo(271)
+        }
         
         chooseTimeTopConstraint = chooseTimeButton.topAnchor.constraint(equalTo: chooseDateButton.bottomAnchor, constant: CGFloat(17).dp)
         chooseTimeTopConstraint.isActive = true
-        chooseTimeButton.heightAnchor.constraint(equalToConstant: CGFloat(50).dp).isActive = true
-        chooseTimeButton.centerXAnchor.constraint(equalTo: chooseTimeButton.superview!.centerXAnchor).isActive = true
-        chooseTimeButton.widthAnchor.constraint(equalToConstant: CGFloat(271).dp).isActive = true
-        chooseTimeButton.translatesAutoresizingMaskIntoConstraints = false
         
-        pleaseLabel.centerXAnchor.constraint(equalTo: pleaseLabel.superview!.centerXAnchor).isActive = true
-        pleaseLabel.widthAnchor.constraint(equalToConstant: CGFloat(271).dp).isActive = true
-        pleaseLabel.topAnchor.constraint(equalTo: chooseTimeButton.bottomAnchor, constant: 43).isActive = true
-        pleaseLabel.translatesAutoresizingMaskIntoConstraints = false
+        chooseTimeButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.height.equalTo(50)
+            make.width.equalTo(271)
+        }
+        
     }
     
     private func calendarViewConstraints() {
-        calendarView.leftAnchor.constraint(equalTo: calendarView.superview!.leftAnchor, constant: 16).isActive = true
-        calendarView.rightAnchor.constraint(equalTo: calendarView.superview!.rightAnchor, constant: -16).isActive = true
-        calendarView.topAnchor.constraint(equalTo: chooseDateButton.bottomAnchor, constant: 5).isActive = true
+        
+        calendarView.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().offset(-16)
+            make.top.equalTo(chooseDateButton.snp.bottom).offset(5)
+        }
+        
         calendarHeightConstraint = calendarView.heightAnchor.constraint(equalToConstant: 200)
         calendarHeightConstraint.isActive = true
         calendarView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func timePickerConstraints() {
-        timePicker.topAnchor.constraint(equalTo: chooseTimeButton.bottomAnchor, constant: 5).isActive = true
+        
+        timePicker.snp.makeConstraints { make in
+            make.top.equalTo(chooseTimeButton.snp.bottom).offset(5)
+            make.width.equalTo(200)
+            make.centerX.equalToSuperview()
+        }
+        
         timePickerHeightConstraint = timePicker.heightAnchor.constraint(equalToConstant: 150)
         timePickerHeightConstraint.isActive = true
-        timePicker.centerXAnchor.constraint(equalTo: timePicker.superview!.centerXAnchor).isActive = true
-        timePicker.widthAnchor.constraint(equalToConstant: 200).isActive = true
         timePicker.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func setupSavedState() {
-        addSubview(goImageView)
-        addSubview(categoriesImageView)
         addSubview(informationView)
         addSubview(timePicker)
+        addSubview(reservedView)
+        addSubview(reservedqView)
         
-        goImageView.topAnchor.constraint(equalTo: goImageView.superview!.safeTopAnchor, constant: 0).isActive = true
-        goImageView.leftAnchor.constraint(equalTo: goImageView.superview!.leftAnchor, constant: 16).isActive = true
-        goImageView.translatesAutoresizingMaskIntoConstraints = false
         
         let height = UIScreen.current.rawValue > 2 ? CGFloat(140).dp : CGFloat(115).dp
-        categoriesImageView.topAnchor.constraint(equalTo: addressNameLabel.bottomAnchor, constant: 24).isActive = true
-        categoriesImageView.leftAnchor.constraint(equalTo: categoriesImageView.superview!.leftAnchor, constant: 16).isActive = true
-        categoriesImageView.rightAnchor.constraint(equalTo: categoriesImageView.superview!.rightAnchor, constant: -16).isActive = true
-        categoriesImageView.heightAnchor.constraint(equalToConstant: height).isActive = true
-        categoriesImageView.translatesAutoresizingMaskIntoConstraints = false
         
-        informationView.topAnchor.constraint(equalTo: categoriesImageView.bottomAnchor, constant: 25).isActive = true
-        informationView.leftAnchor.constraint(equalTo: informationView.superview!.leftAnchor, constant: 16).isActive = true
-        informationView.rightAnchor.constraint(equalTo: informationView.superview!.rightAnchor, constant: -16).isActive = true
-        informationView.heightAnchor.constraint(equalToConstant: CGFloat(75).dp).isActive = true
-        informationView.translatesAutoresizingMaskIntoConstraints = false
+        reservedView.snp.makeConstraints { make in
+            make.top.equalTo(lineView.snp.bottom).offset(32)
+            make.centerX.equalToSuperview()
+            make.height.width.equalTo(124)
+        }
+        
+        reservedqView.snp.makeConstraints { make in
+            make.centerX.equalTo(reservedView.snp.centerX)
+            make.centerY.equalTo(reservedView.snp.centerY)
+            make.height.width.equalTo(40)
+        }
+        
+        informationView.snp.makeConstraints { make in
+            make.top.equalTo(reservedView.snp.bottom).offset(16)
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().offset(-16)
+            make.height.equalTo(75)
+        }
     }
-
+    
 }

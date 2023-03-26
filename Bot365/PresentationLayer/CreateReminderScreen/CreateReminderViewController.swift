@@ -16,7 +16,7 @@ class CreateReminderViewController: UIViewController {
     private var isDateCalendarShow: Bool = false
     private var isTimePickerShow: Bool = false
     private var allowToSaveIndicator: Bool = false
-    private var viewState: LocationScreenViewState = .initial {
+    private var viewState: LocationScreenViewState = .shedule {
         didSet {
             contentView.changeView(for: viewState)
         }
@@ -52,14 +52,10 @@ class CreateReminderViewController: UIViewController {
     
     private func setupView() {
         viewState  = .initial
-        contentView.imageView.image = UIImage(named: presenter.sportObject.type.bigImage)
         contentView.addressNameLabel.text = presenter.sportObject.address
         contentView.sportObjectNameLabel.text = presenter.sportObject.name
         contentView.calendarView.delegate = self
         categoriesSource = presenter.getCategories()
-        contentView.categoriesCollectionView.register(CategoriesCollectionViewCell.self, forCellWithReuseIdentifier: CategoriesCollectionViewCell.reuseID)
-        contentView.categoriesCollectionView.dataSource = self
-        contentView.categoriesCollectionView.delegate = self
     }
     
     @objc
@@ -71,7 +67,8 @@ class CreateReminderViewController: UIViewController {
             guard allowToSaveIndicator else { return }
             presenter.createReminder()
         case .sheduleSaved:
-            navigationController?.popToRootViewController(animated: true)
+//            navigationController?.popToRootViewController(animated: true)
+            navigationController?.dismiss(animated: true)
         }
     }
     
@@ -133,22 +130,7 @@ extension CreateReminderViewController: ILocationView {
 }
 
 // MARK: - UICollectionView methods
-extension CreateReminderViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width/2 - CreateReminderView.Constants.interItemSpacing, height: 100)
-    }
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categoriesSource.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoriesCollectionViewCell.reuseID, for: indexPath) as! CategoriesCollectionViewCell
-        cell.categoriesModel = categoriesSource[safe: indexPath.row]
-        return cell
-    }
-}
 
 // MARK: - Delegates
 extension CreateReminderViewController: FSCalendarDelegate {
