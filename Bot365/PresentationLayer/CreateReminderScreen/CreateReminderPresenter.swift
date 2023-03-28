@@ -77,9 +77,8 @@ class CreateReminderPresenter: ILocationPresenter {
         notificationCenter.requestAuthorization(options: options) {
             (didAllow, error) in
             if !didAllow {
-                guard
-                    let bundleId = Bundle.main.bundleIdentifier,
-                    let url = URL(string: "\(UIApplication.openSettingsURLString)&path=LOCATION/\(bundleId)")
+                guard let bundleId = Bundle.main.bundleIdentifier,
+                      let url = URL(string: "\(UIApplication.openSettingsURLString)&path=LOCATION/\(bundleId)")
                 else { return }
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             } else {

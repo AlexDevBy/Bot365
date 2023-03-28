@@ -34,6 +34,7 @@ class RemindersListPresenter: ICalendarPresenter {
 
     func getMyStaidums() {
         eventsSource = databaseService.getReminders(with: NSPredicate(format: "time > %@", NSDate()))
+        print("eventsSource.count:\(eventsSource.count)")
         view?.setEvents(events: eventsSource)
     }
     

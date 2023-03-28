@@ -345,8 +345,8 @@
 				F00FD55829C327D8007D4DAC /* Network */,
 				F00FD56B29C327D8007D4DAC /* SecureStorage.swift */,
 				F00FD56E29C327D8007D4DAC /* CoreAssembly.swift */,
-				F00FD56F29C327D8007D4DAC /* UserDefaults.swift */,
 				F00FD57029C327D8007D4DAC /* DatabaseManager.swift */,
+				F00FD56F29C327D8007D4DAC /* UserDefaults.swift */,
 			);
 			path = CoreLayer;
 			sourceTree = "<group>";
@@ -431,9 +431,9 @@
 				F00FD5B529C327E3007D4DAC /* HomeScreen */,
 				F00FD59D29C327E3007D4DAC /* SportObjectList */,
 				F00FD59829C327E3007D4DAC /* CreateReminderScreen */,
-				F00FD5A329C327E3007D4DAC /* WebViewScreen */,
-				F00FD5AB29C327E3007D4DAC /* SettingsScreen */,
 				F00FD5BE29C327E3007D4DAC /* RemindersListScreen */,
+				F00FD5AB29C327E3007D4DAC /* SettingsScreen */,
+				F00FD5A329C327E3007D4DAC /* WebViewScreen */,
 				F05761C729CBA7310007BC46 /* other */,
 			);
 			path = PresentationLayer;

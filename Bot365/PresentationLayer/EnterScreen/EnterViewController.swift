@@ -41,11 +41,12 @@ class EnterViewController: UIViewController {
     
     private func setupView() {
         contentView.signInHandler = {
+//
             let pushPermission = self.presentationAssembly.askPermissionsScreen(permissionType: .location)
-            self.navigationController?.pushViewController(pushPermission, animated: true)
-            
+                                    self.navigationController?.pushViewController(pushPermission, animated: true)
 //            let provider = ASAuthorizationAppleIDProvider()
 //            let request = provider.createRequest()
+////            request.requestedScopes = [.email]
 //            request.requestedScopes = [.email]
 //
 //            let controller = ASAuthorizationController(authorizationRequests: [request])
@@ -97,13 +98,17 @@ extension EnterViewController: ASAuthorizationControllerDelegate {
     }
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        
         switch authorization.credential {
         case let credentiontials as ASAuthorizationAppleIDCredential:
             guard
                 let code = credentiontials.authorizationCode,
                 let codeString = String(data: code, encoding: .utf8)
             else { return }
+            print(credentiontials.fullName)
+            print(credentiontials.email)
             print(codeString)
+           
             makeAppleAuth(code: codeString)
         default:
             break

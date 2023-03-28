@@ -68,7 +68,7 @@ class CreateReminderViewController: UIViewController {
             presenter.createReminder()
         case .sheduleSaved:
 //            navigationController?.popToRootViewController(animated: true)
-            navigationController?.dismiss(animated: true)
+            self.dismiss(animated: true)
         }
     }
     
