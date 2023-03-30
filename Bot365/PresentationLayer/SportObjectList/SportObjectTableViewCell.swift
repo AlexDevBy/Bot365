@@ -8,7 +8,15 @@
 import UIKit
 import SnapKit
 
+//protocol SportsObjectTableViewCellDelegate: AnyObject {
+//    func reserveEventTappped(with id: String)
+//}
+
+
 class SportObjectTableViewCell: UITableViewCell, ReusableView {
+    
+    
+    var reservedTappedAction: (()->Void)?
 
     private let titleLabel: UILabel = {
         let lbl = UILabel()
@@ -58,9 +66,16 @@ class SportObjectTableViewCell: UITableViewCell, ReusableView {
         btn.layer.cornerRadius = 12
         btn.setTitle("Reserve", for: .normal)
         btn.titleLabel?.textColor = .white
+        btn.tag = 0
+        btn.addTarget(self, action: #selector(reserve), for: .touchUpInside)
         return btn
     }()
     
+    @objc
+    func reserve() {
+        reservedTappedAction
+    }
+//
     var object: SportObject? {
         didSet {
             guard let model = object else { return }

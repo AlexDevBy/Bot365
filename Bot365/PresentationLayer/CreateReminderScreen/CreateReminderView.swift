@@ -48,6 +48,7 @@ class CreateReminderView: UIView {
         lbl.setFont(fontName: .GilroyMedium, sizeXS: 16)
         lbl.textAlignment = .left
         lbl.numberOfLines = 0
+        lbl.lineBreakMode = .byWordWrapping
         lbl.textColor = .black
         return lbl
     }()
@@ -57,14 +58,14 @@ class CreateReminderView: UIView {
         lbl.setFont(fontName: .GilroyMedium, sizeXS: 16)
         lbl.textAlignment = .left
         lbl.numberOfLines = 0
-        lbl.text = "1 hour"
+        lbl.text = "Please, choose date & time"
         lbl.textColor = .black
         return lbl
     }()
     
     let lineView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        view.backgroundColor = .systemGray
         return view
     }()
     
@@ -307,6 +308,7 @@ class CreateReminderView: UIView {
         sportObjectNameLabel.snp.makeConstraints { make in
             make.centerY.equalTo(sportObjImage.snp.centerY)
             make.left.equalTo(sportObjImage.snp.right).offset(8)
+            make.right.equalToSuperview().offset(-16)
             make.height.equalTo(24)
         }
         
@@ -319,19 +321,20 @@ class CreateReminderView: UIView {
         addressNameLabel.snp.makeConstraints { make in
             make.centerY.equalTo(locationImage.snp.centerY)
             make.left.equalTo(locationImage.snp.right).offset(16)
-            make.height.equalTo(24)
+            make.right.equalToSuperview().offset(-16)
+
         }
         
         clockImage.snp.makeConstraints { make in
-            make.top.equalTo(locationImage.snp.bottom).offset(33)
-            make.left.equalToSuperview().offset(24)
+            make.centerY.equalTo(hourLabel.snp.centerY)
+            make.left.equalTo(locationImage.snp.left)
             make.height.width.equalTo(16)
         }
         
         hourLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(clockImage.snp.centerY)
+            make.top.equalTo(addressNameLabel.snp.bottom).offset(24)
             make.left.equalTo(clockImage.snp.right).offset(16)
-            make.height.equalTo(24)
+            make.right.equalToSuperview().offset(-16)
         }
         
         

@@ -116,8 +116,18 @@
 		F00FD60929C32B6D007D4DAC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00FD60729C32B6D007D4DAC /* SceneDelegate.swift */; };
 		F00FD60B29C33000007D4DAC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F00FD60A29C33000007D4DAC /* StoreKit.framework */; };
 		F00FD60F29C3641A007D4DAC /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F00FD60E29C3641A007D4DAC /* SnapKit */; };
-		F0329EAE29CC6B1600C758B5 /* TableViewSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0329EAD29CC6B1600C758B5 /* TableViewSheetView.swift */; };
-		F0329EB029CCB86C00C758B5 /* TableViewSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0329EAF29CCB86C00C758B5 /* TableViewSheetController.swift */; };
+		F014FEB629D5AEC8002FC4DE /* GeneralSans-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F014FEAA29D5AEC8002FC4DE /* GeneralSans-Italic.otf */; };
+		F014FEB729D5AEC8002FC4DE /* GeneralSans-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F014FEAB29D5AEC8002FC4DE /* GeneralSans-BoldItalic.otf */; };
+		F014FEB829D5AEC8002FC4DE /* GeneralSans-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = F014FEAC29D5AEC8002FC4DE /* GeneralSans-Light.otf */; };
+		F014FEB929D5AEC8002FC4DE /* GeneralSans-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F014FEAD29D5AEC8002FC4DE /* GeneralSans-MediumItalic.otf */; };
+		F014FEBA29D5AEC8002FC4DE /* GeneralSans-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F014FEAE29D5AEC8002FC4DE /* GeneralSans-Semibold.otf */; };
+		F014FEBB29D5AEC8002FC4DE /* GeneralSans-Extralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = F014FEAF29D5AEC8002FC4DE /* GeneralSans-Extralight.otf */; };
+		F014FEBC29D5AEC8002FC4DE /* GeneralSans-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F014FEB029D5AEC8002FC4DE /* GeneralSans-LightItalic.otf */; };
+		F014FEBD29D5AEC8002FC4DE /* GeneralSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = F014FEB129D5AEC8002FC4DE /* GeneralSans-Medium.otf */; };
+		F014FEBE29D5AEC8002FC4DE /* GeneralSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F014FEB229D5AEC8002FC4DE /* GeneralSans-Regular.otf */; };
+		F014FEBF29D5AEC8002FC4DE /* GeneralSans-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F014FEB329D5AEC8002FC4DE /* GeneralSans-SemiboldItalic.otf */; };
+		F014FEC029D5AEC8002FC4DE /* GeneralSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F014FEB429D5AEC8002FC4DE /* GeneralSans-Bold.otf */; };
+		F014FEC129D5AEC8002FC4DE /* GeneralSans-ExtralightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F014FEB529D5AEC8002FC4DE /* GeneralSans-ExtralightItalic.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -233,8 +243,19 @@
 		F00FD60729C32B6D007D4DAC /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F00FD60A29C33000007D4DAC /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		F00FD60C29C33101007D4DAC /* Bot365-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bot365-Bridging-Header.h"; sourceTree = "<group>"; };
-		F0329EAD29CC6B1600C758B5 /* TableViewSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSheetView.swift; sourceTree = "<group>"; };
-		F0329EAF29CCB86C00C758B5 /* TableViewSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSheetController.swift; sourceTree = "<group>"; };
+		F014FEAA29D5AEC8002FC4DE /* GeneralSans-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-Italic.otf"; sourceTree = "<group>"; };
+		F014FEAB29D5AEC8002FC4DE /* GeneralSans-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-BoldItalic.otf"; sourceTree = "<group>"; };
+		F014FEAC29D5AEC8002FC4DE /* GeneralSans-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-Light.otf"; sourceTree = "<group>"; };
+		F014FEAD29D5AEC8002FC4DE /* GeneralSans-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-MediumItalic.otf"; sourceTree = "<group>"; };
+		F014FEAE29D5AEC8002FC4DE /* GeneralSans-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-Semibold.otf"; sourceTree = "<group>"; };
+		F014FEAF29D5AEC8002FC4DE /* GeneralSans-Extralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-Extralight.otf"; sourceTree = "<group>"; };
+		F014FEB029D5AEC8002FC4DE /* GeneralSans-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-LightItalic.otf"; sourceTree = "<group>"; };
+		F014FEB129D5AEC8002FC4DE /* GeneralSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-Medium.otf"; sourceTree = "<group>"; };
+		F014FEB229D5AEC8002FC4DE /* GeneralSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-Regular.otf"; sourceTree = "<group>"; };
+		F014FEB329D5AEC8002FC4DE /* GeneralSans-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-SemiboldItalic.otf"; sourceTree = "<group>"; };
+		F014FEB429D5AEC8002FC4DE /* GeneralSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-Bold.otf"; sourceTree = "<group>"; };
+		F014FEB529D5AEC8002FC4DE /* GeneralSans-ExtralightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-ExtralightItalic.otf"; sourceTree = "<group>"; };
+		F014FEC229D5B045002FC4DE /* SFPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFPro-Regular.otf"; sourceTree = "<group>"; };
 		F05761C629CB045A0007BC46 /* Bot365.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bot365.entitlements; sourceTree = "<group>"; };
 		FFB3A1E1D1AD46A5D6DF31B2 /* Pods_Bot365.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bot365.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -293,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				F05761C629CB045A0007BC46 /* Bot365.entitlements */,
+				F014FEA429D4841B002FC4DE /* appLayer */,
 				F00FD58E29C327E3007D4DAC /* PresentationLayer */,
 				F00FD52329C32755007D4DAC /* ServiceLayer */,
 				F00FD54B29C327D8007D4DAC /* CoreLayer */,
@@ -478,8 +500,6 @@
 				F00FD5A029C327E3007D4DAC /* SportObjectTableViewCell.swift */,
 				F00FD5A129C327E3007D4DAC /* SportObjectListPresenter.swift */,
 				F00FD5A229C327E3007D4DAC /* SportObjectListViewController.swift */,
-				F0329EAD29CC6B1600C758B5 /* TableViewSheetView.swift */,
-				F0329EAF29CCB86C00C758B5 /* TableViewSheetController.swift */,
 			);
 			path = SportObjectList;
 			sourceTree = "<group>";
@@ -558,8 +578,6 @@
 				F00FD5F329C32854007D4DAC /* Fonts */,
 				F00FD51829C326E8007D4DAC /* LaunchScreen.storyboard */,
 				F00FD60C29C33101007D4DAC /* Bot365-Bridging-Header.h */,
-				F00FD60629C32B6D007D4DAC /* AppDelegate.swift */,
-				F00FD60729C32B6D007D4DAC /* SceneDelegate.swift */,
 				F00FD51629C326E8007D4DAC /* Assets.xcassets */,
 			);
 			path = SupportingFiles;
@@ -568,6 +586,7 @@
 		F00FD5F329C32854007D4DAC /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				F014FEA929D5AEC8002FC4DE /* general-sans-cufonfonts */,
 				F00FD5F429C32854007D4DAC /* Gilroy-Medium.ttf */,
 				F00FD5F529C32854007D4DAC /* MuseoModerno-Medium.ttf */,
 				F00FD5F629C32854007D4DAC /* Montserrat-bold.ttf */,
@@ -579,6 +598,35 @@
 				F00FD5FC29C32854007D4DAC /* Montserrat-regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		F014FEA429D4841B002FC4DE /* appLayer */ = {
+			isa = PBXGroup;
+			children = (
+				F00FD60629C32B6D007D4DAC /* AppDelegate.swift */,
+				F00FD60729C32B6D007D4DAC /* SceneDelegate.swift */,
+			);
+			path = appLayer;
+			sourceTree = "<group>";
+		};
+		F014FEA929D5AEC8002FC4DE /* general-sans-cufonfonts */ = {
+			isa = PBXGroup;
+			children = (
+				F014FEC229D5B045002FC4DE /* SFPro-Regular.otf */,
+				F014FEAA29D5AEC8002FC4DE /* GeneralSans-Italic.otf */,
+				F014FEAB29D5AEC8002FC4DE /* GeneralSans-BoldItalic.otf */,
+				F014FEAC29D5AEC8002FC4DE /* GeneralSans-Light.otf */,
+				F014FEAD29D5AEC8002FC4DE /* GeneralSans-MediumItalic.otf */,
+				F014FEAE29D5AEC8002FC4DE /* GeneralSans-Semibold.otf */,
+				F014FEAF29D5AEC8002FC4DE /* GeneralSans-Extralight.otf */,
+				F014FEB029D5AEC8002FC4DE /* GeneralSans-LightItalic.otf */,
+				F014FEB129D5AEC8002FC4DE /* GeneralSans-Medium.otf */,
+				F014FEB229D5AEC8002FC4DE /* GeneralSans-Regular.otf */,
+				F014FEB329D5AEC8002FC4DE /* GeneralSans-SemiboldItalic.otf */,
+				F014FEB429D5AEC8002FC4DE /* GeneralSans-Bold.otf */,
+				F014FEB529D5AEC8002FC4DE /* GeneralSans-ExtralightItalic.otf */,
+			);
+			path = "general-sans-cufonfonts";
 			sourceTree = "<group>";
 		};
 		F05761C729CBA7310007BC46 /* other */ = {
@@ -657,17 +705,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F014FEBE29D5AEC8002FC4DE /* GeneralSans-Regular.otf in Resources */,
+				F014FEB829D5AEC8002FC4DE /* GeneralSans-Light.otf in Resources */,
 				F00FD51A29C326E8007D4DAC /* LaunchScreen.storyboard in Resources */,
+				F014FEB729D5AEC8002FC4DE /* GeneralSans-BoldItalic.otf in Resources */,
+				F014FEBD29D5AEC8002FC4DE /* GeneralSans-Medium.otf in Resources */,
+				F014FEC129D5AEC8002FC4DE /* GeneralSans-ExtralightItalic.otf in Resources */,
 				F00FD60129C32854007D4DAC /* Gilroy-Thin.ttf in Resources */,
 				F00FD5FD29C32854007D4DAC /* Gilroy-Medium.ttf in Resources */,
+				F014FEB629D5AEC8002FC4DE /* GeneralSans-Italic.otf in Resources */,
 				F00FD60229C32854007D4DAC /* Gilroy-Bold.ttf in Resources */,
+				F014FEBF29D5AEC8002FC4DE /* GeneralSans-SemiboldItalic.otf in Resources */,
+				F014FEC029D5AEC8002FC4DE /* GeneralSans-Bold.otf in Resources */,
 				F00FD51729C326E8007D4DAC /* Assets.xcassets in Resources */,
 				F00FD60329C32854007D4DAC /* MuseoModerno-Bold.ttf in Resources */,
 				F00FD60429C32854007D4DAC /* Montserrat-Black.ttf in Resources */,
+				F014FEB929D5AEC8002FC4DE /* GeneralSans-MediumItalic.otf in Resources */,
 				F00FD60529C32854007D4DAC /* Montserrat-regular.ttf in Resources */,
 				F00FD60029C32854007D4DAC /* MuseoModerno-Regular.ttf in Resources */,
 				F00FD5FF29C32854007D4DAC /* Montserrat-bold.ttf in Resources */,
+				F014FEBC29D5AEC8002FC4DE /* GeneralSans-LightItalic.otf in Resources */,
+				F014FEBA29D5AEC8002FC4DE /* GeneralSans-Semibold.otf in Resources */,
 				F00FD5FE29C32854007D4DAC /* MuseoModerno-Medium.ttf in Resources */,
+				F014FEBB29D5AEC8002FC4DE /* GeneralSans-Extralight.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -779,7 +839,6 @@
 				F00FD5D629C327E3007D4DAC /* WebViewController.swift in Sources */,
 				F00FD5EE29C327E3007D4DAC /* RemindersListView.swift in Sources */,
 				F00FD58329C327D8007D4DAC /* NacionalApiEndPoint.swift in Sources */,
-				F0329EB029CCB86C00C758B5 /* TableViewSheetController.swift in Sources */,
 				F00FD58D29C327D8007D4DAC /* DatabaseManager.swift in Sources */,
 				F00FD5DB29C327E3007D4DAC /* CustomTabBarController.swift in Sources */,
 				F00FD5C829C327E3007D4DAC /* LaunchScreenView.swift in Sources */,
@@ -795,7 +854,6 @@
 				F00FD58629C327D8007D4DAC /* RequestSender.swift in Sources */,
 				F00FD5DF29C327E3007D4DAC /* SettingsPresenter.swift in Sources */,
 				F00FD54429C3276F007D4DAC /* NotificationExt.swift in Sources */,
-				F0329EAE29CC6B1600C758B5 /* TableViewSheetView.swift in Sources */,
 				F00FD5D429C327E3007D4DAC /* SportObjectListPresenter.swift in Sources */,
 				F00FD5CB29C327E3007D4DAC /* PermissionsModel.swift in Sources */,
 				F00FD5D129C327E3007D4DAC /* SportObjectListModel.swift in Sources */,

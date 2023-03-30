@@ -6,23 +6,19 @@
 //
 
 import UIKit
-import AnchoredBottomSheet
 
-class SportObjectListViewController: UIViewController, BottomSheetViewControllerDelegate  {
-    func didDismiss() {
-        print("click")
-    }
+
+class SportObjectListViewController: UIViewController  {
+ 
     
     
     private let contentView = SportObjectListView()
-    private let tableViewSheet = TableViewSheetView()
     private let presenter: ISportObjectListPresenter
     private var sportObjectSource: [SportObject] = []
     private let presentationAssembly: IPresentationAssembly
     private var afterSeeingVideoCompletion: (() -> Void)?
     private let sportType: SportType
-    
-//    weak var tableHeight: NSLayoutConstraint!
+
     
     
     private var viewState: SportObjectListViewState = .initial {
@@ -30,7 +26,7 @@ class SportObjectListViewController: UIViewController, BottomSheetViewController
             contentView.setupView(for: viewState)
         }
     }
-    let bottomView = TableViewSheetView()
+
     
     
     init(
@@ -57,13 +53,6 @@ class SportObjectListViewController: UIViewController, BottomSheetViewController
         super.viewDidLoad()
         contentView.showLoader(toggle: true)
         setupView()
-        
-//        tableHeight.constant = self.contentView.frame.height-64
-//        contentView.sportObjectTableView.isScrollEnabled = false
-//         //no need to write following if checked in storyboard
-//        contentView.scroll.bounces = false
-//        contentView.sportObjectTableView.bounces = true
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,21 +61,6 @@ class SportObjectListViewController: UIViewController, BottomSheetViewController
         addGoBackButton()
     }
     
-    func showTableView() {
-        
-        let detailViewController = TableViewSheetController()
-        let nav = UINavigationController(rootViewController: detailViewController)
-        
-        nav.modalPresentationStyle = .pageSheet
-        nav.isModalInPresentation = true // add
-        
-        if let sheet = nav.sheetPresentationController {
-            sheet.detents = [.medium(), .large()]
-            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-            sheet.largestUndimmedDetentIdentifier = .medium
-        }
-        present(nav, animated: true, completion: nil)
-    }
     
     private func setupView() {
         contentView.categoryImageView.image = UIImage(named: sportType.bigImage)
@@ -177,9 +151,10 @@ extension SportObjectListViewController: ISportObjectListView {
             sheet.detents = [.large(), .medium()]
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
             sheet.prefersGrabberVisible = true
+            sheet.selectedDetentIdentifier = .large
         }
         navigationController?.present(vc, animated: true)
-//        navigationController?.pushViewController(vc, animated: true)
+
     }
  
     func showObjects(sportsObjects: [SportObject]) {
@@ -204,9 +179,10 @@ extension SportObjectListViewController: ISportObjectListView {
         }
     }
     
-    func connected(sender: UIButton!) {
-        
-    }
+//    @objc func connected(sender: UIButton){
+//        let buttonTag = sender.tag
+//        presenter.sportObjectWasSelect(sportObject: sportObject)
+//    }
 }
 
 // MARK: - UITableView methods
@@ -225,9 +201,11 @@ extension SportObjectListViewController: UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SportObjectTableViewCell.reuseID) as! SportObjectTableViewCell
         cell.object = sportObjectSource[safe: indexPath.row]
-        
-        guard let sportObject = sportObjectSource[safe: indexPath.row] else { return cell }
-        cell.reserveButton.target(forAction: "connected", withSender: self)
+//        
+//        guard let sportObject = sportObjectSource[safe: indexPath.row] else { return cell }
+//        
+//        cell.reserveButton.tag = indexPath.row
+//        cell.reserveButton.addTarget(self, action: #selector(connected(sender:)), for: .touchUpInside)
         
         cell.selectionStyle = .none
         return cell

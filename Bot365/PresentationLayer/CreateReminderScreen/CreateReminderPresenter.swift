@@ -50,6 +50,7 @@ class CreateReminderPresenter: ILocationPresenter {
     
     func setDate(_ date: Date) {
         self.choosenDate = date
+        
     }
     
     func setHoursAndMinutes(hours: Int, minuts: Int) {
@@ -90,7 +91,7 @@ class CreateReminderPresenter: ILocationPresenter {
     private func scheduleNotification() {
         let content = UNMutableNotificationContent() // Содержимое уведомления
         content.title = "Don't forget"
-        content.body = "You are scheduled visit to \(sportObject.name)"
+        content.body = "You are scheduled visit to \(sportObject.address)"
         content.sound = UNNotificationSound.default
         content.badge = 1
         

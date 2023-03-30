@@ -8,7 +8,6 @@
 import UIKit
 import UserNotifications
 
-
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, ISInitializationDelegate {
     
@@ -20,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ISInitializationDelegate 
     let rootAssembly = RootAssembly()
     let notificationCenter = UNUserNotificationCenter.current()
 
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         notificationCenter.delegate = self
         setupFrameworks()
@@ -27,16 +27,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ISInitializationDelegate 
         else { createStartView(window: window ?? UIWindow(frame: UIScreen.main.bounds)) }
         return true
     }
+
     
+    // Iron Source
     private func setupFrameworks() {
         IronSource.initWithAppKey(Constants.IronAppKey, delegate: self)
     }
     
-    // Iron Source
     @objc
     func initializationDidComplete() {
         ISIntegrationHelper.validateIntegration()
     }
+
     
     private func createStartView(window: UIWindow) {
         self.window = window
@@ -95,6 +97,8 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         print("Device Token: \(token)")
         rootAssembly.serviceAssembly.userInfoService.saveNotificationToken(token: token)
         rootAssembly.serviceAssembly.networkService.sendPushToken(token: token)
+        
+        
     }
 
     func application(

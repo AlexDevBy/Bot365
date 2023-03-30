@@ -87,10 +87,12 @@ extension RemindersListViewController: UITableViewDataSource, UITableViewDelegat
         cell.selectionStyle = .none
         return cell
     }
+    
+    
 }
 
 //MARK: Delegates
-extension RemindersListViewController: SportsObjectTableViewCellDelegate {
+extension RemindersListViewController: ReminderObjectTableViewCellDelegate {
     func deleteEventTappped(with id: String) {
         askAlert(title: "Do you want to delete reminder?", msg: "") {
             self.presenter.removeEvent(with: id)

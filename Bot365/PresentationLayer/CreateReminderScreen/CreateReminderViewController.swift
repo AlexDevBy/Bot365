@@ -51,9 +51,9 @@ class CreateReminderViewController: UIViewController {
     }
     
     private func setupView() {
-        viewState  = .initial
-        contentView.addressNameLabel.text = presenter.sportObject.address
-        contentView.sportObjectNameLabel.text = presenter.sportObject.name
+        viewState  = .shedule
+        contentView.addressNameLabel.text = presenter.sportObject.name
+        contentView.sportObjectNameLabel.text = presenter.sportObject.address
         contentView.calendarView.delegate = self
         categoriesSource = presenter.getCategories()
     }
@@ -69,6 +69,7 @@ class CreateReminderViewController: UIViewController {
         case .sheduleSaved:
 //            navigationController?.popToRootViewController(animated: true)
             self.dismiss(animated: true)
+            (tabBarController as? CustomTabBarController)?.showScreen(.calendar)
         }
     }
     
@@ -91,6 +92,7 @@ class CreateReminderViewController: UIViewController {
     @objc
     func startTimeDiveChanged(sender: UIDatePicker) {
         contentView.chooseTimeButton.setTitle(sender.date.toString("HH:mm"), for: .normal)
+        contentView.hourLabel.text = sender.date.toString("HH:mm, EEEE, d MMM , yyyy")
         let gregorian = Calendar.current
         let components = gregorian.dateComponents([.hour, .minute], from: sender.date)
         guard let hours = components.hour, let minutes = components.minute else { return }

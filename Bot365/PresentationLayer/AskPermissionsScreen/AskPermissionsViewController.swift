@@ -9,7 +9,7 @@ import UIKit
 import CoreLocation
 import NotificationCenter
 
-class AskPermissionsViewController: UIViewController, DeviceLocationServiceDelegate {
+class AskPermissionsViewController: UIViewController, DeviceLocationServiceDelegate, UNUserNotificationCenterDelegate {
     
     private let contentView = AskPermissionsView()
     private let presentationAssembly: IPresentationAssembly
@@ -56,12 +56,13 @@ class AskPermissionsViewController: UIViewController, DeviceLocationServiceDeleg
     func allowTapped() {
         switch permissionsType {
         case .push:
-            registerForPushNotifications() {
-                self.userInfoService.changeAskPushValue()
+            getNotificationSettings { [weak self] (success) -> Void in
+                self?.userInfoService.changeAskPushValue()
                 DispatchQueue.main.async {
-                    self.skipTapped()
+                    self?.skipTapped()
                 }
             }
+//
         case .location:
             self.locationService.delegate = self
             locationService.requestLocationUpdates()
@@ -85,24 +86,36 @@ class AskPermissionsViewController: UIViewController, DeviceLocationServiceDeleg
         }
     }
     
-    private func registerForPushNotifications(completionHandler: @escaping () -> Void) {
-      UNUserNotificationCenter.current()
-        .requestAuthorization(options: [.alert, .sound, .badge]) { [weak self] granted, _ in
-            completionHandler()
+    func getNotificationSettings(_ completion: @escaping (Bool) -> Void) {
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
+            (granted, error) in
             guard granted else { return }
-            self?.getNotificationSettings()
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+                completion(true)
+            }
         }
     }
     
-    private func getNotificationSettings() {
-      UNUserNotificationCenter.current().getNotificationSettings { settings in
-        print("Notification settings: \(settings)")
-          guard settings.authorizationStatus == .authorized else { return }
-          DispatchQueue.main.async {
-            UIApplication.shared.registerForRemoteNotifications()
-          }
-      }
-    }
+//    private func registerForPushNotifications(completionHandler: @escaping () -> Void) {
+//      UNUserNotificationCenter.current()
+//        .requestAuthorization(options: [.alert, .sound, .badge]) { [weak self] granted, _ in
+//            completionHandler()
+//            guard granted else { return }
+//            self?.getNotificationSettings()
+//        }
+//    }
+//
+//    private func getNotificationSettings() {
+//      UNUserNotificationCenter.current().getNotificationSettings { settings in
+//        print("Notification settings: \(settings)")
+//          guard settings.authorizationStatus == .authorized else { return }
+//          DispatchQueue.main.async {
+//            UIApplication.shared.registerForRemoteNotifications()
+//          }
+//      }
+//    }
     
     private func goToTabbar() {
         let viewController = presentationAssembly.tabbarController()
