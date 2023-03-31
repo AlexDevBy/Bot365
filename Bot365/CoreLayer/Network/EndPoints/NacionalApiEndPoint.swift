@@ -10,12 +10,12 @@ import Alamofire
 
 enum NacionalApiEndPoint: ApiConfiguration {
     case delete
-    case auth(String)
+    case auth(token: String, pushToken: String, countryCode: String)
     case appleAuth(String)
     case countries(ip: String?)
     case setPremium(days: String?)
     case revokeAppleToken(token: String)
-    case updatePushToken(pushToken: String)
+    case updatePushToken(pushToken: String, countryCode: String)
     
     var method: HTTPMethod {
         switch self {
@@ -47,8 +47,8 @@ enum NacionalApiEndPoint: ApiConfiguration {
         switch self {
         case .revokeAppleToken(let token):
             return [ApiConstants.APIParameterKey.revoke: token]
-        case .auth(let token):
-            return [ApiConstants.APIParameterKey.appleId: token]
+        case .auth(let token, let pushToken, let countryCode):
+            return [ApiConstants.APIParameterKey.appleId: token, ApiConstants.APIParameterKey.pushToken: pushToken,ApiConstants.APIParameterKey.countryCode: countryCode]
         case .appleAuth(let code):
             return [ApiConstants.APIParameterKey.ident: code]
         case .countries(let ip):
@@ -56,8 +56,8 @@ enum NacionalApiEndPoint: ApiConfiguration {
                 return [ApiConstants.APIParameterKey.ip: ip]
             }
             return nil
-        case .updatePushToken(let pushToken):
-            return [ApiConstants.APIParameterKey.pushToken: pushToken]
+        case .updatePushToken(let pushToken, let countryCode):
+            return [ApiConstants.APIParameterKey.pushToken: pushToken, ApiConstants.APIParameterKey.countryCode: countryCode]
         default:
             return nil
         }

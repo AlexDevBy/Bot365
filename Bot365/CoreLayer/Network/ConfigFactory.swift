@@ -18,6 +18,11 @@ struct ConfigFactory {
     static func getCountris(ip: String?) -> ApiRequestConfig<CountryParser> {
         return ApiRequestConfig(endPoint: NacionalApiEndPoint.countries(ip: ip), parser: CountryParser())
     }
+    
+    static func getCountryCode(ip: String?) -> ApiRequestConfig<CountryCodeParser> {
+            return ApiRequestConfig(endPoint: NacionalApiEndPoint.countries(ip: ip), parser: CountryCodeParser())
+        }
+    
     static func setPremium() -> ApiRequestConfig<SucceedParser> {
         return ApiRequestConfig(endPoint: NacionalApiEndPoint.setPremium(days: nil), parser: SucceedParser())
     }
@@ -36,10 +41,10 @@ struct ConfigFactory {
     static func auth(code: String) -> ApiRequestConfig<AppleAuthParser> {
         return ApiRequestConfig(endPoint: NacionalApiEndPoint.appleAuth(code), parser: AppleAuthParser())
     }
-    static func auth(token: String) -> ApiRequestConfig<AuthParser> {
-        return ApiRequestConfig(endPoint: NacionalApiEndPoint.auth(token), parser: AuthParser())
+    static func auth(token: String, pushToken: String, countryCode: String) -> ApiRequestConfig<AuthParser> {
+        return ApiRequestConfig(endPoint: NacionalApiEndPoint.auth(token: token, pushToken: pushToken, countryCode: countryCode), parser: AuthParser())
     }
-    static func savePushToken(token: String) -> ApiRequestConfig<SucceedParser> {
-        return ApiRequestConfig(endPoint: NacionalApiEndPoint.updatePushToken(pushToken: token), parser: SucceedParser())
+    static func savePushToken(token: String,countryCode: String) -> ApiRequestConfig<SucceedParser> {
+        return ApiRequestConfig(endPoint: NacionalApiEndPoint.updatePushToken(pushToken: token, countryCode: countryCode), parser: SucceedParser())
     }
 }

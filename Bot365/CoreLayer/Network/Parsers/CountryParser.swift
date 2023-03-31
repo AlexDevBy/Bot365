@@ -13,6 +13,7 @@ class CountryParser: IParser {
     
     func parse(json: JSON) -> Model? {
         guard let tab = Int(json["data"]["tabs"].stringValue) else { return nil}
+        
         return AppWayByCountry(tab: tab)
     }
 }

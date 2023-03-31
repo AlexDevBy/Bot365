@@ -10,7 +10,7 @@ import Foundation
 enum AppWayByCountry {
     case toApp
     case web
-    
+        
     init(tab: Int) {
         switch tab {
         case 1:
@@ -20,5 +20,13 @@ enum AppWayByCountry {
         default:
             self = .web
         }
+    }
+}
+
+struct CountryCode {
+    let countryCode: String
+    
+    init(countryCode: String) {
+        self.countryCode = countryCode
     }
 }

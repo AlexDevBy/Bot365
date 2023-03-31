@@ -9,6 +9,7 @@ import Foundation
 
 protocol ISensentiveInfoService: AnyObject {
     func getToken() -> String?
+    func getPushToken() -> String?
     func saveToken(token: String, completionHandler: FinishedCompletionHandler)
     func saveAppleToken(token: String)
     func saveNotificationToken(token: String)
@@ -19,6 +20,8 @@ protocol ISensentiveInfoService: AnyObject {
     func getAppleToken() -> String?
     func wasPushAsked() -> Bool
     func changeAskPushValue()
+    func saveCountryCode(code: String)
+    func getCountryCode() -> String?
 }
 
 class AppInfoService: ISensentiveInfoService {
@@ -36,6 +39,10 @@ class AppInfoService: ISensentiveInfoService {
     
     func getToken() -> String? {
         secureStorage.getToken()
+    }
+    
+    func getPushToken() -> String? {
+        secureStorage.getPushToken()
     }
     
     func saveToken(token: String, completionHandler: FinishedCompletionHandler) {
@@ -75,6 +82,15 @@ class AppInfoService: ISensentiveInfoService {
     func saveNotificationToken(token: String) {
         secureStorage.savePushToken(token: token)
     }
+    
+    func saveCountryCode(code: String) {
+        secureStorage.saveCountryCode(code: code)
+    }
+    
+    func getCountryCode() -> String? {
+        secureStorage.getCountryCode()
+    }
+    
     
     func wasPushAsked() -> Bool {
         appSettingsStorage.getAskPushValue()

@@ -190,6 +190,8 @@ extension SportObjectListViewController: UITableViewDataSource, UITableViewDeleg
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let sportObject = sportObjectSource[safe: indexPath.row] else { return }
+//              let cell = tableView.cellForRow(at: indexPath) as? SportObjectTableViewCell else { return }
+
         presenter.sportObjectWasSelect(sportObject: sportObject)
         
     }
@@ -203,10 +205,9 @@ extension SportObjectListViewController: UITableViewDataSource, UITableViewDeleg
         cell.object = sportObjectSource[safe: indexPath.row]
 //        
 //        guard let sportObject = sportObjectSource[safe: indexPath.row] else { return cell }
-//        
+//
 //        cell.reserveButton.tag = indexPath.row
 //        cell.reserveButton.addTarget(self, action: #selector(connected(sender:)), for: .touchUpInside)
-        
         cell.selectionStyle = .none
         return cell
     }

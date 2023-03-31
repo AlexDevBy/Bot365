@@ -62,14 +62,25 @@ class SportObjectTableViewCell: UITableViewCell, ReusableView {
     }()
     
     let reserveButton: UIButton = {
-        let btn = UIButton()
+        let btn = UIButton(type: .system)
         btn.layer.cornerRadius = 12
         btn.setTitle("Reserve", for: .normal)
+        btn.setTitleColor(.white, for: .normal)
+        btn.setTitleColor(.systemGray, for: .selected)
         btn.titleLabel?.textColor = .white
         btn.tag = 0
         btn.addTarget(self, action: #selector(reserve), for: .touchUpInside)
         return btn
     }()
+    
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        if reserveButton.point(inside: reserveButton.convert(point, from: self.coordinateSpace), with: event) {
+            print("lol")
+            return self
+        }
+        print("wtf")
+        return nil
+    }
     
     @objc
     func reserve() {

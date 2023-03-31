@@ -96,7 +96,8 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         let token = tokenParts.joined()
         print("Device Token: \(token)")
         rootAssembly.serviceAssembly.userInfoService.saveNotificationToken(token: token)
-        rootAssembly.serviceAssembly.networkService.sendPushToken(token: token)
+        guard let countryCode = rootAssembly.serviceAssembly.userInfoService.getCountryCode() else { return }
+        rootAssembly.serviceAssembly.networkService.sendPushToken(token: token, countryCode: countryCode)
         
         
     }

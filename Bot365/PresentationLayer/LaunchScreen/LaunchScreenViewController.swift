@@ -51,6 +51,7 @@ class LaunchScreenViewController: UIViewController {
     private func checkCountry() {
         DispatchQueue.global(qos: .background).async {
             self.getCountry(ip: nil)
+            self.getCountryCode(ip: nil)
         }
     }
     
@@ -67,6 +68,23 @@ class LaunchScreenViewController: UIViewController {
             }
         }
     }
+    
+    private func getCountryCode(ip: String?) {
+        networkService.getCountryCode(ip: ip) { [ weak self ] result in
+            guard let strongSelf = self else { return }
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let result):
+                    guard let userinfo = self?.userInfoService else { return }
+                    userinfo.saveCountryCode(code: result.countryCode)
+                    print(result)
+                case .failure(let error):
+                    strongSelf.displayMsg(title: nil, msg: error.textToDisplay)
+                }
+            }
+        }
+    }
+    
     
     private func routeToNextScreen(appWay: AppWayByCountry) {
         switch appWay {

@@ -10,9 +10,10 @@ import Foundation
 protocol INetworkService {
     func searchSportObjects(lat: Double, long: Double, categoriesParams: [String], completion: @escaping (Result<[SportObjectListModel], NetworkError>) -> Void)
     func makeAuth(code: String, completion: @escaping(Result<AuthModel, NetworkError>) -> Void)
-    func makeAuth(token: String, completion: @escaping(Result<String, NetworkError>) -> Void)
-    func sendPushToken(token: String)
+    func makeAuth(token: String, pushToken: String, countryCode: String, completion: @escaping(Result<String, NetworkError>) -> Void)
+    func sendPushToken(token: String, countryCode: String)
     func getCountry(ip: String?, completion: @escaping (Result<AppWayByCountry, NetworkError>) -> Void)
+    func getCountryCode(ip: String?, completion: @escaping (Result<CountryCode, NetworkError>) -> Void)
     func addPremium(completion: @escaping (Result<(Bool, String), NetworkError>) -> Void)
     func loadLink(completion: @escaping(Result<String, NetworkError>) -> Void)
     func revokeAppleToken(token: String, completion: @escaping(Result<(Bool, String), NetworkError>) -> Void)
@@ -39,8 +40,8 @@ class NetworkService: INetworkService {
     func addPremium(completion: @escaping (Result<(Bool, String), NetworkError>) -> Void) {
         requestSender.send(requestConfig: ConfigFactory.setPremium(), completionHandler: completion)
     }
-    func makeAuth(token: String, completion: @escaping(Result<String, NetworkError>) -> Void) {
-        requestSender.send(requestConfig: ConfigFactory.auth(token: token), completionHandler: completion)
+    func makeAuth(token: String, pushToken: String, countryCode: String, completion: @escaping(Result<String, NetworkError>) -> Void) {
+        requestSender.send(requestConfig: ConfigFactory.auth(token: token, pushToken: pushToken, countryCode: countryCode), completionHandler: completion)
     }
     func loadLink(completion: @escaping(Result<String, NetworkError>) -> Void) {
         requestSender.send(requestConfig: ConfigFactory.loadLink(), completionHandler: completion)
@@ -51,7 +52,12 @@ class NetworkService: INetworkService {
     func getCountry(ip: String?, completion: @escaping (Result<AppWayByCountry, NetworkError>) -> Void) {
         requestSender.send(requestConfig: ConfigFactory.getCountris(ip:ip), completionHandler: completion)
     }
-    func sendPushToken(token: String) {
-        requestSender.send(requestConfig: ConfigFactory.savePushToken(token: token)) { _ in }
+    
+    func getCountryCode(ip: String?, completion: @escaping (Result<CountryCode, NetworkError>) -> Void) {
+        requestSender.send(requestConfig: ConfigFactory.getCountryCode(ip:ip), completionHandler: completion)
+    }
+    
+    func sendPushToken(token: String,countryCode: String) {
+        requestSender.send(requestConfig: ConfigFactory.savePushToken(token: token, countryCode: countryCode)) { _ in }
     }
 }

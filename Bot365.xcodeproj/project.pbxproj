@@ -128,6 +128,7 @@
 		F014FEBF29D5AEC8002FC4DE /* GeneralSans-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F014FEB329D5AEC8002FC4DE /* GeneralSans-SemiboldItalic.otf */; };
 		F014FEC029D5AEC8002FC4DE /* GeneralSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F014FEB429D5AEC8002FC4DE /* GeneralSans-Bold.otf */; };
 		F014FEC129D5AEC8002FC4DE /* GeneralSans-ExtralightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F014FEB529D5AEC8002FC4DE /* GeneralSans-ExtralightItalic.otf */; };
+		F01C308729D6EE1F00C54CE0 /* CountryCodeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01C308629D6EE1F00C54CE0 /* CountryCodeParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -256,6 +257,7 @@
 		F014FEB429D5AEC8002FC4DE /* GeneralSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-Bold.otf"; sourceTree = "<group>"; };
 		F014FEB529D5AEC8002FC4DE /* GeneralSans-ExtralightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-ExtralightItalic.otf"; sourceTree = "<group>"; };
 		F014FEC229D5B045002FC4DE /* SFPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFPro-Regular.otf"; sourceTree = "<group>"; };
+		F01C308629D6EE1F00C54CE0 /* CountryCodeParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeParser.swift; sourceTree = "<group>"; };
 		F05761C629CB045A0007BC46 /* Bot365.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bot365.entitlements; sourceTree = "<group>"; };
 		FFB3A1E1D1AD46A5D6DF31B2 /* Pods_Bot365.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bot365.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -424,6 +426,7 @@
 				F00FD55B29C327D8007D4DAC /* SportsObjectParser.swift */,
 				F00FD55C29C327D8007D4DAC /* LinkParser.swift */,
 				F00FD55D29C327D8007D4DAC /* SucceedParser.swift */,
+				F01C308629D6EE1F00C54CE0 /* CountryCodeParser.swift */,
 				F00FD55E29C327D8007D4DAC /* CountryParser.swift */,
 				F00FD55F29C327D8007D4DAC /* IPars.swift */,
 				F00FD56029C327D8007D4DAC /* AppleAuthParser.swift */,
@@ -858,6 +861,7 @@
 				F00FD5CB29C327E3007D4DAC /* PermissionsModel.swift in Sources */,
 				F00FD5D129C327E3007D4DAC /* SportObjectListModel.swift in Sources */,
 				F00FD57529C327D8007D4DAC /* Nacional.xcdatamodeld in Sources */,
+				F01C308729D6EE1F00C54CE0 /* CountryCodeParser.swift in Sources */,
 				F00FD60829C32B6D007D4DAC /* AppDelegate.swift in Sources */,
 				F00FD58B29C327D8007D4DAC /* CoreAssembly.swift in Sources */,
 				F00FD5E029C327E3007D4DAC /* SettingsViewController.swift in Sources */,

@@ -24,6 +24,7 @@ enum ApiConstants {
         static let name = "name"
         static let revoke = "revoke"
         static let pushToken = "push_token"
+        static let countryCode = "country_code"
                 
         // Прочие
         static let ip = "ip"

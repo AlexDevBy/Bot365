@@ -49,10 +49,6 @@ class EnterViewController: UIViewController {
     
     private func setupView() {
         contentView.signInHandler = {
-            
-            //            let pushPermission = self.presentationAssembly.askPermissionsScreen(permissionType: .location)
-            //            self.navigationController?.pushViewController(pushPermission, animated: true)
-            
             let provider = ASAuthorizationAppleIDProvider()
             let request = provider.createRequest()
             request.requestedScopes = [.email]
@@ -65,6 +61,7 @@ class EnterViewController: UIViewController {
     }
     
     private func makeAppleAuth(code: String) {
+        print("makeAppleAuth code - \(code)")
         networkService.makeAuth(code: code) { [weak self] result in
             DispatchQueue.main.async {
                 guard let strongSelf = self else { return }
@@ -81,14 +78,28 @@ class EnterViewController: UIViewController {
     }
     
     private func makeAuth(token: String) {
-        networkService.makeAuth(token: token) { [weak self] result in
+        guard let countryCode = self.userInfoService.getCountryCode(),
+              let pushToken = self.userInfoService.getPushToken() else { return }
+        print("countryCode: \(countryCode), pushToken: \(pushToken)")
+        networkService.makeAuth(token: token, pushToken: pushToken, countryCode: countryCode) { [weak self] result in
             DispatchQueue.main.async { [self] in
                 guard let strongSelf = self else { return }
                 switch result {
                 case .success(let token):
                     guard token.count > 3 else { return }
                     strongSelf.userInfoService.saveToken(token: token) { _ in
-                        
+                        switch CLLocationManager.authorizationStatus() {
+                        case .notDetermined:
+                            guard let pushPermission = self?.presentationAssembly.askPermissionsScreen(permissionType: .location) else { return }
+                            self?.navigationController?.pushViewController(pushPermission, animated: true)
+                            print("notDetermined")
+                        case .denied, .authorizedAlways, .restricted, .authorizedWhenInUse:
+                            guard let tabbarController = self?.presentationAssembly.tabbarController() else { return }
+                            self?.setWindowRoot(tabbarController)
+                            
+                        @unknown default:
+                            print("error with location")
+                        }
                         
                     }
                 case .failure(let failure):
@@ -123,21 +134,7 @@ extension EnterViewController: ASAuthorizationControllerDelegate {
             else { return }
             print(credentiontials.email)
             print(codeString)
-            
-            switch CLLocationManager.authorizationStatus() {
-            case .notDetermined:
-                let pushPermission = self.presentationAssembly.askPermissionsScreen(permissionType: .location)
-                self.navigationController?.pushViewController(pushPermission, animated: true)
-                print("notDetermined")
-            case .denied, .authorizedAlways, .restricted, .authorizedWhenInUse:
-                let tabbarController = self.presentationAssembly.tabbarController()
-                self.setWindowRoot(tabbarController)
-                
-            @unknown default:
-                print("error with location")
-            }
-            
-//            makeAppleAuth(code: codeString)
+            makeAppleAuth(code: codeString)
         default:
             break
         }
