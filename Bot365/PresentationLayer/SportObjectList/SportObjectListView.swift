@@ -19,7 +19,7 @@ class SportObjectListView: UIView {
     
     let titleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.setFont(fontName: .GilroyMedium, sizeXS: 24)
+        lbl.setFont(fontName: .GeneralSansMedium, sizeXS: 24)
         lbl.numberOfLines = 0
         lbl.textAlignment = .center
         lbl.textColor = .white
@@ -76,14 +76,14 @@ class SportObjectListView: UIView {
         btn.setTitleColor(.yellow, for: .normal)
         btn.backgroundColor = .AppCollors.backgroundGreen
         btn.layer.cornerRadius = Constants.allowCornerRaidus
-        btn.titleLabel?.setFont(fontName: .MontsBold, sizeXS: 18)
+        btn.titleLabel?.setFont(fontName: .SFProRegular, sizeXS: 18)
         if #available(iOS 15, *) {
             var config = UIButton.Configuration.plain()
             config.background.backgroundColor = .AppCollors.backgroundGreen
             config.background.cornerRadius = Constants.allowCornerRaidus
             config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
                 var outgoing = incoming
-                outgoing.font = UIFont(font: .MontsBold, size: 18)
+                outgoing.font = UIFont(font: .SFProRegular, size: 18)
                 return outgoing
             }
             btn.configuration = config
@@ -163,7 +163,6 @@ class SportObjectListView: UIView {
         
         addSubview(titleLabel)
         addSubview(categoryImageView)
-//        addSubview(sportObjectTableView)
         addSubview(scroll)
         scroll.addSubview(sportObjectTableView)
         sportObjectTableView.addSubview(errorLabel)
@@ -223,7 +222,7 @@ class SportObjectListView: UIView {
         addSubview(informationView)
         addSubview(allowButton)
         
-        informationView.topAnchor.constraint(equalTo: categoryImageView.bottomAnchor, constant: 25).isActive = true
+        informationView.topAnchor.constraint(equalTo: categoryImageView.bottomAnchor, constant: -15).isActive = true
         informationView.leftAnchor.constraint(equalTo: informationView.superview!.leftAnchor, constant: 16).isActive = true
         informationView.rightAnchor.constraint(equalTo: informationView.superview!.rightAnchor, constant: -16).isActive = true
         informationView.heightAnchor.constraint(equalToConstant: 100).isActive = true
@@ -231,7 +230,7 @@ class SportObjectListView: UIView {
         
         allowButton.widthAnchor.constraint(equalToConstant: CGFloat(271).dp).isActive = true
         allowButton.heightAnchor.constraint(equalToConstant: CGFloat(60).dp).isActive = true
-        allowButton.topAnchor.constraint(equalTo: informationView.bottomAnchor, constant: 13).isActive = true
+        allowButton.topAnchor.constraint(equalTo: informationView.bottomAnchor, constant: 25).isActive = true
         allowButton.centerXAnchor.constraint(equalTo: allowButton.superview!.centerXAnchor).isActive = true
         allowButton.translatesAutoresizingMaskIntoConstraints = false
     }

@@ -57,12 +57,17 @@ class AskPermissionsViewController: UIViewController, DeviceLocationServiceDeleg
         switch permissionsType {
         case .push:
             getNotificationSettings { [weak self] (success) -> Void in
-                self?.userInfoService.changeAskPushValue()
-                DispatchQueue.main.async {
-                    self?.skipTapped()
+                if success{
+                    self?.userInfoService.changeAskPushValue()
+                    DispatchQueue.main.async {
+                        self?.skipTapped()
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self?.skipTapped()
+                    }
                 }
             }
-//
         case .location:
             self.locationService.delegate = self
             locationService.requestLocationUpdates()
@@ -90,7 +95,7 @@ class AskPermissionsViewController: UIViewController, DeviceLocationServiceDeleg
         UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
             (granted, error) in
-            guard granted else { return }
+            guard granted else { return completion(false) }
             DispatchQueue.main.async {
                 UIApplication.shared.registerForRemoteNotifications()
                 completion(true)

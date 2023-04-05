@@ -45,7 +45,7 @@ class ReminderSportObjectTableViewCell: UITableViewCell, ReusableView {
     
     private let titleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.setFont(fontName: .MontsRegular, sizeXS: 16)
+        lbl.setFont(fontName: .SFProRegular, sizeXS: 16)
         lbl.textColor = .white
         lbl.numberOfLines = 0
         lbl.lineBreakMode = .byWordWrapping
@@ -54,7 +54,7 @@ class ReminderSportObjectTableViewCell: UITableViewCell, ReusableView {
     
     private let subtitleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.setFont(fontName: .MontsRegular, sizeXS: 16)
+        lbl.setFont(fontName: .SFProRegular, sizeXS: 16)
         lbl.textColor = .white
         lbl.lineBreakMode = .byWordWrapping
         lbl.numberOfLines = 0
@@ -74,7 +74,6 @@ class ReminderSportObjectTableViewCell: UITableViewCell, ReusableView {
         btn.backgroundColor = .clear
         btn.setImage(UIImage(named: "routeIcon"), for: .normal)
         btn.tintColor = .white
-        btn.addTarget(self, action: #selector(routeEvent), for: .touchUpInside)
         return btn
     }()
     

@@ -25,7 +25,7 @@ extension UIFont {
         case GilroyThin = "Gilroy-Thin"
         case GilroyBold = "Gilroy-Bold"
         case GilroyMedium = "Gilroy-Medium"
-        case SFProRegular = "SFPro-Regular"
+        case SFProRegular = "SFProText-Regular"
         case GeneralSansMedium = "GeneralSans-Medium"
     }
     

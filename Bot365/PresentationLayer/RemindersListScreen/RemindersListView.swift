@@ -18,7 +18,7 @@ class RemindersListView: UIView {
     let reservationsLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "Your reservations"
-        lbl.font = UIFont(name: "GeneralSans-Medium", size: 16)
+        lbl.setFont(fontName: .GeneralSansMedium, sizeXS: 16)
         return lbl
     }()
     
@@ -38,7 +38,7 @@ class RemindersListView: UIView {
         let lbl = UILabel()
         lbl.textColor = .black
         lbl.text = "No reservations"
-        lbl.setFont(fontName: .GilroyMedium, sizeXS: 24)
+        lbl.setFont(fontName: .GeneralSansMedium, sizeXS: 24)
         lbl.alpha = 0
         lbl.textAlignment = .center
         return lbl
@@ -48,7 +48,7 @@ class RemindersListView: UIView {
         let lbl = UILabel()
         lbl.textColor = UIColor(netHex: 0x858585)
         lbl.text = "You don’t have reservations yet"
-        lbl.font = UIFont(name: "GeneralSans-Medium", size: 16)
+        lbl.setFont(fontName: .GeneralSansMedium, sizeXS: 16)
         lbl.alpha = 0
         return lbl
     }()

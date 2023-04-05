@@ -24,7 +24,7 @@ class SettingsTableViewCell: UITableViewCell, ReusableView {
     
     private let titleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.setFont(fontName: .MontsRegular, sizeXS: 16)
+        lbl.setFont(fontName: .SFProRegular, sizeXS: 16)
         lbl.textColor = .black
         return lbl
     }()

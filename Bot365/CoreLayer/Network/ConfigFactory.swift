@@ -44,6 +44,9 @@ struct ConfigFactory {
     static func auth(token: String, pushToken: String, countryCode: String) -> ApiRequestConfig<AuthParser> {
         return ApiRequestConfig(endPoint: NacionalApiEndPoint.auth(token: token, pushToken: pushToken, countryCode: countryCode), parser: AuthParser())
     }
+    static func authIfPushDis(token: String) -> ApiRequestConfig<AuthParser> {
+        return ApiRequestConfig(endPoint: NacionalApiEndPoint.authIfPushDis(token: token), parser: AuthParser())
+    }
     static func savePushToken(token: String,countryCode: String) -> ApiRequestConfig<SucceedParser> {
         return ApiRequestConfig(endPoint: NacionalApiEndPoint.updatePushToken(pushToken: token, countryCode: countryCode), parser: SucceedParser())
     }

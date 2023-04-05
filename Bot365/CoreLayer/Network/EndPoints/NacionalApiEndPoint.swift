@@ -11,6 +11,7 @@ import Alamofire
 enum NacionalApiEndPoint: ApiConfiguration {
     case delete
     case auth(token: String, pushToken: String, countryCode: String)
+    case authIfPushDis(token: String)
     case appleAuth(String)
     case countries(ip: String?)
     case setPremium(days: String?)
@@ -19,7 +20,7 @@ enum NacionalApiEndPoint: ApiConfiguration {
     
     var method: HTTPMethod {
         switch self {
-        case .auth, .countries, .setPremium, .appleAuth, .revokeAppleToken, .updatePushToken, .delete:
+        case .auth, .countries, .setPremium, .appleAuth, .revokeAppleToken, .authIfPushDis, .updatePushToken, .delete:
             return .get
         }
     }
@@ -28,7 +29,7 @@ enum NacionalApiEndPoint: ApiConfiguration {
         switch self {
         case .appleAuth:
             return "/api/appleAuth"
-        case .auth:
+        case .authIfPushDis:
             return "/api/auth"
         case .delete:
             return "/api/profile/delete"
@@ -38,7 +39,7 @@ enum NacionalApiEndPoint: ApiConfiguration {
             return "/api/profile/premium"
         case .revokeAppleToken:
             return "/api/apauth.php"
-        case .updatePushToken:
+        case .updatePushToken, .auth:
             return "/api/profile/push"
         }
     }
@@ -49,6 +50,8 @@ enum NacionalApiEndPoint: ApiConfiguration {
             return [ApiConstants.APIParameterKey.revoke: token]
         case .auth(let token, let pushToken, let countryCode):
             return [ApiConstants.APIParameterKey.appleId: token, ApiConstants.APIParameterKey.pushToken: pushToken,ApiConstants.APIParameterKey.countryCode: countryCode]
+        case .authIfPushDis(let token):
+            return [ApiConstants.APIParameterKey.appleId: token]
         case .appleAuth(let code):
             return [ApiConstants.APIParameterKey.ident: code]
         case .countries(let ip):
@@ -77,7 +80,7 @@ enum NacionalApiEndPoint: ApiConfiguration {
         var items = [URLQueryItem]()
         // Параметры в урле
         switch self {
-        case .auth, .countries, .appleAuth, .revokeAppleToken:
+        case .auth, .countries, .appleAuth, .authIfPushDis, .revokeAppleToken:
             if let parameters = parameters {
                 for (key, value) in parameters {
                     if let value = value as? String {

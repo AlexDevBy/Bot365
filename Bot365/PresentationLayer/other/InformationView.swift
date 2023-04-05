@@ -10,7 +10,7 @@ import UIKit
 class InformationView: UIView {
     private let titleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.setFont(fontName: .MontsRegular, sizeXS: 24)
+        lbl.setFont(fontName: .GeneralSansMedium, sizeXS: 24)
         lbl.textColor = .AppCollors.backgroundGreen
         lbl.textAlignment = .center
         lbl.numberOfLines = 0
@@ -19,7 +19,7 @@ class InformationView: UIView {
     
     private let subtitleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.setFont(fontName: .MontsRegular, sizeXS: 14)
+        lbl.setFont(fontName: .GeneralSansMedium, sizeXS: 14)
         lbl.textColor = .AppCollors.backgroundGreen
         lbl.textAlignment = .center
         lbl.numberOfLines = 0

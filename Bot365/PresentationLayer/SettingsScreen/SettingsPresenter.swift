@@ -109,6 +109,7 @@ class SettingsPresenter: ISettingsPresenter {
     }
     
     func deleteAccount() {
+        guard let appleToken = userInfoService.getAppleToken() else { return }
         networkService.deleteProfile { [weak self] result in
             DispatchQueue.main.async {
                 guard let strongSelf = self else { return }

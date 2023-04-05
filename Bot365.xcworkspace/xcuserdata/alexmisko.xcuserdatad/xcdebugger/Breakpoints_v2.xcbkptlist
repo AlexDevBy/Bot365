@@ -87,32 +87,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "AF6FD449-BEF7-47F5-927B-ED2BA50B82C6"
+            uuid = "91097856-6474-438A-8D68-8E7CBBF6E310"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bot365/ServiceLayer/NetworkService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "makeAuth(token:pushToken:countryCode:completion:)"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "deleteProfile(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6DD4F84D-7132-4EF8-A8E2-9C4D5C17D174"
+            uuid = "735E4229-7377-4287-B8D4-92D43E19D09A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Bot365/PresentationLayer/EnterScreen/EnterViewController.swift"
+            filePath = "Bot365/ServiceLayer/NetworkService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "makeAppleAuth(code:)"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "revokeAppleToken(token:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

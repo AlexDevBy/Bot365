@@ -80,7 +80,7 @@ enum SportType: String {
         case .gymnastics:
             return "gymnasticsBig"
         case .fitDance:
-            return "yogaBig"
+            return "fitDanceBig"
         case .swimming:
             return "swimmingBig"
         case .pingPong:
@@ -204,7 +204,7 @@ enum SportType: String {
         case .gymnastics:
             return "gymnasticsArena"
         case .fitDance:
-            return "SitGirl"
+            return "fitDanceArena"
         case .swimming:
             return "swimmingArena"
         case .pingPong:

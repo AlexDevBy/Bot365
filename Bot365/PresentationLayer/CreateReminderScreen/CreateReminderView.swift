@@ -39,13 +39,13 @@ class CreateReminderView: UIView {
         lbl.numberOfLines = 0
         lbl.textAlignment = .left
         lbl.textColor = .black
-        lbl.setFont(fontName: .GilroyMedium, sizeXS: 16)
+        lbl.setFont(fontName: .SFProRegular, sizeXS: 16)
         return lbl
     }()
     
     let addressNameLabel: UILabel = {
         let lbl = UILabel()
-        lbl.setFont(fontName: .GilroyMedium, sizeXS: 16)
+        lbl.setFont(fontName: .SFProRegular, sizeXS: 16)
         lbl.textAlignment = .left
         lbl.numberOfLines = 0
         lbl.lineBreakMode = .byWordWrapping
@@ -55,7 +55,7 @@ class CreateReminderView: UIView {
     
     let hourLabel: UILabel = {
         let lbl = UILabel()
-        lbl.setFont(fontName: .GilroyMedium, sizeXS: 16)
+        lbl.setFont(fontName: .SFProRegular, sizeXS: 16)
         lbl.textAlignment = .left
         lbl.numberOfLines = 0
         lbl.text = "Please, choose date & time"
@@ -74,7 +74,7 @@ class CreateReminderView: UIView {
         let btn = UIButton(type: .system)
         btn.setTitle("Schedule", for: .normal)
         btn.setTitleColor(UIColor(netHex: 0xF4DA4A), for: .normal)
-        btn.titleLabel?.setFont(fontName: .GilroyMedium, sizeXS: 16)
+        btn.titleLabel?.setFont(fontName: .SFProRegular, sizeXS: 16)
         btn.backgroundColor = .AppCollors.backgroundGreen
         btn.layer.cornerRadius = 16
         if #available(iOS 15, *) {
@@ -83,7 +83,7 @@ class CreateReminderView: UIView {
             config.background.cornerRadius = 16
             config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
                 var outgoing = incoming
-                outgoing.font = UIFont(font: .GilroyMedium, size: 16)
+                outgoing.font = UIFont(font: .SFProRegular, size: 16)
                 return outgoing
             }
             btn.configuration = config
@@ -96,7 +96,7 @@ class CreateReminderView: UIView {
         let btn = UIButton(type: .system)
         btn.setTitle("Choose date", for: .normal)
         btn.setTitleColor(.AppCollors.yeallow, for: .normal)
-        btn.titleLabel?.setFont(fontName: .GilroyMedium, sizeXS: 16)
+        btn.titleLabel?.setFont(fontName: .SFProRegular, sizeXS: 16)
         btn.backgroundColor = .AppCollors.backgroundGreen
         btn.layer.cornerRadius = 16
         btn.setImage(UIImage(named: "CalendarIcon"), for: .normal)
@@ -108,7 +108,7 @@ class CreateReminderView: UIView {
             config.imagePadding = 40
             config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
                 var outgoing = incoming
-                outgoing.font = UIFont(font: .GilroyMedium, size: 16)
+                outgoing.font = UIFont(font: .SFProRegular, size: 16)
                 return outgoing
             }
             btn.configuration = config
@@ -123,7 +123,7 @@ class CreateReminderView: UIView {
         let btn = UIButton(type: .system)
         btn.setTitle("Choose time", for: .normal)
         btn.setTitleColor(.AppCollors.yeallow, for: .normal)
-        btn.titleLabel?.setFont(fontName: .GilroyMedium, sizeXS: 16)
+        btn.titleLabel?.setFont(fontName: .SFProRegular, sizeXS: 16)
         btn.backgroundColor = .AppCollors.backgroundGreen
         btn.layer.cornerRadius = 16
         btn.alpha = 0
@@ -134,7 +134,7 @@ class CreateReminderView: UIView {
             config.background.cornerRadius = 16
             config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
                 var outgoing = incoming
-                outgoing.font = UIFont(font: .GilroyMedium, size: 16)
+                outgoing.font = UIFont(font: .SFProRegular, size: 16)
                 return outgoing
             }
             btn.configuration = config
@@ -173,7 +173,7 @@ class CreateReminderView: UIView {
         fc.appearance.headerTitleColor = UIColor(netHex: 0x456BB6)
         fc.firstWeekday = 2
         fc.alpha = 0
-        fc.appearance.weekdayFont = UIFont(font: .MontsBold, size: 14)
+        fc.appearance.weekdayFont = UIFont(font: .SFProRegular, size: 14)
         fc.dropShadow()
         return fc
     }()

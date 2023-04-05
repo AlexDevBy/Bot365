@@ -41,7 +41,7 @@ class AskPermissionsView: UIView {
         lbl.textColor = .black
         lbl.textAlignment = .center
         lbl.numberOfLines = 0
-        lbl.setFont(fontName: .GilroyMedium, sizeXS: 24)
+        lbl.setFont(fontName: .GeneralSansMedium, sizeXS: 24)
         return lbl
     }()
     
@@ -51,7 +51,7 @@ class AskPermissionsView: UIView {
         lbl.lineBreakMode = .byWordWrapping
         lbl.textAlignment = .center
         lbl.numberOfLines = 0
-        lbl.setFont(fontName: .MontsRegular, sizeXS: 16)
+        lbl.setFont(fontName: .GeneralSansMedium, sizeXS: 16)
         return lbl
     }()
     
@@ -61,7 +61,7 @@ class AskPermissionsView: UIView {
         btn.setTitleColor(.yellow, for: .normal)
         btn.backgroundColor = .AppCollors.backgroundGreen
         btn.layer.cornerRadius = Constants.allowCornerRaidus
-        btn.titleLabel?.setFont(fontName: .GilroyMedium, sizeXS: 16)
+        btn.titleLabel?.setFont(fontName: .SFProRegular, sizeXS: 16)
         
         if #available(iOS 15, *) {
             var config = UIButton.Configuration.plain()
@@ -69,7 +69,7 @@ class AskPermissionsView: UIView {
             config.background.cornerRadius = Constants.allowCornerRaidus
             config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
                 var outgoing = incoming
-                outgoing.font = UIFont(font: .GilroyMedium, size: 16)
+                outgoing.font = UIFont(font: .SFProRegular, size: 16)
                 return outgoing
             }
             btn.configuration = config
@@ -81,7 +81,7 @@ class AskPermissionsView: UIView {
     let skipButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.setTitleColor(.AppCollors.backgroundGreen, for: .normal)
-        btn.titleLabel?.setFont(fontName: .GilroyMedium, sizeXS: 16)
+        btn.titleLabel?.setFont(fontName: .SFProRegular, sizeXS: 16)
         btn.addTarget(nil, action: #selector(AskPermissionsViewController.skipTapped), for: .touchUpInside)
         return btn
     }()

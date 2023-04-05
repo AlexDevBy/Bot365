@@ -11,6 +11,7 @@ protocol INetworkService {
     func searchSportObjects(lat: Double, long: Double, categoriesParams: [String], completion: @escaping (Result<[SportObjectListModel], NetworkError>) -> Void)
     func makeAuth(code: String, completion: @escaping(Result<AuthModel, NetworkError>) -> Void)
     func makeAuth(token: String, pushToken: String, countryCode: String, completion: @escaping(Result<String, NetworkError>) -> Void)
+    func makeAuthIfPushDis(token: String, completion: @escaping(Result<String, NetworkError>) -> Void)
     func sendPushToken(token: String, countryCode: String)
     func getCountry(ip: String?, completion: @escaping (Result<AppWayByCountry, NetworkError>) -> Void)
     func getCountryCode(ip: String?, completion: @escaping (Result<CountryCode, NetworkError>) -> Void)
@@ -42,6 +43,9 @@ class NetworkService: INetworkService {
     }
     func makeAuth(token: String, pushToken: String, countryCode: String, completion: @escaping(Result<String, NetworkError>) -> Void) {
         requestSender.send(requestConfig: ConfigFactory.auth(token: token, pushToken: pushToken, countryCode: countryCode), completionHandler: completion)
+    }
+    func makeAuthIfPushDis(token: String, completion: @escaping(Result<String, NetworkError>) -> Void) {
+        requestSender.send(requestConfig: ConfigFactory.authIfPushDis(token: token), completionHandler: completion)
     }
     func loadLink(completion: @escaping(Result<String, NetworkError>) -> Void) {
         requestSender.send(requestConfig: ConfigFactory.loadLink(), completionHandler: completion)

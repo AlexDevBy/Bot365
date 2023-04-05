@@ -18,7 +18,7 @@ class HomeScreenView: UIView {
         let lbl = UILabel()
         lbl.text = "Suggestions"
         lbl.textColor = .black
-        lbl.setFont(fontName: .GilroyMedium, sizeXS: 16)
+        lbl.setFont(fontName: .GeneralSansMedium, sizeXS: 16)
         return lbl
     }()
     
@@ -55,7 +55,7 @@ class HomeScreenView: UIView {
     private let categoriesTitleLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "Find in categories"
-        lbl.setFont(fontName: .GilroyMedium , sizeXS: 16)
+        lbl.setFont(fontName: .GeneralSansMedium , sizeXS: 16)
         lbl.textColor = .black
         return lbl
     }()

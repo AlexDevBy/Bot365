@@ -49,7 +49,7 @@ class EnterView: UIView {
         lbl.text = "Sign up"
         lbl.textAlignment = .center
         lbl.numberOfLines = 0
-        lbl.setFont(fontName: .GilroyMedium, sizeXS: 24)
+        lbl.setFont(fontName: .GeneralSansMedium, sizeXS: 24)
         return lbl
     }()
     
@@ -59,7 +59,7 @@ class EnterView: UIView {
         lbl.text = "Easily connect with one tap via your Apple account for quick, secure access to our app."
         lbl.textAlignment = .center
         lbl.numberOfLines = 0
-        lbl.setFont(fontName: .GilroyMedium, sizeXS: 16)
+        lbl.setFont(fontName: .GeneralSansMedium, sizeXS: 16)
         return lbl
     }()
 
@@ -69,7 +69,7 @@ class EnterView: UIView {
         btn.addTarget(self, action: #selector(signInTapped), for: .touchUpInside)
         btn.setTitle(Constants.appleSignIn, for: .normal)
         btn.tintColor = .AppCollors.backgroundGreen
-        btn.titleLabel!.setFont(fontName: .GilroyMedium, sizeXS: 16)
+        btn.titleLabel!.setFont(fontName: .SFProRegular, sizeXS: 16)
         if #available(iOS 15, *) {
             var config = UIButton.Configuration.plain()
             config.imagePadding = 10
@@ -77,7 +77,7 @@ class EnterView: UIView {
             config.background.cornerRadius = 16
             config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
                 var outgoing = incoming
-                outgoing.font = UIFont(font: .GilroyMedium, size: 16)
+                outgoing.font = UIFont(font: .SFProRegular, size: 16)
                 return outgoing
             }
             btn.configuration = config
@@ -111,11 +111,11 @@ class EnterView: UIView {
     func prepareAttributesForTextView() {
 //        let text = (termsAndPolicyTextView.text ?? "Agree on Terms & Conditions") as NSString
         let text = "Agree on Terms Conditions" as NSString
-        termsAndPolicyTextView.font = UIFont(font: .GilroyMedium, size: 16)
+        termsAndPolicyTextView.font = UIFont(font: .GeneralSansMedium, size: 16)
         let attributedString = termsAndPolicyTextView.addHyperLinksToText(
             originalText: text as String,
             hyperLinks: ["Terms Conditions": "https://bot365.tech/#eula"],
-            font:  UIFont(font: .GilroyMedium, size: 16)
+            font:  UIFont(font: .GeneralSansMedium, size: 16)
         )
         let linkAttributes: [NSAttributedString.Key : Any] = [
             NSAttributedString.Key.foregroundColor: UIColor.AppCollors.backgroundGreen ,

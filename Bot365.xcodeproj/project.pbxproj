@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4AA2B4DBD17BE82BFB211BF5 /* Pods_Bot365.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB3A1E1D1AD46A5D6DF31B2 /* Pods_Bot365.framework */; };
+		62C973227F914CA85B1D6776 /* Pods_Bot365.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DEE1B074E39E249BF4E36F /* Pods_Bot365.framework */; };
 		F00FD50F29C326E6007D4DAC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00FD50E29C326E6007D4DAC /* ViewController.swift */; };
 		F00FD51529C326E6007D4DAC /* Bot365.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F00FD51329C326E6007D4DAC /* Bot365.xcdatamodeld */; };
 		F00FD51729C326E8007D4DAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F00FD51629C326E8007D4DAC /* Assets.xcassets */; };
@@ -116,24 +116,16 @@
 		F00FD60929C32B6D007D4DAC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00FD60729C32B6D007D4DAC /* SceneDelegate.swift */; };
 		F00FD60B29C33000007D4DAC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F00FD60A29C33000007D4DAC /* StoreKit.framework */; };
 		F00FD60F29C3641A007D4DAC /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F00FD60E29C3641A007D4DAC /* SnapKit */; };
-		F014FEB629D5AEC8002FC4DE /* GeneralSans-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F014FEAA29D5AEC8002FC4DE /* GeneralSans-Italic.otf */; };
-		F014FEB729D5AEC8002FC4DE /* GeneralSans-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F014FEAB29D5AEC8002FC4DE /* GeneralSans-BoldItalic.otf */; };
-		F014FEB829D5AEC8002FC4DE /* GeneralSans-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = F014FEAC29D5AEC8002FC4DE /* GeneralSans-Light.otf */; };
-		F014FEB929D5AEC8002FC4DE /* GeneralSans-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F014FEAD29D5AEC8002FC4DE /* GeneralSans-MediumItalic.otf */; };
-		F014FEBA29D5AEC8002FC4DE /* GeneralSans-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F014FEAE29D5AEC8002FC4DE /* GeneralSans-Semibold.otf */; };
-		F014FEBB29D5AEC8002FC4DE /* GeneralSans-Extralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = F014FEAF29D5AEC8002FC4DE /* GeneralSans-Extralight.otf */; };
-		F014FEBC29D5AEC8002FC4DE /* GeneralSans-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F014FEB029D5AEC8002FC4DE /* GeneralSans-LightItalic.otf */; };
-		F014FEBD29D5AEC8002FC4DE /* GeneralSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = F014FEB129D5AEC8002FC4DE /* GeneralSans-Medium.otf */; };
 		F014FEBE29D5AEC8002FC4DE /* GeneralSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F014FEB229D5AEC8002FC4DE /* GeneralSans-Regular.otf */; };
-		F014FEBF29D5AEC8002FC4DE /* GeneralSans-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F014FEB329D5AEC8002FC4DE /* GeneralSans-SemiboldItalic.otf */; };
-		F014FEC029D5AEC8002FC4DE /* GeneralSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F014FEB429D5AEC8002FC4DE /* GeneralSans-Bold.otf */; };
-		F014FEC129D5AEC8002FC4DE /* GeneralSans-ExtralightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F014FEB529D5AEC8002FC4DE /* GeneralSans-ExtralightItalic.otf */; };
 		F01C308729D6EE1F00C54CE0 /* CountryCodeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01C308629D6EE1F00C54CE0 /* CountryCodeParser.swift */; };
+		F02DE9F429D88F930002E842 /* GeneralSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F02DE9F329D88F930002E842 /* GeneralSans-Medium.ttf */; };
+		F02DE9F629D892090002E842 /* SFProText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F02DE9F529D892090002E842 /* SFProText-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A2FA04F9A92B042D42E18D16 /* Pods-Bot365.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bot365.debug.xcconfig"; path = "Target Support Files/Pods-Bot365/Pods-Bot365.debug.xcconfig"; sourceTree = "<group>"; };
-		EB04E2ACF201EB6A5278E428 /* Pods-Bot365.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bot365.release.xcconfig"; path = "Target Support Files/Pods-Bot365/Pods-Bot365.release.xcconfig"; sourceTree = "<group>"; };
+		0E40352EF1D3225DF51DD58E /* Pods-Bot365.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bot365.debug.xcconfig"; path = "Target Support Files/Pods-Bot365/Pods-Bot365.debug.xcconfig"; sourceTree = "<group>"; };
+		71581A1FD97821A6171A2150 /* Pods-Bot365.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bot365.release.xcconfig"; path = "Target Support Files/Pods-Bot365/Pods-Bot365.release.xcconfig"; sourceTree = "<group>"; };
+		82DEE1B074E39E249BF4E36F /* Pods_Bot365.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bot365.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F00FD50729C326E6007D4DAC /* Bot365.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bot365.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F00FD50E29C326E6007D4DAC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F00FD51429C326E6007D4DAC /* Bot365.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bot365.xcdatamodel; sourceTree = "<group>"; };
@@ -244,22 +236,11 @@
 		F00FD60729C32B6D007D4DAC /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F00FD60A29C33000007D4DAC /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		F00FD60C29C33101007D4DAC /* Bot365-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bot365-Bridging-Header.h"; sourceTree = "<group>"; };
-		F014FEAA29D5AEC8002FC4DE /* GeneralSans-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-Italic.otf"; sourceTree = "<group>"; };
-		F014FEAB29D5AEC8002FC4DE /* GeneralSans-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-BoldItalic.otf"; sourceTree = "<group>"; };
-		F014FEAC29D5AEC8002FC4DE /* GeneralSans-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-Light.otf"; sourceTree = "<group>"; };
-		F014FEAD29D5AEC8002FC4DE /* GeneralSans-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-MediumItalic.otf"; sourceTree = "<group>"; };
-		F014FEAE29D5AEC8002FC4DE /* GeneralSans-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-Semibold.otf"; sourceTree = "<group>"; };
-		F014FEAF29D5AEC8002FC4DE /* GeneralSans-Extralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-Extralight.otf"; sourceTree = "<group>"; };
-		F014FEB029D5AEC8002FC4DE /* GeneralSans-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-LightItalic.otf"; sourceTree = "<group>"; };
-		F014FEB129D5AEC8002FC4DE /* GeneralSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-Medium.otf"; sourceTree = "<group>"; };
 		F014FEB229D5AEC8002FC4DE /* GeneralSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-Regular.otf"; sourceTree = "<group>"; };
-		F014FEB329D5AEC8002FC4DE /* GeneralSans-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-SemiboldItalic.otf"; sourceTree = "<group>"; };
-		F014FEB429D5AEC8002FC4DE /* GeneralSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-Bold.otf"; sourceTree = "<group>"; };
-		F014FEB529D5AEC8002FC4DE /* GeneralSans-ExtralightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-ExtralightItalic.otf"; sourceTree = "<group>"; };
-		F014FEC229D5B045002FC4DE /* SFPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFPro-Regular.otf"; sourceTree = "<group>"; };
 		F01C308629D6EE1F00C54CE0 /* CountryCodeParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeParser.swift; sourceTree = "<group>"; };
+		F02DE9F329D88F930002E842 /* GeneralSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralSans-Medium.ttf"; sourceTree = "<group>"; };
+		F02DE9F529D892090002E842 /* SFProText-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Regular.ttf"; sourceTree = "<group>"; };
 		F05761C629CB045A0007BC46 /* Bot365.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bot365.entitlements; sourceTree = "<group>"; };
-		FFB3A1E1D1AD46A5D6DF31B2 /* Pods_Bot365.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bot365.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,8 +249,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F00FD60F29C3641A007D4DAC /* SnapKit in Frameworks */,
-				4AA2B4DBD17BE82BFB211BF5 /* Pods_Bot365.framework in Frameworks */,
 				F00FD60B29C33000007D4DAC /* StoreKit.framework in Frameworks */,
+				62C973227F914CA85B1D6776 /* Pods_Bot365.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,8 +260,8 @@
 		3ACFCEA6AF868A8F2B07F371 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A2FA04F9A92B042D42E18D16 /* Pods-Bot365.debug.xcconfig */,
-				EB04E2ACF201EB6A5278E428 /* Pods-Bot365.release.xcconfig */,
+				0E40352EF1D3225DF51DD58E /* Pods-Bot365.debug.xcconfig */,
+				71581A1FD97821A6171A2150 /* Pods-Bot365.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -289,7 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				F00FD60A29C33000007D4DAC /* StoreKit.framework */,
-				FFB3A1E1D1AD46A5D6DF31B2 /* Pods_Bot365.framework */,
+				82DEE1B074E39E249BF4E36F /* Pods_Bot365.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -448,8 +429,8 @@
 		F00FD58E29C327E3007D4DAC /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
-				F00FD58F29C327E3007D4DAC /* LaunchScreen */,
 				F00FD59329C327E3007D4DAC /* PresentationAssembly.swift */,
+				F00FD58F29C327E3007D4DAC /* LaunchScreen */,
 				F00FD5B129C327E3007D4DAC /* EnterScreen */,
 				F00FD59429C327E3007D4DAC /* AskPermissionsScreen */,
 				F00FD5A629C327E3007D4DAC /* CustomTabbar */,
@@ -589,7 +570,8 @@
 		F00FD5F329C32854007D4DAC /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				F014FEA929D5AEC8002FC4DE /* general-sans-cufonfonts */,
+				F02DE9F329D88F930002E842 /* GeneralSans-Medium.ttf */,
+				F02DE9F529D892090002E842 /* SFProText-Regular.ttf */,
 				F00FD5F429C32854007D4DAC /* Gilroy-Medium.ttf */,
 				F00FD5F529C32854007D4DAC /* MuseoModerno-Medium.ttf */,
 				F00FD5F629C32854007D4DAC /* Montserrat-bold.ttf */,
@@ -598,6 +580,7 @@
 				F00FD5F929C32854007D4DAC /* Gilroy-Bold.ttf */,
 				F00FD5FA29C32854007D4DAC /* MuseoModerno-Bold.ttf */,
 				F00FD5FB29C32854007D4DAC /* Montserrat-Black.ttf */,
+				F014FEB229D5AEC8002FC4DE /* GeneralSans-Regular.otf */,
 				F00FD5FC29C32854007D4DAC /* Montserrat-regular.ttf */,
 			);
 			path = Fonts;
@@ -610,26 +593,6 @@
 				F00FD60729C32B6D007D4DAC /* SceneDelegate.swift */,
 			);
 			path = appLayer;
-			sourceTree = "<group>";
-		};
-		F014FEA929D5AEC8002FC4DE /* general-sans-cufonfonts */ = {
-			isa = PBXGroup;
-			children = (
-				F014FEC229D5B045002FC4DE /* SFPro-Regular.otf */,
-				F014FEAA29D5AEC8002FC4DE /* GeneralSans-Italic.otf */,
-				F014FEAB29D5AEC8002FC4DE /* GeneralSans-BoldItalic.otf */,
-				F014FEAC29D5AEC8002FC4DE /* GeneralSans-Light.otf */,
-				F014FEAD29D5AEC8002FC4DE /* GeneralSans-MediumItalic.otf */,
-				F014FEAE29D5AEC8002FC4DE /* GeneralSans-Semibold.otf */,
-				F014FEAF29D5AEC8002FC4DE /* GeneralSans-Extralight.otf */,
-				F014FEB029D5AEC8002FC4DE /* GeneralSans-LightItalic.otf */,
-				F014FEB129D5AEC8002FC4DE /* GeneralSans-Medium.otf */,
-				F014FEB229D5AEC8002FC4DE /* GeneralSans-Regular.otf */,
-				F014FEB329D5AEC8002FC4DE /* GeneralSans-SemiboldItalic.otf */,
-				F014FEB429D5AEC8002FC4DE /* GeneralSans-Bold.otf */,
-				F014FEB529D5AEC8002FC4DE /* GeneralSans-ExtralightItalic.otf */,
-			);
-			path = "general-sans-cufonfonts";
 			sourceTree = "<group>";
 		};
 		F05761C729CBA7310007BC46 /* other */ = {
@@ -649,11 +612,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F00FD51E29C326E8007D4DAC /* Build configuration list for PBXNativeTarget "Bot365" */;
 			buildPhases = (
-				CD8ED961FDE7AED6569AE4A5 /* [CP] Check Pods Manifest.lock */,
+				C82B4728332A310D6D692787 /* [CP] Check Pods Manifest.lock */,
 				F00FD50329C326E6007D4DAC /* Sources */,
 				F00FD50429C326E6007D4DAC /* Frameworks */,
 				F00FD50529C326E6007D4DAC /* Resources */,
-				D6AEDB3A12D8F3A72F1D1C80 /* [CP] Embed Pods Frameworks */,
+				DA5F78A0D118DDB4EFC695E8 /* [CP] Embed Pods Frameworks */,
+				F02DE9F729DAE2800002E842 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -709,35 +673,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				F014FEBE29D5AEC8002FC4DE /* GeneralSans-Regular.otf in Resources */,
-				F014FEB829D5AEC8002FC4DE /* GeneralSans-Light.otf in Resources */,
+				F02DE9F429D88F930002E842 /* GeneralSans-Medium.ttf in Resources */,
+				F02DE9F629D892090002E842 /* SFProText-Regular.ttf in Resources */,
 				F00FD51A29C326E8007D4DAC /* LaunchScreen.storyboard in Resources */,
-				F014FEB729D5AEC8002FC4DE /* GeneralSans-BoldItalic.otf in Resources */,
-				F014FEBD29D5AEC8002FC4DE /* GeneralSans-Medium.otf in Resources */,
-				F014FEC129D5AEC8002FC4DE /* GeneralSans-ExtralightItalic.otf in Resources */,
 				F00FD60129C32854007D4DAC /* Gilroy-Thin.ttf in Resources */,
 				F00FD5FD29C32854007D4DAC /* Gilroy-Medium.ttf in Resources */,
-				F014FEB629D5AEC8002FC4DE /* GeneralSans-Italic.otf in Resources */,
 				F00FD60229C32854007D4DAC /* Gilroy-Bold.ttf in Resources */,
-				F014FEBF29D5AEC8002FC4DE /* GeneralSans-SemiboldItalic.otf in Resources */,
-				F014FEC029D5AEC8002FC4DE /* GeneralSans-Bold.otf in Resources */,
 				F00FD51729C326E8007D4DAC /* Assets.xcassets in Resources */,
 				F00FD60329C32854007D4DAC /* MuseoModerno-Bold.ttf in Resources */,
 				F00FD60429C32854007D4DAC /* Montserrat-Black.ttf in Resources */,
-				F014FEB929D5AEC8002FC4DE /* GeneralSans-MediumItalic.otf in Resources */,
 				F00FD60529C32854007D4DAC /* Montserrat-regular.ttf in Resources */,
 				F00FD60029C32854007D4DAC /* MuseoModerno-Regular.ttf in Resources */,
 				F00FD5FF29C32854007D4DAC /* Montserrat-bold.ttf in Resources */,
-				F014FEBC29D5AEC8002FC4DE /* GeneralSans-LightItalic.otf in Resources */,
-				F014FEBA29D5AEC8002FC4DE /* GeneralSans-Semibold.otf in Resources */,
 				F00FD5FE29C32854007D4DAC /* MuseoModerno-Medium.ttf in Resources */,
-				F014FEBB29D5AEC8002FC4DE /* GeneralSans-Extralight.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		CD8ED961FDE7AED6569AE4A5 /* [CP] Check Pods Manifest.lock */ = {
+		C82B4728332A310D6D692787 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -759,7 +714,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D6AEDB3A12D8F3A72F1D1C80 /* [CP] Embed Pods Frameworks */ = {
+		DA5F78A0D118DDB4EFC695E8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -775,6 +730,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bot365/Pods-Bot365-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		F02DE9F729DAE2800002E842 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint autocorrect\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1012,7 +984,7 @@
 		};
 		F00FD51F29C326E8007D4DAC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A2FA04F9A92B042D42E18D16 /* Pods-Bot365.debug.xcconfig */;
+			baseConfigurationReference = 0E40352EF1D3225DF51DD58E /* Pods-Bot365.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1023,6 +995,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Bot365/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please, allow us to track your location to find the most relevant sports facilities. ";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
@@ -1047,7 +1020,7 @@
 		};
 		F00FD52029C326E8007D4DAC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EB04E2ACF201EB6A5278E428 /* Pods-Bot365.release.xcconfig */;
+			baseConfigurationReference = 71581A1FD97821A6171A2150 /* Pods-Bot365.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1058,6 +1031,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Bot365/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please, allow us to track your location to find the most relevant sports facilities. ";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
