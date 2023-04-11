@@ -26,13 +26,19 @@ class SportObjectListView: UIView {
         return lbl
     }()
     
-    let scroll: UIScrollView = {
-       let scroll = UIScrollView()
-        scroll.contentInset = UIEdgeInsets(top: 200.0, left: 0.0, bottom: 0.0, right: 0.0)
-        scroll.backgroundColor = .clear
-        scroll.showsVerticalScrollIndicator = false
-        return scroll
+    let tableView: UITableView = {
+        let tbl = UITableView()
+        tbl.translatesAutoresizingMaskIntoConstraints = false
+        tbl.backgroundColor = .clear
+//        tbl.contentInset.bottom = 600
+        tbl.layer.cornerRadius = 16
+        tbl.separatorStyle = .none
+        tbl.rowHeight = UITableView.automaticDimension
+        tbl.showsVerticalScrollIndicator = false
+        return tbl
     }()
+    
+    let sectionBackgroundView = UIView()
     
     let errorLabel: UILabel = {
         let lbl = UILabel()
@@ -101,14 +107,6 @@ class SportObjectListView: UIView {
     private var gradientLayer = CAGradientLayer()
     private var isConfigure = false
     
-    let sportObjectTableView: UITableView = {
-        let tbl = UITableView()
-        tbl.contentInset.bottom = 600
-        tbl.layer.cornerRadius = 16
-        tbl.separatorStyle = .none
-        tbl.showsVerticalScrollIndicator = false
-        return tbl
-    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -123,19 +121,18 @@ class SportObjectListView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         guard !isConfigure else { return }
-//        setGradientBackground()
         isConfigure.toggle()
     }
     
     func setupView(for state: SportObjectListViewState) {
         switch state {
         case .locationExist:
-            sportObjectTableView.isHidden = true
+            tableView.isHidden = true
             informationView.isHidden = true
             allowButton.isHidden = true
             errorLabel.text = ""
         case .noLocation:
-            sportObjectTableView.isHidden = true
+            tableView.isHidden = true
             informationView.isHidden = false
             allowButton.isHidden = false
             errorLabel.text = ""
@@ -159,16 +156,15 @@ class SportObjectListView: UIView {
     }
     
     private func setupView() {
-        backgroundColor = .white
-        
+//        backgroundColor = .white
         addSubview(titleLabel)
         addSubview(categoryImageView)
-        addSubview(scroll)
-        scroll.addSubview(sportObjectTableView)
-        sportObjectTableView.addSubview(errorLabel)
+        addSubview(sectionBackgroundView)
+        addSubview(tableView)
+        tableView.addSubview(errorLabel)
         addSubview(loaderView)
         addSubview(messageLabel)
-        
+
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(24)
             make.left.equalToSuperview().offset(16)
@@ -183,24 +179,12 @@ class SportObjectListView: UIView {
             make.height.equalTo(308)
         }
         
-        scroll.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top)
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
-            make.bottom.equalToSuperview().offset(400)
-        }
-        
-        
-        
-        sportObjectTableView.snp.makeConstraints { make in
-            make.top.equalTo(scroll.contentLayoutGuide.snp.top)
-            make.left.equalTo(scroll.contentLayoutGuide.snp.left)
-            make.right.equalTo(scroll.contentLayoutGuide.snp.right)
-            make.bottom.equalTo(scroll.contentLayoutGuide.snp.bottom)
-            make.height.equalTo(scroll.frameLayoutGuide.snp.height).priority(.low)
-            make.width.equalTo(scroll.frameLayoutGuide.snp.width)
-        }
-
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            tableView.topAnchor.constraint(equalTo: self.topAnchor),
+            tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ])
         
         loaderView.centerYAnchor.constraint(equalTo: loaderView.superview!.centerYAnchor).isActive = true
         loaderView.centerXAnchor.constraint(equalTo: loaderView.superview!.centerXAnchor).isActive = true
@@ -234,5 +218,4 @@ class SportObjectListView: UIView {
         allowButton.centerXAnchor.constraint(equalTo: allowButton.superview!.centerXAnchor).isActive = true
         allowButton.translatesAutoresizingMaskIntoConstraints = false
     }
-
 }

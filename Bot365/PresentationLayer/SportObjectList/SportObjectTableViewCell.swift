@@ -15,7 +15,6 @@ import SnapKit
 
 class SportObjectTableViewCell: UITableViewCell, ReusableView {
     
-    
     var reservedTappedAction: (()->Void)?
 
     private let titleLabel: UILabel = {
@@ -48,20 +47,20 @@ class SportObjectTableViewCell: UITableViewCell, ReusableView {
         return iv
     }()
     
-    let mapView: UIView = {
+    private let mapView: UIView = {
         let btn = UIView()
         btn.layer.cornerRadius = 16
         return btn
     }()
     
-    let mapButton: UIButton = {
+    private let mapButton: UIButton = {
         let btn = UIButton()
         btn.layer.cornerRadius = 16
         btn.setImage(UIImage(named: "toMap"), for: .normal)
         return btn
     }()
     
-    let reserveButton: UIButton = {
+    private lazy var reserveButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.layer.cornerRadius = 12
         btn.setTitle("Reserve", for: .normal)
@@ -72,6 +71,8 @@ class SportObjectTableViewCell: UITableViewCell, ReusableView {
         btn.addTarget(self, action: #selector(reserve), for: .touchUpInside)
         return btn
     }()
+    
+    var shouldCornerEdges = false
     
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         if reserveButton.point(inside: reserveButton.convert(point, from: self.coordinateSpace), with: event) {
@@ -108,8 +109,12 @@ class SportObjectTableViewCell: UITableViewCell, ReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        shouldCornerEdges = false
+    }
+
     private func setupView() {
-        backgroundColor = .clear
         contentView.addSubview(contentBackgroundView)
         contentBackgroundView.addSubview(sportObjectImageView)
         contentBackgroundView.addSubview(titleLabel)
@@ -170,9 +175,46 @@ class SportObjectTableViewCell: UITableViewCell, ReusableView {
             make.right.equalTo(mapView.snp.right).offset(-8)
             make.left.equalTo(mapView.snp.left).offset(8)
         }
-        
-  
-
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        if shouldCornerEdges {
+            self.roundCorners([.topLeft, .topRight], radius: 16.0)
+        } else {
+            self.roundCorners([.allCorners], radius: 0.0)
+        }
+    }
+    
+    func configure(type: SportType, indexPath: IndexPath) {
+        backgroundColor = type.backgroundColor2
+        shouldCornerEdges = indexPath.row == 0
+    }
+}
+
+
+final class TransparentTableViewCell: UITableViewCell, ReusableView {
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        backgroundColor = .clear
+        heightAnchor.constraint(equalToConstant: 214.0).isActive = true
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension UIView {
+
+    func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
+         let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+         let mask = CAShapeLayer()
+         mask.path = path.cgPath
+         layer.mask = mask
+    }
+
 }

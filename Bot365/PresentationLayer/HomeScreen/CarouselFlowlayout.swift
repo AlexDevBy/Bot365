@@ -86,8 +86,8 @@ fileprivate extension Sequence where Iterator.Element == CGFloat {
 
         return reduce(firstCandidateOffset) { (bestCandidateOffset: CGFloat, candidateOffset: CGFloat) -> CGFloat in
 
-            let candidateOffsetDistanceFromProposed = fabs(candidateOffset - proposedOffset)
-            let bestCandidateOffsetDistancFromProposed = fabs(bestCandidateOffset - proposedOffset)
+            let candidateOffsetDistanceFromProposed = abs(candidateOffset - proposedOffset)
+            let bestCandidateOffsetDistancFromProposed = abs(bestCandidateOffset - proposedOffset)
 
             if candidateOffsetDistanceFromProposed < bestCandidateOffsetDistancFromProposed {
                 return candidateOffset

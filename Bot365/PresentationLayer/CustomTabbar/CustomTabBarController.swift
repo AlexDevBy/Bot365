@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomTabBarController: UITabBarController, CustomTabBarDelegate {
+final class CustomTabBarController: UITabBarController, CustomTabBarDelegate {
     
     static var tabbarBottomDistance: CGFloat {
         let screenLongestSide: CGFloat = max(UIScreen.main.bounds.width, UIScreen.main.bounds.height)

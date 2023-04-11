@@ -15,6 +15,7 @@ class EnterViewController: UIViewController {
     private let presentationAssembly: IPresentationAssembly
     private let userInfoService: ISensentiveInfoService
     private let networkService: INetworkService
+    private let manager = CLLocationManager()
     let current = UNUserNotificationCenter.current()
     
     init(
@@ -49,10 +50,13 @@ class EnterViewController: UIViewController {
     
     private func setupView() {
         contentView.signInHandler = {
+//            let pushPermission = self.presentationAssembly.askPermissionsScreen(permissionType: .location)
+//            self.navigationController?.pushViewController(pushPermission, animated: true)
+            
             let provider = ASAuthorizationAppleIDProvider()
             let request = provider.createRequest()
             request.requestedScopes = [.email]
-            
+
             let controller = ASAuthorizationController(authorizationRequests: [request])
             controller.delegate = self
             controller.presentationContextProvider = self
@@ -99,7 +103,7 @@ class EnterViewController: UIViewController {
                 switch result {
                 case .success(let token):
                     strongSelf.userInfoService.saveToken(token: token) { _ in
-                        switch CLLocationManager.authorizationStatus() {
+                        switch self?.manager.authorizationStatus {
                         case .notDetermined:
                             guard let pushPermission = self?.presentationAssembly.askPermissionsScreen(permissionType: .location) else { return }
                             self?.navigationController?.pushViewController(pushPermission, animated: true)
@@ -107,7 +111,8 @@ class EnterViewController: UIViewController {
                         case .denied, .authorizedAlways, .restricted, .authorizedWhenInUse:
                             guard let tabbarController = self?.presentationAssembly.tabbarController() else { return }
                             self?.setWindowRoot(tabbarController)
-                            
+                        case .none:
+                            print("none")
                         @unknown default:
                             print("error with location")
                         }
@@ -129,7 +134,7 @@ class EnterViewController: UIViewController {
                 switch result {
                 case .success(let token):
                     strongSelf.userInfoService.saveToken(token: token) { _ in
-                        switch CLLocationManager.authorizationStatus() {
+                        switch self?.manager.authorizationStatus {
                         case .notDetermined:
                             guard let pushPermission = self?.presentationAssembly.askPermissionsScreen(permissionType: .location) else { return }
                             self?.navigationController?.pushViewController(pushPermission, animated: true)
@@ -137,7 +142,8 @@ class EnterViewController: UIViewController {
                         case .denied, .authorizedAlways, .restricted, .authorizedWhenInUse:
                             guard let tabbarController = self?.presentationAssembly.tabbarController() else { return }
                             self?.setWindowRoot(tabbarController)
-                            
+                        case .none:
+                            print("none")
                         @unknown default:
                             print("error with location")
                         }

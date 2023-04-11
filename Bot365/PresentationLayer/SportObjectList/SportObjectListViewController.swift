@@ -7,10 +7,7 @@
 
 import UIKit
 
-
-class SportObjectListViewController: UIViewController  {
- 
-    
+class SportObjectListViewController: UIViewController {
     
     private let contentView = SportObjectListView()
     private let presenter: ISportObjectListPresenter
@@ -19,15 +16,11 @@ class SportObjectListViewController: UIViewController  {
     private var afterSeeingVideoCompletion: (() -> Void)?
     private let sportType: SportType
 
-    
-    
     private var viewState: SportObjectListViewState = .initial {
         didSet {
             contentView.setupView(for: viewState)
         }
     }
-
-    
     
     init(
         presenter: ISportObjectListPresenter,
@@ -59,25 +52,39 @@ class SportObjectListViewController: UIViewController  {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
         addGoBackButton()
+        setupNavBar()
     }
     
-    
     private func setupView() {
+
         contentView.categoryImageView.image = UIImage(named: sportType.bigImage)
         contentView.titleLabel.text = sportType.title
         contentView.backgroundColor = sportType.backgroundColor
-        contentView.sportObjectTableView.backgroundColor = sportType.backgroundColor2
-        contentView.sportObjectTableView.register(SportObjectTableViewCell.self, forCellReuseIdentifier: SportObjectTableViewCell.reuseID)
-        contentView.sportObjectTableView.delegate = self
-        contentView.sportObjectTableView.dataSource = self
-        contentView.scroll.delegate = self
+        contentView.tableView.backgroundColor = .clear
+        contentView.tableView.register(SportObjectTableViewCell.self, forCellReuseIdentifier: SportObjectTableViewCell.reuseID)
+        contentView.tableView.register(TransparentTableViewCell.self, forCellReuseIdentifier: TransparentTableViewCell.reuseID)
+        contentView.tableView.delegate = self
+        contentView.tableView.dataSource = self
         presenter.checkLocation()
         IronSource.setRewardedVideoDelegate(self)
     }
     
-    
-    
+    private func setupNavBar() {
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.configureWithDefaultBackground()
+        navigationBarAppearance.backgroundColor = sportType.backgroundColor
 
+        
+        let buttonAppearance = UIBarButtonItemAppearance(style: .plain)
+        buttonAppearance.normal.titleTextAttributes = [.foregroundColor: sportType.backgroundColor2]
+        navigationBarAppearance.buttonAppearance = buttonAppearance
+        
+        UINavigationBar.appearance().tintColor = sportType.backgroundColor2
+
+        navigationItem.standardAppearance = navigationBarAppearance
+        navigationItem.compactAppearance = navigationBarAppearance
+        navigationItem.scrollEdgeAppearance = navigationBarAppearance
+    }
     
     @objc
     func allowLocationButtonTapped() {
@@ -88,14 +95,15 @@ class SportObjectListViewController: UIViewController  {
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
-    @objc
     private func addGoBackButton() {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "ArrowLeft")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        button.sizeToFit()
-        button.tintColor = .AppCollors.yeallow
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
-        button.addTarget(self, action: #selector(goBack), for: .touchUpInside)
+//        let button = UIButton(type: .system)
+//        button.setImage(UIImage(named: "ArrowLeft")?.withRenderingMode(.alwaysOriginal), for: .normal)
+//        button.sizeToFit()
+//        button.tintColor = .AppCollors.yeallow
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
+//        button.addTarget(self, action: #selector(goBack), for: .touchUpInside)
+        
+//        navigationItem.setLeftBarButtonItems([.], animated: <#T##Bool#>)
     }
     
     @objc
@@ -159,9 +167,9 @@ extension SportObjectListViewController: ISportObjectListView {
  
     func showObjects(sportsObjects: [SportObject]) {
         contentView.showLoader(toggle: false)
-        contentView.sportObjectTableView.isHidden = false
+        contentView.tableView.isHidden = false
         sportObjectSource = sportsObjects
-        contentView.sportObjectTableView.reloadData()
+        contentView.tableView.reloadData()
         guard sportsObjects.isEmpty else { return }
         contentView.errorLabel.text = "Sorry, there are no such places near you"
     }
@@ -186,95 +194,54 @@ extension SportObjectListViewController: ISportObjectListView {
 }
 
 // MARK: - UITableView methods
-extension SportObjectListViewController: UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
+extension SportObjectListViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        contentView.sectionBackgroundView.frame = contentView.tableView.rect(forSection: 1)
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let sportObject = sportObjectSource[safe: indexPath.row] else { return }
 //              let cell = tableView.cellForRow(at: indexPath) as? SportObjectTableViewCell else { return }
 
         presenter.sportObjectWasSelect(sportObject: sportObject)
-        
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        sportObjectSource.count
+        switch section {
+        case 0: return 1
+        case 1: return sportObjectSource.count
+        default: fatalError()
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SportObjectTableViewCell.reuseID) as! SportObjectTableViewCell
-        cell.object = sportObjectSource[safe: indexPath.row]
-//        
-//        guard let sportObject = sportObjectSource[safe: indexPath.row] else { return cell }
-//
-//        cell.reserveButton.tag = indexPath.row
-//        cell.reserveButton.addTarget(self, action: #selector(connected(sender:)), for: .touchUpInside)
-        cell.selectionStyle = .none
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Available arenas"
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        if scrollView == self.contentView.scroll {
-//            contentView.sportObjectTableView.isScrollEnabled = (self.contentView.scroll.contentOffset.y >= 200)
-//        }
-//
-//        if scrollView == self.contentView.sportObjectTableView {
-//            contentView.sportObjectTableView.isScrollEnabled = (contentView.sportObjectTableView.contentOffset.y > 0)
-//        }
-        
-        if self.contentView.scroll.bounds.intersects(self.view.frame) == true {
-            print("contentView.scroll.bounds.intersects(self.view.frame) == true")
-         //the UIView is within frame, use the UIScrollView's scrolling.
-
-            print(self.contentView.sportObjectTableView.contentOffset.y)
-            if self.contentView.sportObjectTableView.contentOffset.y == 65.0 {
-                //tableViews content is at the top of the tableView.
-
-                self.contentView.sportObjectTableView.isUserInteractionEnabled = false
-                self.contentView.sportObjectTableView.resignFirstResponder()
-            print("using scrollView scroll")
-
-            } else {
-
-                //UIView is in frame, but the tableView still has more content to scroll before resigning its scrolling over to ScrollView.
-
-                self.contentView.sportObjectTableView .isUserInteractionEnabled = true
-                self.contentView.scroll.resignFirstResponder()
-                print("using tableView scroll")
-            }
-
-        } else {
-            print("contentView.scroll.bounds.intersects(self.view.frame) == false")
-
-            //UIView is not in frame. Use tableViews scroll.
-
-            self.contentView.sportObjectTableView.isUserInteractionEnabled = true
-            self.contentView.scroll.resignFirstResponder()
-            print("using tableView scroll")
-
+        switch indexPath.section {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: TransparentTableViewCell.reuseID, for: indexPath)
+            cell.isSelected = false
+            cell.isUserInteractionEnabled = false
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: SportObjectTableViewCell.reuseID) as! SportObjectTableViewCell
+            cell.object = sportObjectSource[safe: indexPath.row]
+    //
+    //        guard let sportObject = sportObjectSource[safe: indexPath.row] else { return cell }
+    //
+    //        cell.reserveButton.tag = indexPath.row
+    //        cell.reserveButton.addTarget(self, action: #selector(connected(sender:)), for: .touchUpInside)
+            cell.selectionStyle = .none
+            cell.configure(type: sportType, indexPath: indexPath)
+            return cell
+        default: fatalError()
         }
-        
-//        print(self.contentView.sportObjectTableView.contentOffset.y)
-//
-//        if self.contentView.sportObjectTableView.contentOffset.y > 65.0 {
-//            self.contentView.scroll.resignFirstResponder()
-//            self.contentView.sportObjectTableView.isScrollEnabled = false
-//            self.contentView.scroll.isScrollEnabled = true
-//        } else {
-//            self.contentView.sportObjectTableView.isScrollEnabled = true
-//            self.contentView.scroll.isScrollEnabled = false
-//        }
-        
-//        if scrollView.bounds.contains(contentView.sportObjectTableView.tableHeaderView!.frame) {
-//            self.contentView.sportObjectTableView.isScrollEnabled = true
-//              }
-//
-//              if scrollView == self.contentView.sportObjectTableView {
-//                  self.contentView.sportObjectTableView.isScrollEnabled = (self.contentView.sportObjectTableView.contentOffset.y > 0)
-//              }
-        
     }
+    
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return "Available arenas"
+//    }
 }

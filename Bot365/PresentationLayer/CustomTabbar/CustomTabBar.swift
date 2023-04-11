@@ -21,9 +21,8 @@ final class CustomTabBar: UIStackView {
     weak var delegate: CustomTabBarDelegate?
     
     // MARK: - Private Properties
-    private lazy var customItemViews: [CustomItemView] = [homeItem,
-                                                          calendarItem,
-                                                          settingsItem]
+    private lazy var customItemViews: [CustomItemView] = [homeItem, calendarItem, settingsItem]
+    
     private lazy var homeItem = CustomItemView(with: CustomTabItem(type: .home,
                                                                    viewController: CustomNavigationController(rootViewController: presentationAssemmbly.homeScreen())
                                                                   ),
