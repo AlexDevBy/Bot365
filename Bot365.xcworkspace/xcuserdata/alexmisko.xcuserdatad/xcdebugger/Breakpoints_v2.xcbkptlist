@@ -116,5 +116,68 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F9964991-C645-409B-AF08-3CD196D2F2CD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bot365/PresentationLayer/EnterScreen/EnterViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "makeAppleAuth(code:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F9964991-C645-409B-AF08-3CD196D2F2CD - 747966695d75982b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Bot365.EnterViewController.makeAppleAuth(code: Swift.String) -&gt; ()"
+                  moduleName = "Bot365"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexmisko/Documents/DEV/Bot365/Bot365/PresentationLayer/EnterScreen/EnterViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "456">
+               </Location>
+               <Location
+                  uuid = "F9964991-C645-409B-AF08-3CD196D2F2CD - 2e06649297f8846d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Bot365.AuthModel, Bot365.NetworkError&gt;) -&gt; () in Bot365.EnterViewController.makeAppleAuth(code: Swift.String) -&gt; ()"
+                  moduleName = "Bot365"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexmisko/Documents/DEV/Bot365/Bot365/PresentationLayer/EnterScreen/EnterViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "280">
+               </Location>
+               <Location
+                  uuid = "F9964991-C645-409B-AF08-3CD196D2F2CD - be426b300f356f2a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Result&lt;Bot365.AuthModel, Bot365.NetworkError&gt;) -&gt; () in Bot365.EnterViewController.makeAppleAuth(code: Swift.String) -&gt; ()"
+                  moduleName = "Bot365"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alexmisko/Documents/DEV/Bot365/Bot365/PresentationLayer/EnterScreen/EnterViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "292">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

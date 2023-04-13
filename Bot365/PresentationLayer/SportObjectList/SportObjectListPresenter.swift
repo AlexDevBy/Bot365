@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreLocation
+import IronSource
 
 protocol ISportObjectListPresenter: AnyObject {
     func checkLocation()

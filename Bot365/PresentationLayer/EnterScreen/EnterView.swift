@@ -64,7 +64,7 @@ class EnterView: UIView {
     }()
 
     
-    private let signInButton: UIButton = {
+    private lazy var signInButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.addTarget(self, action: #selector(signInTapped), for: .touchUpInside)
         btn.setTitle(Constants.appleSignIn, for: .normal)
@@ -101,7 +101,6 @@ class EnterView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
-        
     }
     
     required init?(coder: NSCoder) {

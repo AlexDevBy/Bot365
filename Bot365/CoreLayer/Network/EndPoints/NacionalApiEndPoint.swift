@@ -1,8 +1,8 @@
 //
 //  NacionalApiEndPoint.swift
-//  Nacional
+//  Bot365
 //
-//  Created by Дмитрий Терехин on 29.11.2022.
+//  Created by Alex Misko on 16.03.23.
 //
 
 import Foundation
@@ -28,19 +28,19 @@ enum NacionalApiEndPoint: ApiConfiguration {
     var path: String {
         switch self {
         case .appleAuth:
-            return "/api/appleAuth"
+            return "/api/appleAuthorization"
         case .authIfPushDis:
-            return "/api/auth"
+            return "/api/authorization"
         case .delete:
-            return "/api/profile/delete"
+            return "/api/profile/deleteAccount"
         case .countries:
-            return "/api/getCountry"
+            return "/api/country"
         case .setPremium:
-            return "/api/profile/premium"
+            return "/api/profile/setPremium"
         case .revokeAppleToken:
-            return "/api/apauth.php"
+            return "/api/revokeToken"
         case .updatePushToken, .auth:
-            return "/api/profile/push"
+            return "/api/profile/pushToken"
         }
     }
     

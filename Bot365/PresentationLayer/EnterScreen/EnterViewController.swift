@@ -52,7 +52,7 @@ class EnterViewController: UIViewController {
         contentView.signInHandler = {
 //            let pushPermission = self.presentationAssembly.askPermissionsScreen(permissionType: .location)
 //            self.navigationController?.pushViewController(pushPermission, animated: true)
-            
+////
             let provider = ASAuthorizationAppleIDProvider()
             let request = provider.createRequest()
             request.requestedScopes = [.email]
@@ -178,7 +178,7 @@ extension EnterViewController: ASAuthorizationControllerDelegate {
                 let code = credentiontials.authorizationCode,
                 let codeString = String(data: code, encoding: .utf8)
             else { return }
-            print(credentiontials.email)
+//            print(credentiontials.email)
             print(codeString)
             makeAppleAuth(code: codeString)
             

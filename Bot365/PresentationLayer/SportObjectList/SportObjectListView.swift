@@ -30,7 +30,7 @@ class SportObjectListView: UIView {
         let tbl = UITableView()
         tbl.translatesAutoresizingMaskIntoConstraints = false
         tbl.backgroundColor = .clear
-//        tbl.contentInset.bottom = 600
+//        tbl.contentInset.top = 20
         tbl.layer.cornerRadius = 16
         tbl.separatorStyle = .none
         tbl.rowHeight = UITableView.automaticDimension
@@ -206,7 +206,7 @@ class SportObjectListView: UIView {
         addSubview(informationView)
         addSubview(allowButton)
         
-        informationView.topAnchor.constraint(equalTo: categoryImageView.bottomAnchor, constant: -15).isActive = true
+        informationView.topAnchor.constraint(equalTo: categoryImageView.bottomAnchor, constant: 15).isActive = true
         informationView.leftAnchor.constraint(equalTo: informationView.superview!.leftAnchor, constant: 16).isActive = true
         informationView.rightAnchor.constraint(equalTo: informationView.superview!.rightAnchor, constant: -16).isActive = true
         informationView.heightAnchor.constraint(equalToConstant: 100).isActive = true

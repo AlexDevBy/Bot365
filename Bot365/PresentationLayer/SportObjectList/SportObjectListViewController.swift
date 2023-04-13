@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import IronSource
 
 class SportObjectListViewController: UIViewController {
     
@@ -46,12 +47,12 @@ class SportObjectListViewController: UIViewController {
         super.viewDidLoad()
         contentView.showLoader(toggle: true)
         setupView()
+        setupTableFooter()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
-        addGoBackButton()
         setupNavBar()
     }
     
@@ -69,17 +70,26 @@ class SportObjectListViewController: UIViewController {
         IronSource.setRewardedVideoDelegate(self)
     }
     
+    func setupTableFooter() {
+        let view: UIView = UIView(frame: CGRect(x: 0, y: 0, width: contentView.tableView.frame.size.width, height: 100))
+//        view.roundCorners([.bottomLeft, .bottomRight], radius: 16.0)
+        view.backgroundColor = sportType.backgroundColor2
+        self.contentView.tableView.tableFooterView = view
+    }
+    
     private func setupNavBar() {
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithDefaultBackground()
         navigationBarAppearance.backgroundColor = sportType.backgroundColor
-
+//        UINavigationBar.appearance().tintColor = sportType.backgroundColor2
+        self.navigationController?.navigationBar.tintColor = sportType.backgroundColor2
+//        self.navigationController?.isToolbarHidden = true
         
         let buttonAppearance = UIBarButtonItemAppearance(style: .plain)
         buttonAppearance.normal.titleTextAttributes = [.foregroundColor: sportType.backgroundColor2]
         navigationBarAppearance.buttonAppearance = buttonAppearance
         
-        UINavigationBar.appearance().tintColor = sportType.backgroundColor2
+        
 
         navigationItem.standardAppearance = navigationBarAppearance
         navigationItem.compactAppearance = navigationBarAppearance
@@ -153,13 +163,23 @@ extension SportObjectListViewController: ISportObjectListView {
     
     func routeToCreateReminder(sportObject: SportObject) {
         let vc = presentationAssembly.createReminderScreen(sportObject: sportObject)
-//
-        if let sheet = vc.sheetPresentationController {
-            sheet.preferredCornerRadius = 16.0
-            sheet.detents = [.large(), .medium()]
-            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-            sheet.prefersGrabberVisible = true
-            sheet.selectedDetentIdentifier = .large
+        
+        
+        vc.modalPresentationStyle = .pageSheet
+        if #available(iOS 15.0, *) {
+
+            if let sheet = vc.sheetPresentationController {
+                sheet.preferredCornerRadius = 16.0
+                sheet.detents = [.large(), .medium()]
+                sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+                sheet.prefersGrabberVisible = true
+                sheet.selectedDetentIdentifier = .large
+            }
+            
+        } else {
+            
+            vc.modalPresentationStyle = .custom
+//            vc.transitioningDelegate = self
         }
         navigationController?.present(vc, animated: true)
 
@@ -229,11 +249,6 @@ extension SportObjectListViewController: UITableViewDataSource, UITableViewDeleg
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: SportObjectTableViewCell.reuseID) as! SportObjectTableViewCell
             cell.object = sportObjectSource[safe: indexPath.row]
-    //
-    //        guard let sportObject = sportObjectSource[safe: indexPath.row] else { return cell }
-    //
-    //        cell.reserveButton.tag = indexPath.row
-    //        cell.reserveButton.addTarget(self, action: #selector(connected(sender:)), for: .touchUpInside)
             cell.selectionStyle = .none
             cell.configure(type: sportType, indexPath: indexPath)
             return cell
@@ -241,7 +256,85 @@ extension SportObjectListViewController: UITableViewDataSource, UITableViewDeleg
         }
     }
     
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return "Available arenas"
+//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        let view = UIView()
+//        view.backgroundColor = sportType.backgroundColor2
+//        return view
 //    }
+//
+//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//       return 50
+//   }
 }
+
+
+//extension SportObjectListViewController: UIViewControllerTransitioningDelegate {
+//
+//
+//func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+//    PresentationController(presentedViewController: presented, presenting: presenting)
+//    }
+//}
+
+//class PresentationController: UIPresentationController {
+//
+//  let blurEffectView: UIVisualEffectView!
+//  var tapGestureRecognizer: UITapGestureRecognizer = UITapGestureRecognizer()
+//
+//  override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
+//      let blurEffect = UIBlurEffect(style: .dark)
+//      blurEffectView = UIVisualEffectView(effect: blurEffect)
+//      super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
+//      tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissController))
+//      blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//      self.blurEffectView.isUserInteractionEnabled = true
+//      self.blurEffectView.addGestureRecognizer(tapGestureRecognizer)
+//  }
+//
+//  override var frameOfPresentedViewInContainerView: CGRect {
+//      CGRect(origin: CGPoint(x: 0, y: self.containerView!.frame.height * 0.4),
+//             size: CGSize(width: self.containerView!.frame.width, height: self.containerView!.frame.height *
+//              0.6))
+//  }
+//
+//  override func presentationTransitionWillBegin() {
+//      self.blurEffectView.alpha = 0
+//      self.containerView?.addSubview(blurEffectView)
+//      self.presentedViewController.transitionCoordinator?.animate(alongsideTransition: { (UIViewControllerTransitionCoordinatorContext) in
+//          self.blurEffectView.alpha = 0.7
+//      }, completion: { (UIViewControllerTransitionCoordinatorContext) in })
+//  }
+//
+//  override func dismissalTransitionWillBegin() {
+//      self.presentedViewController.transitionCoordinator?.animate(alongsideTransition: { (UIViewControllerTransitionCoordinatorContext) in
+//          self.blurEffectView.alpha = 0
+//      }, completion: { (UIViewControllerTransitionCoordinatorContext) in
+//          self.blurEffectView.removeFromSuperview()
+//      })
+//  }
+//
+//  override func containerViewWillLayoutSubviews() {
+//      super.containerViewWillLayoutSubviews()
+//    presentedView!.roundCorners([.topLeft, .topRight], radius: 22)
+//  }
+//
+//  override func containerViewDidLayoutSubviews() {
+//      super.containerViewDidLayoutSubviews()
+//      presentedView?.frame = frameOfPresentedViewInContainerView
+//      blurEffectView.frame = containerView!.bounds
+//  }
+//
+//  @objc func dismissController(){
+//      self.presentedViewController.dismiss(animated: true, completion: nil)
+//  }
+//}
+//
+//extension UIView {
+//  func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
+//      let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners,
+//                              cornerRadii: CGSize(width: radius, height: radius))
+//      let mask = CAShapeLayer()
+//      mask.path = path.cgPath
+//      layer.mask = mask
+//  }
+//}

@@ -78,7 +78,7 @@ class ReminderSportObjectTableViewCell: UITableViewCell, ReusableView {
     }()
     
     
-    private let deleteButton: UIButton = {
+    private lazy var deleteButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.backgroundColor = UIColor(netHex: 0x214929)
         btn.setTitle("Cancel", for: .normal)
